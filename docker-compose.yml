@@ -16,6 +16,7 @@ services:
     build:
       context: ./wdqs
       dockerfile: Dockerfile
+    image: wdqs
     environment:
       - WIKIBASE_HOSTNAME=www.wikidata.org
   wdqs-proxy:
@@ -34,3 +35,5 @@ services:
     environment:
       - WIKIBASE_HOSTNAME=www.wikidata.org
       - QUERY_SERVICE_BACKEND=wdqs:9999
+    depends_on:
+    - wdqs
