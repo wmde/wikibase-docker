@@ -1,4 +1,4 @@
-FROM mwaas_wdqs
+FROM wdqs
 
 RUN set -x; \
     apk --update add bash
