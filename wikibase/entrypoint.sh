@@ -10,5 +10,8 @@ php /var/www/html/maintenance/install.php --dbuser wikiuser --dbpass sqlpass --d
 # Copy our LocalSettings into place after install
 cp /LocalSettings.php /var/www/html/
 
+# Run update.php to install Wikibase
+php /var/www/html/maintenance/update.php --quick
+
 # Run the actual entry point
 docker-php-entrypoint apache2-foreground
