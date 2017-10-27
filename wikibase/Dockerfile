@@ -18,3 +18,6 @@ RUN cd /Wikibase && composer install --no-dev
 FROM mediawiki:1.29
 
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
