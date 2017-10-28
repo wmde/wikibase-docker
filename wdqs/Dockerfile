@@ -14,12 +14,19 @@ RUN cd /wikidata-query-rdf/dist/target \
 
 FROM openjdk:8-jdk-alpine
 
+RUN set -x; \
+    apk --update add bash
+
 COPY --from=builder /wikidata-query-rdf /wikidata-query-rdf
 
-RUN sed -i 's/HEAP_SIZE=${HEAP_SIZE:-"16g"}/HEAP_SIZE=${HEAP_SIZE:-"2g"}/;s/HOST=${HOST:-"localhost"}/HOST="0.0.0.0"/' /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runBlazegraph.sh
+# The docker container reports as having 2gb memory so have to set less than that here
+ENV HEAP_SIZE="1g"
+ENV HOST="0.0.0.0"
 
 EXPOSE 9999
 
 WORKDIR "/wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/"
-#TODO use bash
-CMD ["sh", "./runBlazegraph.sh"]
+
+COPY mwservices.json /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/mwservices.json
+
+CMD ["bash", "./runBlazegraph.sh"]
