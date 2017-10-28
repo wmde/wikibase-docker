@@ -26,5 +26,6 @@ EXPOSE 9999
 WORKDIR "/wdqs/"
 
 COPY mwservices.json /wdqs/mwservices.json
+COPY whitelist.txt /wdqs/whitelist.txt
 
 CMD ["./runBlazegraph.sh"]
