@@ -1,15 +1,10 @@
 **Instructions**
 
-docker-compose up
+docker-compose up --build
 
  - Wikibase @ http://localhost:8181
  - Query Service UI @ http://localhost:8282
- - Query Service Backend @ http://localhost:8989
+ - Query Service Backend (Behind a proxy) @ http://localhost:8989
+ - Query Service Backend (Direct) @ http://localhost:8999
 
 docker-compose down
-
-**TODOs**
-
-- Multi stage builds of stuff?
-- Fix updater running... src scripts are not for running... go to dist/target and see service zip
-- Also run WDQS service from these scripts...

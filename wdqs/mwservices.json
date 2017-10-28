@@ -102,5 +102,5 @@
       }
     }
   },
-  "endpoints": ["localhost"]
+  "endpoints": ["wikibase"]
 }

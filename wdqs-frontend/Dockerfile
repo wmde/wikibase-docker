@@ -16,7 +16,7 @@ RUN set -x; \
     && cat package.json.orig \
         | jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
         > package.json \
-    && npm install --production \
+    && npm install \
     && rm -rf /usr/share/nginx/html \
     && mv /tmp/wikidata-query-gui-master /usr/share/nginx/html \
     && rm -rf /tmp/* \

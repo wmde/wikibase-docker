@@ -18,7 +18,6 @@ services:
     image: mariadb
     restart: always
     environment:
-      # @see https://phabricator.wikimedia.org/source/mediawiki/browse/master/includes/DefaultSettings.php
       MYSQL_DATABASE: 'my_wiki'
       MYSQL_USER: 'wikiuser'
       MYSQL_PASSWORD: 'sqlpass'
