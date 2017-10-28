@@ -16,11 +16,10 @@ FROM openjdk:8-jdk-alpine
 
 COPY --from=builder /wikidata-query-rdf /wikidata-query-rdf
 
-RUN sed -i 's/HEAP_SIZE=${HEAP_SIZE:-"16g"}/HEAP_SIZE=${HEAP_SIZE:-"2g"}/;s/HOST=${HOST:-"localhost"}/HOST="0.0.0.0"/' /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runBlazegraph.sh    
+RUN sed -i 's/HEAP_SIZE=${HEAP_SIZE:-"16g"}/HEAP_SIZE=${HEAP_SIZE:-"2g"}/;s/HOST=${HOST:-"localhost"}/HOST="0.0.0.0"/' /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runBlazegraph.sh
 
 EXPOSE 9999
 
-#TODO change foobar to the env var?
-#TODO run from the snapshpot extracted zip file scripts?
 WORKDIR "/wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/"
-CMD ["bash", "./runBlazegraph.sh"]
+#TODO use bash
+CMD ["sh", "./runBlazegraph.sh"]

@@ -18,3 +18,9 @@ RUN cd /Wikibase && composer install --no-dev
 FROM mediawiki:1.29
 
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
+COPY wait-for-it.sh /wait-for-it.sh
+COPY entrypoint.sh /entrypoint.sh
+COPY LocalSettings.php /LocalSettings.php
+
+ENTRYPOINT ["/bin/sh"]
+CMD ["/entrypoint.sh"]

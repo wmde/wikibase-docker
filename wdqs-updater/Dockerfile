@@ -1,9 +1,5 @@
 FROM wikibase/wdqs
 
-RUN set -x; \
-    apk --update add bash
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/bin/sh", "/runUpdate.sh"]
+RUN chmod +x /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runUpdate.sh
+#TODO use bash!
+CMD ["sh", "./runUpdate.sh"]
