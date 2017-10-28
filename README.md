@@ -1,4 +1,4 @@
-**Instructions**
+**Setup and endpoints**
 
 docker-compose up --build
 
@@ -8,3 +8,13 @@ docker-compose up --build
  - Query Service Backend (Direct) @ http://localhost:8999
 
 docker-compose down
+
+**Exporting data**
+
+Get a JSON dump from wikibase:
+
+```docker-compose exec wikibase php ./extensions/Wikibase/repo/maintenance/dumpJson.php```
+
+Get an RDF dump from wikibase:
+
+```docker-compose exec wikibase php ./extensions/Wikibase/repo/maintenance/dumpRdf.php```
