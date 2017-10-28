@@ -13,7 +13,10 @@ $wgLanguageCode = "en";
 
 $wgSitename = "docker-wikibase";
 $wgMetaNamespace = "Project";
-$wgScriptPath = "";
+
+## https://www.mediawiki.org/wiki/Manual:Short_URL
+$wgScriptPath = "/w";        // this should already have been configured this way
+$wgArticlePath = "/wiki/$1";
 
 wfLoadSkin( 'Vector' );
 

@@ -28,6 +28,7 @@ RUN sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/env bash\nset -x/' /wikidata-
 ENV MEMORY=""
 ENV HEAP_SIZE="1g"
 ENV HOST="0.0.0.0"
+ENV BLAZEGRAPH_OPTS="-DwikibaseHost=wikibase"
 
 EXPOSE 9999
 
@@ -35,4 +36,4 @@ WORKDIR "/wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/"
 
 COPY mwservices.json /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/mwservices.json
 
-CMD ["bash", "./runBlazegraph.sh"]
+CMD ["./runBlazegraph.sh"]

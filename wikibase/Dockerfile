@@ -17,10 +17,15 @@ RUN cd /Wikibase && composer install --no-dev
 
 FROM mediawiki:1.29
 
+RUN a2enmod rewrite
+
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY LocalSettings.php /LocalSettings.php
+COPY htaccess /var/www/html/.htaccess
+
+RUN ln -s /var/www/html/ /var/www/html/w
 
 ENTRYPOINT ["/bin/sh"]
 CMD ["/entrypoint.sh"]
