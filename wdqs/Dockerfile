@@ -19,7 +19,13 @@ RUN set -x; \
 
 COPY --from=builder /wikidata-query-rdf /wikidata-query-rdf
 
-# The docker container reports as having 2gb memory so have to set less than that here
+RUN sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/env bash\nset -x/' /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runBlazegraph.sh
+
+# Remove the memory limit from the script as docker doesn't play nicely with this
+#RUN sed -i 's/${MEMORY} //' /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/runBlazegraph.sh
+
+# Don't set a memory limit otherwise bad things happen (OOMs)
+ENV MEMORY=""
 ENV HEAP_SIZE="1g"
 ENV HOST="0.0.0.0"
 

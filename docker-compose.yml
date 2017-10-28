@@ -38,6 +38,8 @@ services:
     build:
       context: ./wdqs
       dockerfile: Dockerfile
+    ports:
+     - "8999:9999"
   wdqs-proxy:
     image: nginx:stable-alpine
     environment:
