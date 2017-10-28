@@ -56,3 +56,4 @@ services:
       dockerfile: Dockerfile
     depends_on:
     - wdqs
+    - wikibase
