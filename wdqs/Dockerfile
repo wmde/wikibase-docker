@@ -1,23 +1,19 @@
-FROM openjdk:8-jdk-alpine as builder
+FROM ubuntu as fetcher
 
-RUN set -x; \
-    apk --update add --virtual build-dependencies git \
-    && apk --update add ca-certificates maven
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends ca-certificates wget unzip
 
-RUN git clone https://github.com/wikimedia/wikidata-query-rdf.git /wikidata-query-rdf --depth 1
-RUN cd /wikidata-query-rdf/ && mvn install -DskipTests=true
-RUN cd /wikidata-query-rdf/ && mvn sortpom:sort
-
-RUN cd /wikidata-query-rdf/dist/target \
-    && unzip service-0.3.0-SNAPSHOT-dist.zip \
-    && rm service-0.3.0-SNAPSHOT-dist.zip
+# Creates /wikidata-query-deploy
+RUN wget http://search.maven.org/remotecontent?filepath=org/wikidata/query/rdf/service/0.2.5/service-0.2.5-dist.zip \
+    && unzip *.zip \
+    && rm *.zip
 
 FROM openjdk:8-jdk-alpine
 
 RUN set -x; \
     apk --update add bash
 
-COPY --from=builder /wikidata-query-rdf /wikidata-query-rdf
+COPY --from=fetcher /service-0.2.5 /wdqs
 
 # Don't set a memory limit otherwise bad things happen (OOMs)
 ENV MEMORY=""
@@ -27,8 +23,8 @@ ENV BLAZEGRAPH_OPTS="-DwikibaseHost=wikibase"
 
 EXPOSE 9999
 
-WORKDIR "/wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/"
+WORKDIR "/wdqs/"
 
-COPY mwservices.json /wikidata-query-rdf/dist/target/service-0.3.0-SNAPSHOT/mwservices.json
+COPY mwservices.json /wdqs/mwservices.json
 
 CMD ["./runBlazegraph.sh"]
