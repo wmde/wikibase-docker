@@ -1,5 +1,7 @@
 ## Install Instructions
 
+For a single script to run that should work on a WMF labs VM running debian jessie with 4GB memory take a look at setup.sh in this repository.
+
 #### 1) Install Docker (community edition)
 
 https://docs.docker.com/engine/installation/
