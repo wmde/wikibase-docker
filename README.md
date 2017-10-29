@@ -55,6 +55,29 @@ This will keep all data stored by mysql, mediawiki and the query service in dock
 docker-compose down --volumes
 ```
 
+## Backup and Data transfer instructions
+
+All data for wikibase and the query service is stored in docker volumes.
+You can create compressed copies of these volumes to use as backups or to had off to other users.
+
+You can see all docker volumes created by using the following command:
+
+```
+docker volume ls | grep wikibasedocker
+```
+
+You can grab a zip of each volumes by doing the following:
+
+```
+docker run -v wikibasedocker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup backup mediawiki-mysql-data
+```
+
+You, or someone else, can then restore the volume by doing the following:
+
+```
+docker run -v wikibasedocker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup restore mediawiki-mysql-data
+```
+
 ## Access Instructions
 
 **Host access**
