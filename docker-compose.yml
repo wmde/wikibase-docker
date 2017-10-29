@@ -1,8 +1,16 @@
-version: '2'
+# Wikibase with Query Service
+#
+# Access Wikibase via "http://localhost:8181"
+#   (or "http://$(docker-machine ip):8181" if using docker-machine)
+#
+# Access Query Service via "http://localhost:8282"
+#   (or "http://$(docker-machine ip):8282" if using docker-machine)
+version: '3'
 
 services:
   wikibase:
     image: wikibase/wikibase
+    restart: always
     build:
       context: ./wikibase
       dockerfile: Dockerfile
@@ -11,12 +19,14 @@ services:
     ports:
      - "8181:80"
     volumes:
-      - /var/www/html/images
+      - mediawiki-images-data:/var/www/html/images
     depends_on:
     - mysql
   mysql:
     image: mariadb
     restart: always
+    volumes:
+      - mediawiki-mysql-data:/var/lib/mysql
     environment:
       MYSQL_DATABASE: 'my_wiki'
       MYSQL_USER: 'wikiuser'
@@ -24,6 +34,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
   wdqs-frontend:
     image: wikibase/wdqs-frontend
+    restart: always
     build:
       context: ./wdqs-frontend
       dockerfile: Dockerfile
@@ -38,13 +49,15 @@ services:
     - wdqs-proxy
   wdqs:
     image: wikibase/wdqs
+    restart: always
     build:
       context: ./wdqs
       dockerfile: Dockerfile
-    ports:
-     - "8999:9999"
+    volumes:
+      - query-service-data:/wdqs/data
   wdqs-proxy:
     image: wikibase/wdqs-proxy
+    restart: always
     build:
       context: ./wdqs-proxy
       dockerfile: Dockerfile
@@ -57,9 +70,15 @@ services:
     - wdqs
   wdqs-updater:
     image: wikibase/wdqs-updater
+    restart: always
     build:
       context: ./wdqs-updater
       dockerfile: Dockerfile
     depends_on:
     - wdqs
     - wikibase
+
+volumes:
+  mediawiki-mysql-data:
+  mediawiki-images-data:
+  query-service-data:
