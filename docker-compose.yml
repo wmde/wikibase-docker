@@ -44,11 +44,12 @@ services:
     ports:
      - "8999:9999"
   wdqs-proxy:
-    image: nginx:stable-alpine
+    image: wikibase/wdqs-proxy
+    build:
+      context: ./wdqs-proxy
+      dockerfile: Dockerfile
     environment:
       - PROXY_PASS_HOST=wdqs:9999
-    volumes:
-     - ./wdqs-proxy/wdqs.template:/etc/nginx/conf.d/wdqs.template
     ports:
      - "8989:80"
     command: /bin/sh -c "envsubst < /etc/nginx/conf.d/wdqs.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
