@@ -41,8 +41,8 @@ services:
     environment:
      - LANGUAGE=en
      - BRAND_TITLE=LocalDockerQuery
-     - SPARQL_URI=http://localhost:8989/bigdata/namespace/wdq/sparql
-     - WIKIBASE_API=https://www.wikidata.org/w/api.php
+     - SPARQL_URI=/proxy/wdqs/bigdata/namespace/wdq/sparql
+     - WIKIBASE_API=/proxy/wikibase/w/api.php
     ports:
      - "8282:80"
     depends_on:
