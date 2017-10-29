@@ -102,5 +102,5 @@
       }
     }
   },
-  "endpoints": ["wikibase"]
+  "endpoints": ["wikibase.svc"]
 }

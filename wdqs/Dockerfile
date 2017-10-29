@@ -19,7 +19,7 @@ COPY --from=fetcher /service-0.2.5 /wdqs
 ENV MEMORY=""
 ENV HEAP_SIZE="1g"
 ENV HOST="0.0.0.0"
-ENV BLAZEGRAPH_OPTS="-DwikibaseHost=wikibase"
+ENV BLAZEGRAPH_OPTS="-DwikibaseHost=wikibase.svc"
 
 EXPOSE 9999
 

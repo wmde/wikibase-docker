@@ -36,6 +36,10 @@ services:
       MYSQL_USER: 'wikiuser'
       MYSQL_PASSWORD: 'sqlpass'
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    networks:
+      default:
+        aliases:
+         - mysql.svc
   wdqs-frontend:
     image: wikibase/wdqs-frontend
     restart: always
@@ -51,6 +55,10 @@ services:
      - "8282:80"
     depends_on:
     - wdqs-proxy
+    networks:
+      default:
+        aliases:
+         - wdqs-frontend.svc
   wdqs:
     image: wikibase/wdqs
     restart: always
@@ -59,6 +67,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - query-service-data:/wdqs/data
+    networks:
+      default:
+        aliases:
+         - wdqs.svc
   wdqs-proxy:
     image: wikibase/wdqs-proxy
     restart: always
@@ -66,12 +78,16 @@ services:
       context: ./wdqs-proxy
       dockerfile: Dockerfile
     environment:
-      - PROXY_PASS_HOST=wdqs:9999
+      - PROXY_PASS_HOST=wdqs.svc:9999
     ports:
      - "8989:80"
     command: /bin/sh -c "envsubst < /etc/nginx/conf.d/wdqs.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
     - wdqs
+    networks:
+      default:
+        aliases:
+         - wdqs-proxy.svc
   wdqs-updater:
     image: wikibase/wdqs-updater
     restart: always
@@ -81,6 +97,10 @@ services:
     depends_on:
     - wdqs
     - wikibase
+    networks:
+      default:
+        aliases:
+         - wdqs-updater.svc
 
 volumes:
   mediawiki-mysql-data:

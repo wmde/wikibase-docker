@@ -1,7 +1,7 @@
 <?php
 
 ## Database settings
-$wgDBserver = "mysql";
+$wgDBserver = "mysql.svc";
 $wgDBname = "my_wiki";
 $wgDBuser = "wikiuser";
 $wgDBpassword = "sqlpass";
