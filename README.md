@@ -16,8 +16,10 @@ git clone https://github.com/addshore/wikibase-docker.git
 
 #### 4) Start the containers
 
+Note: in linux you must either be in the docker group or use SUDO!
+
 ```
-docker-composer up --build
+docker-compose up --build
 ```
 
 ## Access Instructions
