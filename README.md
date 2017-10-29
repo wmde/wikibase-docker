@@ -14,12 +14,45 @@ https://docs.docker.com/compose/install/
 git clone https://github.com/addshore/wikibase-docker.git
 ```
 
-#### 4) Start the containers
+## Usage Instructions
 
-Note: in linux you must either be in the docker group or use SUDO!
+Note: In linux you must either be in the docker group or use SUDO!
+
+You can also simply use the docker-compose file here as an example and create your own with modifications.
+
+#### Start the containers
+
+If you are just a user you can pull the images from docker hub:
+```
+docker-compose pull
+docker-compose up --no-build -d
+```
+
+If you want to develop the Dockerfiles then you will want to build the images yourself:
+```
+docker-compose up --build -d
+```
+
+#### Stop the containers
 
 ```
-docker-compose up --build
+docker-compose stop
+```
+
+#### Remove the containers
+
+```
+docker-compose down
+```
+
+This will keep all data stored by mysql, mediawiki and the query service in docker volumes.
+
+#### Remove the containers and data
+
+**WARNING:** this will remove ALL of the data you had added to Wikibase and the Query Service.
+
+```
+docker-compose down --volumes
 ```
 
 ## Access Instructions
