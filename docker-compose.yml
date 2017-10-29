@@ -22,6 +22,10 @@ services:
       - mediawiki-images-data:/var/www/html/images
     depends_on:
     - mysql
+    networks:
+      default:
+        aliases:
+         - wikibase.svc
   mysql:
     image: mariadb
     restart: always
