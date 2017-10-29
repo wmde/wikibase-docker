@@ -42,4 +42,6 @@ Get an RDF dump from wikibase:
 
 ## Troubleshooting
 
-* [I am on linux and I don't want to run docker as root](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo#477554)
+* [I am on linux and I don't want to run docker as root!](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo#477554)
+* The query service is not running or seems to get killed by the OS?
+  * The docker-compose setup requires more than 2GB of available RAM to start. While being developed the dev machine has 8GB of RAM.
