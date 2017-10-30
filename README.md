@@ -1,3 +1,8 @@
+## Issue tracking
+
+We use [Phabricator to track
+issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=wikibase-containers). See the [list of current issues](https://phabricator.wikimedia.org/maniphest/?project=wikibase-containers&statuses=open&group=none&order=newest#R).
+
 ## Install Instructions
 
 For a single script to run that should work on a WMF labs VM running debian jessie with 4GB memory take a look at setup.sh in this repository.
