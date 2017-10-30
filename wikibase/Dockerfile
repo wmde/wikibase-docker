@@ -19,6 +19,8 @@ FROM mediawiki:1.29
 
 RUN a2enmod rewrite
 
+RUN install -d /var/log/mediawiki -o www-data
+
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh

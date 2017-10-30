@@ -6,6 +6,13 @@ $wgDBname = "my_wiki";
 $wgDBuser = "wikiuser";
 $wgDBpassword = "sqlpass";
 
+## Logs
+$wgDebugLogGroups = array(
+	'resourceloader' => '/var/log/mediawiki/resourceloader.log',
+	'exception' => '/var/log/mediawiki/exception.log',
+	'error' => '/var/log/mediawiki/error.log',
+);
+
 ## Locale
 
 $wgShellLocale = "en_US.utf8";
