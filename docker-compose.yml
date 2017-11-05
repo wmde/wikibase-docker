@@ -67,6 +67,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - query-service-data:/wdqs/data
+    command: ./runBlazegraph.sh
     networks:
       default:
         aliases:

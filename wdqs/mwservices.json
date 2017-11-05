@@ -102,5 +102,5 @@
       }
     }
   },
-  "endpoints": ["wikibase.svc"]
+  "endpoints": ["${WIKIBASE_HOST}"]
 }
