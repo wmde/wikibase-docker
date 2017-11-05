@@ -81,7 +81,6 @@ services:
       - PROXY_PASS_HOST=wdqs.svc:9999
     ports:
      - "8989:80"
-    command: /bin/sh -c "envsubst < /etc/nginx/conf.d/wdqs.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
     depends_on:
     - wdqs
     networks:
