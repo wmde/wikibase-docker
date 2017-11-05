@@ -25,7 +25,6 @@ RUN set -x; \
 
 COPY entrypoint.sh /entrypoint.sh
 COPY config.js /usr/share/nginx/html/wikibase/config.js
-COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
