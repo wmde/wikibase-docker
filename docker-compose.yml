@@ -67,7 +67,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - query-service-data:/wdqs/data
-    command: ./runBlazegraph.sh
+    command: /runBlazegraph.sh
     networks:
       default:
         aliases:
@@ -89,11 +89,12 @@ services:
         aliases:
          - wdqs-proxy.svc
   wdqs-updater:
-    image: wikibase/wdqs-updater
+    image: wikibase/wdqs
     restart: always
     build:
-      context: ./wdqs-updater
+      context: ./wdqs
       dockerfile: Dockerfile
+    command: /runUpdate.sh
     depends_on:
     - wdqs
     - wikibase

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
 export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"

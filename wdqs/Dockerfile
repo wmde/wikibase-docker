@@ -22,15 +22,23 @@ COPY --from=fetcher /service-0.2.5 /wdqs
 ENV MEMORY=""\
     HEAP_SIZE="1g"\
     HOST="0.0.0.0"\
-    WIKIBASE_HOST="wikibase.svc"
+    WIKIBASE_HOST="wikibase.svc"\
+    WDQS_HOST="wdqs.svc"\
+    WDQS_PORT="9999"
 
-EXPOSE 9999
+EXPOSE $WDQS_PORT
 
 WORKDIR "/wdqs/"
 
+COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
+COPY runBlazegraph.sh /runBlazegraph.sh
+COPY runUpdate.sh /runUpdate.sh
 COPY mwservices.json /templates/mwservices.json
 COPY RWStore.properties /wdqs/RWStore.properties
 COPY whitelist.txt /wdqs/whitelist.txt
+
+# TODO is this actually needed?
+RUN chmod +x /wdqs/runUpdate.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
