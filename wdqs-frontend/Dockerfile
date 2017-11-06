@@ -24,8 +24,13 @@ RUN set -x; \
     && apk del build-dependencies
 
 COPY entrypoint.sh /entrypoint.sh
-COPY config.js /usr/share/nginx/html/wikibase/config.js
-COPY default.conf /etc/nginx/conf.d/default.conf
+COPY config.js /templates/config.js
+COPY default.conf /templates/default.conf
+
+ENV LANGUAGE=en\
+    BRAND_TITLE=DockerWikibaseQueryService\
+    WIKIBASE_HOST="wikibase.svc"\
+    WDQS_HOST="wdqs-proxy.svc"
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

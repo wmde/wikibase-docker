@@ -1,5 +1,5 @@
 /* exported CONFIG */
-var CONFIG = ( function ( window, $ ) {
+var CONFIG = ( function ( window, jQuery ) {
     'use strict';
 
     function getUserLanguage() {
@@ -18,24 +18,24 @@ var CONFIG = ( function ( window, $ ) {
     var root = 'https://query.wikidata.org/';
 
     var configDeploy = {
-        language: getUserLanguage() || 'LANGUAGE',
+        language: getUserLanguage() || '$LANGUAGE',
         api: {
             sparql: {
-                uri: 'SPARQL_URI'
+                uri: '/proxy/wdqs/bigdata/namespace/wdq/sparql'
             },
             wikibase: {
-                uri: 'WIKIBASE_API'
+                uri: '/proxy/wikibase/w/api.php'
             }
         },
         i18nLoad: function( lang ) {
             var loadFallbackLang = null;
             if ( lang !== this.language ) {
                 //load default language as fallback language
-                loadFallbackLang = $.i18n().load( 'i18n/' + this.language + '.json', this.language );
+                loadFallbackLang = jQuery.i18n().load( 'i18n/' + this.language + '.json', this.language );
             }
             return $.when(
                 loadFallbackLang,
-                $.i18n().load( 'i18n/' + lang + '.json', lang )
+                jQuery.i18n().load( 'i18n/' + lang + '.json', lang )
             );
         },
         brand: {
@@ -54,21 +54,21 @@ var CONFIG = ( function ( window, $ ) {
     if ( hostname === '' || hostname === 'localhost' || hostname === '127.0.0.1' ) {
 
         // Override for local debugging
-        return $.extend( true, {}, configDeploy, {
+        return jQuery.extend( true, {}, configDeploy, {
             api: {
                 sparql: {
-                    uri: 'SPARQL_URI'
+                    uri: '/proxy/wdqs/bigdata/namespace/wdq/sparql'
 
                 }
             },
             i18nLoad: function( lang ) {
-                return $.when(
-                    $.i18n().load( 'i18n/' + lang + '.json', lang ),
-                    $.i18n().load( 'node_modules/jquery.uls/i18n/' + lang + '.json', lang )
+                return jQuery.when(
+                    jQuery.i18n().load( 'i18n/' + lang + '.json', lang ),
+                    jQuery.i18n().load( 'node_modules/jquery.uls/i18n/' + lang + '.json', lang )
                 );
             },
             brand: {
-                title: 'BRAND_TITLE'
+                title: '$BRAND_TITLE'
             },
             location: {
                 root: './',

@@ -46,11 +46,6 @@ services:
     build:
       context: ./wdqs-frontend
       dockerfile: Dockerfile
-    environment:
-     - LANGUAGE=en
-     - BRAND_TITLE=LocalDockerQuery
-     - SPARQL_URI=/proxy/wdqs/bigdata/namespace/wdq/sparql
-     - WIKIBASE_API=/proxy/wikibase/w/api.php
     ports:
      - "8282:80"
     depends_on:
