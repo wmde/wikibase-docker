@@ -105,6 +105,12 @@ Get an RDF dump from wikibase:
 
 ```docker-compose exec wikibase php ./extensions/Wikibase/repo/maintenance/dumpRdf.php```
 
+**Bash access**
+
+```docker-compose exec wikibase bash```
+
+MediaWiki is installed into ```/var/www/html```
+
 ## Troubleshooting
 
 * [I am on linux and I don't want to run docker as root!](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo#477554)
