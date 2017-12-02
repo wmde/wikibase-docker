@@ -12,7 +12,7 @@ services:
     image: wikibase/wikibase
     restart: always
     build:
-      context: ./wikibase
+      context: ./wikibase/REL1_29
       dockerfile: Dockerfile
     links:
       - mysql
@@ -44,7 +44,7 @@ services:
     image: wikibase/wdqs-frontend
     restart: always
     build:
-      context: ./wdqs-frontend
+      context: ./wdqs-frontend/latest
       dockerfile: Dockerfile
     ports:
      - "8282:80"
@@ -58,7 +58,7 @@ services:
     image: wikibase/wdqs
     restart: always
     build:
-      context: ./wdqs
+      context: ./wdqs/0.2.5
       dockerfile: Dockerfile
     volumes:
       - query-service-data:/wdqs/data
@@ -71,7 +71,7 @@ services:
     image: wikibase/wdqs-proxy
     restart: always
     build:
-      context: ./wdqs-proxy
+      context: ./wdqs-proxy/latest
       dockerfile: Dockerfile
     environment:
       - PROXY_PASS_HOST=wdqs.svc:9999
@@ -87,7 +87,7 @@ services:
     image: wikibase/wdqs
     restart: always
     build:
-      context: ./wdqs
+      context: ./wdqs/0.2.5
       dockerfile: Dockerfile
     command: /runUpdate.sh
     depends_on:
