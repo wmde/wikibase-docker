@@ -58,7 +58,7 @@ sudo apt-get install --yes \
      git
 
 # Clone the repo
-git clone https://github.com/addshore/wikibase-docker.git
+git clone https://github.com/wmde/wikibase-docker.git
 
 # Switch to the wikibase-docker directory
 cd wikibase-docker/
