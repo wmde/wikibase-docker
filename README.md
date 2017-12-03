@@ -11,13 +11,13 @@ issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=w
 
 Image name               | Description   | README
 ------------------------ | ------------- | ----------
-[`wikibase/wikibase`](https://store.docker.com/community/images/wikibase/wikibase) | MediaWiki with the Wikibase extension| [README](./wikibase/README.md)
-[`wikibase/wdqs`](https://store.docker.com/community/images/wikibase/wdqs) | Blazegraph SPARQL query service backend | [README](./wdqs/README.md)
-[`wikibase/wdqs-proxy`](https://store.docker.com/community/images/wikibase/wdqs-proxy) | Proxy to make the query service READONLY and enforce query timeouts | [README](./wdqs-proxy/README.md)
-[`wikibase/wdqs-frontend`](https://store.docker.com/community/images/wikibase/wdqs-frontend) | UI for the SPARQL query service | [README](./wdqs-frontend/README.md)
+[`wikibase/wikibase`](https://store.docker.com/community/images/wikibase/wikibase) | MediaWiki with the Wikibase extension| [README](https://github.com/wmde/wikibase-docker/blob/master/wikibase/README.md)
+[`wikibase/wdqs`](https://store.docker.com/community/images/wikibase/wdqs) | Blazegraph SPARQL query service backend | [README](https://github.com/wmde/wikibase-docker/blob/master/wdqs/README.md)
+[`wikibase/wdqs-proxy`](https://store.docker.com/community/images/wikibase/wdqs-proxy) | Proxy to make the query service READONLY and enforce query timeouts | [README](https://github.com/wmde/wikibase-docker/blob/master/wdqs-proxy/README.md)
+[`wikibase/wdqs-frontend`](https://store.docker.com/community/images/wikibase/wdqs-frontend) | UI for the SPARQL query service | [README](https://github.com/wmde/wikibase-docker/blob/master/wdqs-frontend/README.md)
 
 ### Docker compose example
 
 This repo contains an example docker compose setup for wikibase.
 
-[README](./README-compose.md)
+[README](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
