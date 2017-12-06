@@ -12,7 +12,7 @@ services:
     image: wikibase/wikibase
     restart: always
     build:
-      context: ./wikibase/REL1_29
+      context: ./wikibase/1.29
       dockerfile: Dockerfile
     links:
       - mysql
