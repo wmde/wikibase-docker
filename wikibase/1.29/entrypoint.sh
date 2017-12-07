@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eu
+
 # Wait for the db to come up
 /wait-for-it.sh $DB_SERVER -t 60
 # Sometimes it appears to come up and then go back down meaning MW install fails
