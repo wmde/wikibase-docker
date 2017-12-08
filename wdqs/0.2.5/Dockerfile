@@ -1,12 +1,12 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends ca-certificates wget unzip
+    apt-get install --yes --no-install-recommends unzip
+
+ADD https://search.maven.org/remotecontent?filepath=org/wikidata/query/rdf/service/0.2.5/service-0.2.5-dist.zip ./service-0.2.5-dist.zip
 
 # Creates /wikidata-query-deploy
-RUN wget http://search.maven.org/remotecontent?filepath=org/wikidata/query/rdf/service/0.2.5/service-0.2.5-dist.zip \
-    && unzip *.zip \
-    && rm *.zip
+RUN unzip service-0.2.5-dist.zip && rm service-0.2.5-dist.zip
 
 
 FROM openjdk:8-jdk-alpine

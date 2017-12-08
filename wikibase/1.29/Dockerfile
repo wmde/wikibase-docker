@@ -1,11 +1,12 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends ca-certificates wget unzip
+    apt-get install --yes --no-install-recommends unzip
+
+ADD https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_29.zip .
 
 # Creates /mediawiki-extensions-Wikibase-REL1_29
-RUN wget https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_29.zip &&\
-    unzip REL1_29.zip
+RUN unzip REL1_29.zip && rm *.zip
 
 
 FROM composer as composer

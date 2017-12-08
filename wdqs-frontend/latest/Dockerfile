@@ -1,12 +1,17 @@
+FROM ubuntu as fetcher
+
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends unzip
+
+ADD https://github.com/wikimedia/wikidata-query-gui/archive/master.zip ./master.zip
+
+# Creates /wikidata-query-gui-master
+RUN unzip master.zip && rm master.zip
+
+
 FROM nginx:stable-alpine
 
-# Fetch the wdqs gui
-RUN set -x; \
-    apk --update add --virtual build-dependencies wget unzip ca-certificates \
-    && wget -O /tmp/code.zip https://github.com/wikimedia/wikidata-query-gui/archive/master.zip \
-    && unzip /tmp/code.zip -d /tmp \
-    && rm /tmp/code.zip \
-    && apk del build-dependencies
+COPY --from=fetcher /wikidata-query-gui-master /tmp/wikidata-query-gui-master
 
 # Put wdqs gui in the right place
 RUN set -x; \
