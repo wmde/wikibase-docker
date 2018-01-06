@@ -1,0 +1,10 @@
+## http://www.mediawiki.org/wiki/Manual:Short_URL/Apache
+
+# Enable the rewrite engine
+RewriteEngine On
+
+# Short url for wiki pages
+RewriteRule ^/?wiki(/.*)?$ %{DOCUMENT_ROOT}/w/index.php [L]
+
+# Redirect / to Main Page
+RewriteRule ^/*$ %{DOCUMENT_ROOT}/w/index.php [L]
