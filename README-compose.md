@@ -17,7 +17,7 @@ https://docs.docker.com/compose/install/
 #### 3) Clone this repository
 
 ```
-git clone https://github.com/addshore/wikibase-docker.git
+git clone https://github.com/wmde/wikibase-docker.git
 ```
 
 ## Usage Instructions
