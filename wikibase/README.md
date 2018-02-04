@@ -3,7 +3,7 @@
 Wikibase extension running on Mediawiki.
 
 If no `LocalSettings.php` file is mounted then an installation & update will automatically happen.
-If `LocalSettings.php` is mounted then the image assumes you will do this yoruself.
+If `LocalSettings.php` is mounted then the image assumes you will do this yourself.
 
 Automated build.
 
