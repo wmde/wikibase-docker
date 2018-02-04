@@ -2,6 +2,8 @@
 
 This repository contains an example docker compose file that can be used with the images also contained in this repo.
 
+**WARNING:** Currently this example only works on machines with 3GB+ of memory. If you are running Docker for Windows or Mac and have containers run within a VM (the default) make sure you set your VM memory allocation to 4GB. If you don't do this the query service may fail to run.
+
 ## Install Instructions
 
 For a single script to run that should work on a WMF labs VM running debian jessie with 4GB memory take a look at setup.sh in this repository.
@@ -108,4 +110,4 @@ Get an RDF dump from wikibase:
 
 * [I am on linux and I don't want to run docker as root!](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo#477554)
 * The query service is not running or seems to get killed by the OS?
-  * The docker-compose setup requires more than 2GB of available RAM to start. While being developed the dev machine has 8GB of RAM.
+  * The docker-compose setup requires more than 2GB of available RAM to start. While being developed the dev machine has 4GB of RAM.
