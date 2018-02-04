@@ -2,6 +2,8 @@
 
 Wikibase specific blazegraph image.
 
+WARNING: This image seems to require quite allot of memory for the JVM of blazegraph to start. If you are running Docker for Windows or Mac and have containers run within a VM (the default) make sure you set your VM memory allocation to somethig greater than 2GB (4GB recommended). If you don't do this the query service may fail to run. It might be possible to fix this memory hogging at some point.
+
 Automated build.
 
 ### Tags
