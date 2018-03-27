@@ -3,7 +3,7 @@ FROM ubuntu as fetcher
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends unzip
 
-ADD https://search.maven.org/remotecontent?filepath=org/wikidata/query/rdf/service/0.2.5/service-0.2.5-dist.zip ./service-dist.zip
+ADD https://search.maven.org/remotecontent?filepath=org/wikidata/query/rdf/service/0.3.0/service-0.3.0-dist.zip ./service-dist.zip
 
 # Creates /wikidata-query-deploy
 RUN unzip service-dist.zip && rm service-dist.zip
@@ -16,7 +16,7 @@ FROM openjdk:8-jdk-alpine
 RUN set -x; \
     apk --update add bash gettext libintl
 
-COPY --from=fetcher /service-0.2.5 /wdqs
+COPY --from=fetcher /service-0.3.0 /wdqs
 
 # Don't set a memory limit otherwise bad things happen (OOMs)
 ENV MEMORY=""\
