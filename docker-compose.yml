@@ -9,10 +9,10 @@ version: '3'
 
 services:
   wikibase:
-    image: wikibase/wikibase:1.29
+    image: wikibase/wikibase:1.30
     restart: always
     build:
-      context: ./wikibase/1.29
+      context: ./wikibase/1.30
       dockerfile: Dockerfile
     links:
       - mysql
