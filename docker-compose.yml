@@ -9,7 +9,7 @@ version: '3'
 
 services:
   wikibase:
-    image: wikibase/wikibase
+    image: wikibase/wikibase:1.29
     restart: always
     build:
       context: ./wikibase/1.29
@@ -27,7 +27,7 @@ services:
         aliases:
          - wikibase.svc
   mysql:
-    image: mariadb
+    image: mariadb:latest
     restart: always
     volumes:
       - mediawiki-mysql-data:/var/lib/mysql
@@ -41,7 +41,7 @@ services:
         aliases:
          - mysql.svc
   wdqs-frontend:
-    image: wikibase/wdqs-frontend
+    image: wikibase/wdqs-frontend:latest
     restart: always
     build:
       context: ./wdqs-frontend/latest
@@ -55,10 +55,10 @@ services:
         aliases:
          - wdqs-frontend.svc
   wdqs:
-    image: wikibase/wdqs
+    image: wikibase/wdqs:0.3.0
     restart: always
     build:
-      context: ./wdqs/0.2.5
+      context: ./wdqs/0.3.0
       dockerfile: Dockerfile
     volumes:
       - query-service-data:/wdqs/data
@@ -84,10 +84,10 @@ services:
         aliases:
          - wdqs-proxy.svc
   wdqs-updater:
-    image: wikibase/wdqs
+    image: wikibase/wdqs:0.3.0
     restart: always
     build:
-      context: ./wdqs/0.2.5
+      context: ./wdqs/0.3.0
       dockerfile: Dockerfile
     command: /runUpdate.sh
     depends_on:
