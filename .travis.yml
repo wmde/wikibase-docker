@@ -1,0 +1,3 @@
+script:
+                             # Check for +x on .sh files
+                             - bash ./travis/checkx.sh
