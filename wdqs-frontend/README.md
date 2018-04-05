@@ -6,9 +6,9 @@ Automated build.
 
 ## Tags
 
-Image name                      | Parent image             | WDQS UI Version
-------------------------------- | ------------------------ | --------------
-`wikibase/wdqs-frontend:latest` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master
+Image name                          | Parent image             | WDQS UI Version
+-------------------------------     | ------------------------ | --------------
+`wikibase/wdqs-frontend` : `latest` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master
 
 
 ## Environment variables
