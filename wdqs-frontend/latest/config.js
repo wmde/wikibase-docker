@@ -1,3 +1,6 @@
+/*
+# This file is provided by the wikibase/wdqs-frontend docker image.
+*/
 /* exported CONFIG */
 var CONFIG = ( function ( window, jQuery ) {
     'use strict';

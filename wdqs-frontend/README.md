@@ -4,14 +4,14 @@ UI for the wikibase query service, as seen @ [https://query.wikidata.org](https:
 
 Automated build.
 
-## Tags
+### Tags
 
 Image name                          | Parent image             | WDQS UI Version
 -------------------------------     | ------------------------ | --------------
 `wikibase/wdqs-frontend` : `latest` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master
 
 
-## Environment variables
+### Environment variables
 
 Variable          | Default                      | Description
 ------------------|  ----------------------------| ----------

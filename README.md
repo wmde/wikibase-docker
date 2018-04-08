@@ -1,6 +1,6 @@
 ## wikibase-docker
 
-This repo contains images needed to setup wikibase and a query service using Docker.
+This repo contains images needed to setup Wikibase and a query service using Docker.
 
 ### Issue tracking
 
@@ -18,6 +18,6 @@ Image name               | Description   | README
 
 ### Docker compose example
 
-This repo contains an example docker compose setup for wikibase.
+This repo contains an EXAMPLE docker compose setup for Wikibase.
 
 [README](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)

@@ -13,6 +13,16 @@ Image name                              | Parent image             | WDQS Versio
 `wikibase/wdqs` : `0.3.0`, `latest`     | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.3.0](https://search.maven.org/#artifactdetails%7Corg.wikidata.query.rdf%7Cservice%7C0.3.0%7Cpom)
 `wikibase/wdqs` : `0.2.5`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.2.5](https://search.maven.org/#artifactdetails%7Corg.wikidata.query.rdf%7Cservice%7C0.2.5%7Cpom)
 
+### Upgrading
+
+When upgrading between wdqs versions the data stored in `/wdqs/data` may not be compatible with the newer version.
+When testing the new image if no data appears to be loaded into the query service you will need to reload the data.
+
+If all changes are still in RecentChanges then simply removing `/wdqs/data` and restarting the service should reload all data.
+
+If you can not use RecentChanges then you will need to reload from an RDF dump:
+ - make an RDF dump from your Wikibase instance: https://github.com/wikimedia/mediawiki-extensions-Wikibase/blob/master/repo/maintenance/dumpRdf.php
+ - Load an RDF dump into the query service: https://github.com/wikimedia/wikidata-query-rdf/blob/master/docs/getting-started.md#load-the-dump
 
 ### Environment variables
 
@@ -34,3 +44,8 @@ File                              | Description
 `/wdqs/whitelist.txt`             | Whitelist file for other SPARQL endpoints
 `/wdqs/RWStore.properties`        | Properties for the service
 `/templates/mwservices.json`      | Template for MediaWiki services (substituted to `/wdqs/mwservices.json` at runtime)
+
+### Troubleshooting
+
+* The query service is not running or seems to get killed by the OS?
+  * The image requires more than 2GB of available RAM to start. While being developed the dev machine had 4GB of RAM.

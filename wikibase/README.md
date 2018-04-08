@@ -7,14 +7,23 @@ If `LocalSettings.php` is mounted then the image assumes you will do this yourse
 
 Automated build.
 
-## Tags
+### Tags
 
 Image name                                  | Parent image            
 ------------------------------------------- | ------------------------
 `wikibase/wikibase` : `latest`, `1.30`      | [mediawiki:1.30](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `legacy`, `1.29`      | [mediawiki:1.29](https://hub.docker.com/_/mediawiki/)
 
-## Environment variables
+### Upgrading
+
+When upgrading between Wikibase versions you will have to run update.php to update your mysql tables.
+
+To do this you can run the following command on the newer container:
+
+```docker exec 275129f0ebfe php //var/www/html/maintenance/update.php```
+
+
+### Environment variables
 
 Note: MW_ADMIN_NAME and MW_ADMIN_PASS probably shouldn't be here...
 
@@ -29,7 +38,7 @@ Variable          | Default              | Description
 `MW_ADMIN_NAME`   | "admin"              | Admin username to create on MediaWiki first install
 `MW_ADMIN_PASS`   | "adminpass"          | Admin password to use for admin account on first install
 
-## Filesystem layout
+### Filesystem layout
 
 Directory                         | Description
 --------------------------------- | ------------------------------------------------------------------------------
