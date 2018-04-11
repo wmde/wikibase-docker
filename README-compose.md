@@ -17,7 +17,7 @@ Note: Docker Compose is included in the Docker community edition, so most likely
 
 #### 2) Copy the docker-compose.yml file
 
-This file is only mean't as an example, your modification might be needed.
+This file is only meant as an example, your modification might be needed.
 
 ```
 wget https://raw.githubusercontent.com/wmde/wikibase-docker/master/docker-compose.yml
