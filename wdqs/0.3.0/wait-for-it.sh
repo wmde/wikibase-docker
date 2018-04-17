@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-#   Use this script to test if a given TCP host/port are available
+# This file is provided by the wikibase/wdqs docker image.
+# Use this script to test if a given TCP host/port are available
 
 cmdname=$(basename $0)
 

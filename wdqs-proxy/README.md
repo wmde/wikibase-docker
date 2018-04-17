@@ -1,6 +1,8 @@
 ## wdqs-proxy docker image
 
-Proxy to put infrom of the wdqs image enforcing READONLY requests query timeouts.
+Proxy to put infront of the wdqs image enforcing READONLY requests query timeouts.
+
+In order to change how this image is configured just mount over the wdqs.template file.
 
 Automated build.
 
@@ -19,3 +21,11 @@ we should probably instead use WDQS_HOST and WDQS_PORT and set PROXY_PASS_HOST o
 Variable          | Default                      | Description
 ------------------|  ----------------------------| ----------
 `PROXY_PASS_HOST` | "wdqs.svc:9999"              | Language to use in the UI (default)
+
+
+### Filesystem layout
+
+File                               | Description
+---------------------------------  | ------------------------------------------------------------------------------
+`/etc/nginx/conf.d/wdqs.template`  | Template for the nginx config (substituted to `/etc/nginx/conf.d/default.conf` at runtime)
+`/etc/nginx/conf.d/default.conf`   | nginx config. To override this you must also use a custom entrypoint to avoid the file being overwritten.

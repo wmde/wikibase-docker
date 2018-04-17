@@ -1,4 +1,5 @@
 #!/bin/bash
+# This file is provided by the wikibase/wdqs docker image.
 
 set -eu
 
