@@ -1,0 +1,25 @@
+{
+	"site" : "${MW_SITE_NAME}" ,
+	"bot_config_file" : "/var/www/html/bot.ini" ,
+	"logfile" : "/var/log/quickstatements/tool.log" ,
+	"sites" : {
+		"${MW_SITE_NAME}" : {
+			"oauth" : {
+				"language":"${MW_SITE_LANG}" ,
+				"project":"${MW_SITE_NAME}" ,
+				"ini_file":"/var/www/html/quickstatements/oauth.ini" ,
+				"publicMwOAuthUrl":"${WB_PUBLIC_SCHEME_HOST_AND_PORT}/w/index.php?title=Special:OAuth" ,
+				"mwOAuthUrl":"${WIKIBASE_SCHEME_AND_HOST}/w/index.php?title=Special:OAuth" ,
+				"mwOAuthIW":"mw"
+			} ,
+			"server" : "${WB_PUBLIC_HOST_AND_PORT}" ,
+			"api" : "${WIKIBASE_SCHEME_AND_HOST}/w/api.php" ,
+			"pageBase" : "${WB_PUBLIC_SCHEME_HOST_AND_PORT}/wiki/" ,
+			"toolBase" : "${QS_PUBLIC_SCHEME_HOST_AND_PORT}/" ,
+			"types" : {
+				"P" : { "type":"property" , "ns":122 , "ns_prefix":"Property:" } ,
+				"Q" : { "type":"item" , "ns":120 , "ns_prefix":"Item:" }
+			}
+		}
+	}
+}

@@ -126,6 +126,25 @@ services:
          - elasticsearch.svc
     environment:
       discovery.type: single-node
+  quickstatements:
+    image: wikibase/quickstatements:latest
+    build:
+      context: ./quickstatements/latest
+      dockerfile: Dockerfile
+    ports:
+     - "9191:80"
+    depends_on:
+    - wikibase
+    networks:
+      default:
+        aliases:
+         - quickstatements.svc
+    environment:
+      - OAUTH_CONSUMER_KEY=559fcf1da153c5ec4b2fbefa7c3c395b
+      - OAUTH_CONSUMER_SECRET=57cad33da0015dce1e94a597908e19848714a6af
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
+      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181
+      - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
 
 volumes:
   mediawiki-mysql-data:
