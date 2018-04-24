@@ -51,7 +51,7 @@ services:
   wdqs:
     image: wikibase/wdqs:0.3.0
     ports:
-      - "9999:9999"
+      - "8999:9999"
     volumes:
       - query-service-data:/wdqs/data
     command: /runBlazegraph.sh
