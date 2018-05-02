@@ -5,7 +5,6 @@ services:
 jobs:
   include:
     - stage: prebuild-test
-      sudo: false
       script: bash ./travis/checkx.sh
     - stage: build
     - script: docker-compose -f docker-compose-build.yml up --build -d && sleep 20s && curl -f localhost:8181 > /dev/null && curl -f localhost:8282 > /dev/null
