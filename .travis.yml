@@ -8,5 +8,11 @@ jobs:
       sudo: false
       script: bash ./travis/checkx.sh
     - stage: build
-      script: docker-compose -f docker-compose-build.yml build
-      script: docker-compose -f docker-compose-build.yml up -d && sleep 20s && curl -f localhost:8181 > /dev/null && curl -f localhost:8282 > /dev/null
+      - script: docker-compose -f docker-compose-build.yml up --build -d && sleep 20s && curl -f localhost:8181 > /dev/null && curl -f localhost:8282 > /dev/null
+      - script: docker build wikibase/1.30/bundle -t wikibase/wikibase:1.30-bundle
+      - script: docker build wikibase/1.30/base -t wikibase/wikibase:1.30-base
+      - script: docker build wikibase/1.29/ -t wikibase/wikibase:1.29
+      - script: docker build wdqs/0.2.5/ -t wikibase/wdqs:0.2.5
+      - script: docker build wdqs/0.3.0/ -t wikibase/wdqs:0.3.0
+      - script: docker build wdqs-proxy/latest/ -t wikibase/wdqs-proxy:latest
+      - script: docker build wdqs-frontend/latest/ -t wikibase/wdqs-frontend:latest
