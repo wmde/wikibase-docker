@@ -1,0 +1,42 @@
+<?php
+
+## Database settings
+${DOLLAR}wgDBserver = "${DB_SERVER}";
+${DOLLAR}wgDBname = "${DB_NAME}";
+${DOLLAR}wgDBuser = "${DB_USER}";
+${DOLLAR}wgDBpassword = "${DB_PASS}";
+
+## Logs
+${DOLLAR}wgDebugLogGroups = array(
+	'resourceloader' => '/var/log/mediawiki/resourceloader.log',
+	'exception' => '/var/log/mediawiki/exception.log',
+	'error' => '/var/log/mediawiki/error.log',
+);
+
+## Locale
+
+${DOLLAR}wgShellLocale = "en_US.utf8";
+${DOLLAR}wgLanguageCode = "${MW_SITE_LANG}";
+
+${DOLLAR}wgSitename = "${MW_SITE_NAME}";
+${DOLLAR}wgMetaNamespace = "Project";
+
+## https://www.mediawiki.org/wiki/Manual:Short_URL
+${DOLLAR}wgScriptPath = "/w";        // this should already have been configured this way
+${DOLLAR}wgArticlePath = "/wiki/${DOLLAR}1";
+
+wfLoadSkin( 'Vector' );
+
+# Wikibase
+require_once "${DOLLAR}IP/extensions/Wikibase/vendor/autoload.php";
+require_once "${DOLLAR}IP/extensions/Wikibase/lib/WikibaseLib.php";
+require_once "${DOLLAR}IP/extensions/Wikibase/repo/Wikibase.php";
+require_once "${DOLLAR}IP/extensions/Wikibase/repo/ExampleSettings.php";
+require_once "${DOLLAR}IP/extensions/Wikibase/client/WikibaseClient.php";
+require_once "${DOLLAR}IP/extensions/Wikibase/client/ExampleSettings.php";
+
+#OAuth
+wfLoadExtension( 'OAuth' );
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthproposeconsumer'] = true;
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthmanageconsumer'] = true;
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthviewprivate'] = true;
