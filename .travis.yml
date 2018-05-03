@@ -1,3 +1,25 @@
-script:
-                             # Check for +x on .sh files
-                             - bash ./travis/checkx.sh
+sudo: required
+services:
+  - docker
+
+env:
+ - IMAGE_PATH=wikibase/1.30/
+ - IMAGE_PATH=wikibase/1.29/
+ - IMAGE_PATH=wdqs/0.2.5/
+ - IMAGE_PATH=wdqs/0.3.0/
+ - IMAGE_PATH=wdqs-frontend/latest/
+ - IMAGE_PATH=wdqs-proxy/latest/
+
+script: bash ./$IMAGE_PATH/.travis/build.sh
+
+jobs:
+  include:
+    - stage: prebuild
+      script: bash ./travis/checkx.sh
+    - stage: docker-compose test
+      script: bash -c "docker-compose -f docker-compose-build.yml up --build -d && sleep 20s && curl -f localhost:8181 > /dev/null && curl -f localhost:8282 > /dev/null"
+
+stages:
+  - prebuild
+  - test
+  - docker-compose test
