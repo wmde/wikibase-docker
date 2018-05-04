@@ -11,13 +11,13 @@ env:
  - IMAGE_PATH=wdqs-proxy/latest/
 
 script:
- - source ./travis/docker-push-setup.sh
+ - source ./.travis/docker-push-setup.sh
  - bash ./$IMAGE_PATH/.travis/build-deploy.sh
 
 jobs:
   include:
     - stage: prebuild
-      script: bash ./travis/checkx.sh
+      script: bash ./.travis/checkx.sh
 
 stages:
   - prebuild
