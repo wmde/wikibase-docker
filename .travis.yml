@@ -1,4 +1,5 @@
 sudo: required
+language: minimal
 services:
   - docker
 
@@ -10,16 +11,15 @@ env:
  - IMAGE_PATH=wdqs-frontend/latest/
  - IMAGE_PATH=wdqs-proxy/latest/
 
-script: bash ./$IMAGE_PATH/.travis/build.sh
+script:
+ - source ./.travis/docker-push-setup.sh
+ - bash ./$IMAGE_PATH/.travis/build-deploy.sh
 
 jobs:
   include:
     - stage: prebuild
-      script: bash ./travis/checkx.sh
-    - stage: docker-compose test
-      script: bash -c "docker-compose -f docker-compose-build.yml up --build -d && sleep 20s && curl -f localhost:8181 > /dev/null && curl -f localhost:8282 > /dev/null"
+      script: bash ./.travis/checkx.sh
 
 stages:
   - prebuild
   - test
-  - docker-compose test
