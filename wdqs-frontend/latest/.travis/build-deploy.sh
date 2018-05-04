@@ -3,6 +3,6 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 docker build "$DIR/../" -t wikibase/wdqs-frontend:latest
 
-if [ "$BRANCH" == "master" ]
-    then docker push wikibase/wdqs-frontend:latest
+if [ "$SHOULD_DOCKER_PUSH" = true ]; then
+    docker push wikibase/wdqs-frontend:latest
 fi
