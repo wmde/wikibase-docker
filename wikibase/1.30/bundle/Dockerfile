@@ -15,4 +15,5 @@ FROM wikibase/wikibase:1.30
 
 COPY --from=fetcher /OAuth /var/www/html/extensions/OAuth
 
-COPY LocalSettings.php.template /LocalSettings.php.template
+COPY LocalSettings.php.template /LocalSettings.php.template.additional
+RUN cat /LocalSettings.php.template.additional >> /LocalSettings.php.template
