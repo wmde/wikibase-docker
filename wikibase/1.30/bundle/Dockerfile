@@ -1,12 +1,14 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip
+    apt-get install --yes --no-install-recommends unzip jq curl ca-certificates
 
-ADD https://extdist.wmflabs.org/dist/extensions/OAuth-REL1_30-352260e.tar.gz .
+ADD download-extension.sh .
+
+RUN bash download-extension.sh OAuth
 
 # Creates /mediawiki-extensions-Wikibase-REL1_30
-RUN tar xzf OAuth-REL1_30-352260e.tar.gz && rm *.tar.gz
+RUN tar xzf OAuth.tar.gz && rm *.tar.gz
 
 
 FROM wikibase/wikibase:1.30
