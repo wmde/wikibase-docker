@@ -43,6 +43,7 @@ Variable          | Default              | Description
 `MW_SITE_LANG`    | "en"                 | $wgLanguageCode to use for MediaWiki
 `MW_ADMIN_NAME`   | "admin"              | Admin username to create on MediaWiki first install
 `MW_ADMIN_PASS`   | "adminpass"          | Admin password to use for admin account on first install
+`MW_WG_SECRET_KEY`| "secretkey"          | Used as source of entropy for persistent login/Oauth etc..
 
 ### Filesystem layout
 

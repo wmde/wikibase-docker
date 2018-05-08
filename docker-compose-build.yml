@@ -34,6 +34,7 @@ services:
       - DB_NAME=my_wiki
       - MW_ADMIN_NAME=admin
       - MW_ADMIN_PASS=adminpass
+      - MW_WG_SECRET_KEY=secretkey
   mysql:
     image: mariadb:latest
     volumes:
