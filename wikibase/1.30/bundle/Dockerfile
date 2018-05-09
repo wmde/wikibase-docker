@@ -8,5 +8,5 @@ RUN tar xzf OAuth.tar.gz && rm *.tar.gz
 
 FROM wikibase/wikibase:1.30
 COPY --from=fetcher /OAuth /var/www/html/extensions/OAuth
-COPY LocalSettings.php.template /LocalSettings.php.template.additional
-RUN cat /LocalSettings.php.template.additional >> /LocalSettings.php.template
+COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bundle.template
+RUN cat /LocalSettings.php.wikibase-bundle.template >> /LocalSettings.php.template
