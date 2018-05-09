@@ -1,0 +1,5 @@
+# OAuth
+wfLoadExtension( 'OAuth' );
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthproposeconsumer'] = true;
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthmanageconsumer'] = true;
+${DOLLAR}wgGroupPermissions['sysop']['mwoauthviewprivate'] = true;
