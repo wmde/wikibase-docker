@@ -25,8 +25,6 @@ ENV MEMORY=""\
     WDQS_ENTITY_NAMESPACES="120,122"\
     WIKIBASE_SCHEME="http"
 
-EXPOSE $WDQS_PORT
-
 WORKDIR "/wdqs/"
 
 COPY wait-for-it.sh /wait-for-it.sh

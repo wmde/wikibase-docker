@@ -57,6 +57,8 @@ services:
       default:
         aliases:
          - wdqs.svc
+    expose:
+      - 9999
   wdqs-proxy:
     image: wikibase/wdqs-proxy
     environment:
