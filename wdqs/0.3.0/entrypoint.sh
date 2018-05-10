@@ -4,7 +4,7 @@
 set -eu
 
 export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
-export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
+export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK}"
 
 envsubst < /templates/mwservices.json > /wdqs/mwservices.json
 

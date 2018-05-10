@@ -35,6 +35,7 @@ Variable                 | Default            | Since   | Description
 `WDQS_HOST`              | "wdqs.svc"         | 0.2.5   | Hostname of the WDQS host (this service)
 `WDQS_PORT`              | "9999"             | 0.2.5   | Port of the WDQS host (this service)
 `WDQS_ENTITY_NAMESPACES` | "120,122"          | 0.2.5   | Wikibase Namespaces to load data from
+`WIKIBASE_MAX_DAYS_BACK` | "90"               | 0.3.0   | Max days updater is allowed back from now
 
 
 ### Filesystem layout
