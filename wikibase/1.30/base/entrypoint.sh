@@ -6,7 +6,7 @@ REQUIRED_VARIABLES=(MW_ADMIN_NAME MW_ADMIN_PASS DB_SERVER DB_USER DB_PASS DB_NAM
 for i in ${REQUIRED_VARIABLES[@]}; do
     eval THISSHOULDBESET=\$$i
     if [ -z "$THISSHOULDBESET" ]; then
-    echo "$i is required but isn't set. You can pass it using either plain docker or docker-compose";
+    echo "$i is required but isn't set. You should pass it to docker. See: https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file";
     exit 1;
     fi
 done
