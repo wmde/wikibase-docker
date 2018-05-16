@@ -20,6 +20,11 @@ set -eu
 sleep 1
 /wait-for-it.sh $DB_SERVER -t 120
 
+# Run extra scripts everytime
+if [ -f /extra-entrypoint-run-first.sh ]; then
+    source /extra-entrypoint-run-first.sh
+fi
+
 # Do the mediawiki install (only if LocalSettings doesn't already exist)
 if [ ! -e "/var/www/html/LocalSettings.php" ]; then
     php /var/www/html/maintenance/install.php --dbuser $DB_USER --dbpass $DB_PASS --dbname $DB_NAME --dbserver $DB_SERVER --lang $MW_SITE_LANG --pass $MW_ADMIN_PASS $MW_SITE_NAME $MW_ADMIN_NAME
@@ -31,6 +36,11 @@ if [ ! -e "/var/www/html/LocalSettings.php" ]; then
 
     # Run update.php to install Wikibase
     php /var/www/html/maintenance/update.php --quick
+
+    # Run extrascripts on first run
+    if [ -f /extra-install.sh ]; then
+        source /extra-install.sh
+    fi
 fi
 
 # Run the actual entry point

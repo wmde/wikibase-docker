@@ -20,6 +20,7 @@ services:
       - mediawiki-images-data:/var/www/html/images
     depends_on:
     - mysql
+    - elasticsearch
     networks:
       default:
         aliases:
@@ -32,6 +33,8 @@ services:
       - MW_ADMIN_NAME=admin
       - MW_ADMIN_PASS=adminpass
       - MW_WG_SECRET_KEY=secretkey
+      - MW_ELASTIC_HOST=elasticsearch.svc
+      - MW_ELASTIC_PORT=9200
   mysql:
     image: mariadb:latest
     restart: always
@@ -100,6 +103,14 @@ services:
      - WIKIBASE_HOST=wikibase.svc
      - WDQS_HOST=wdqs.svc
      - WDQS_PORT=9999
+  elasticsearch:
+    image: elasticsearch@sha256:f1dbf2019dc9a4ca5dd458635bfb31f9a601e4905e1d6ca1d65a3958d428f497
+    networks:
+      default:
+        aliases:
+         - elasticsearch.svc
+    environment:
+      discovery.type: single-node
 
 volumes:
   mediawiki-mysql-data:

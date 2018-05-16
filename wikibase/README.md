@@ -19,6 +19,8 @@ Image name                                                       | Parent image
 ## Bundle image
 Wikibase-bundle images are built from the base wikibase images and also include the following addtional extensions:
 - [OAuth](https://www.mediawiki.org/wiki/Extension:OAuth)
+- [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
+- [CirrusSearch](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
 
 ### Upgrading
@@ -58,6 +60,8 @@ File                              | Description
 --------------------------------- | ------------------------------------------------------------------------------
 `/LocalSettings.php.template`     | Template for Mediawiki Localsettings.php (substituted to `/var/www/html/LocalSettings.php` at runtime)
 `/var/www/html/LocalSettings.php` | LocalSettings.php location, when passed in `/LocalSettings.php.template` will not be used. install.php & update.php will also not be run.
+`/extra-install.sh`               | Extra code that will be run if LocalSettings.php isn't present
+`/extra-preinstall-runtime.sh`    | Extra code that will be run from the entrypoint every time
 
 ### Running Maintenance Scripts
 Maintenance scripts from extensions and mediawiki core can be run with `docker exec` using the wikibase/wikibase container as the targeted container
