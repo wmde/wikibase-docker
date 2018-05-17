@@ -24,6 +24,13 @@ services:
       default:
         aliases:
          - wikibase.svc
+    environment:
+      - DB_SERVER=mysql.svc:3306
+      - DB_USER=wikiuser
+      - DB_PASS=sqlpass
+      - DB_NAME=my_wiki
+      - MW_ADMIN_NAME=admin
+      - MW_ADMIN_PASS=adminpass
   mysql:
     image: mariadb:latest
     restart: always
@@ -48,6 +55,9 @@ services:
       default:
         aliases:
          - wdqs-frontend.svc
+    environment:
+      - WIKIBASE_HOST=wikibase.svc
+      - WDQS_HOST=wdqs-proxy.svc
   wdqs:
     image: wikibase/wdqs:0.3.0
     volumes:
@@ -57,6 +67,12 @@ services:
       default:
         aliases:
          - wdqs.svc
+    environment:
+      - WIKIBASE_HOST=wikibase.svc
+      - WDQS_HOST=wdqs.svc
+      - WDQS_PORT=9999
+    expose:
+      - 9999
   wdqs-proxy:
     image: wikibase/wdqs-proxy
     environment:
@@ -79,6 +95,10 @@ services:
       default:
         aliases:
          - wdqs-updater.svc
+    environment:
+     - WIKIBASE_HOST=wikibase.svc
+     - WDQS_HOST=wdqs.svc
+     - WDQS_PORT=9999
 
 volumes:
   mediawiki-mysql-data:

@@ -35,14 +35,8 @@ COPY htaccess /var/www/html/.htaccess
 
 RUN ln -s /var/www/html/ /var/www/html/w
 
-ENV DB_SERVER=mysql.svc:3306\
-    DB_USER=wikiuser\
-    DB_PASS=sqlpass\
-    DB_NAME=my_wiki\
-    MW_SITE_NAME=wikibase-docker\
-    MW_SITE_LANG=en\
-    MW_ADMIN_NAME=admin\
-    MW_ADMIN_PASS=adminpass
+ENV MW_SITE_NAME=wikibase-docker\
+    MW_SITE_LANG=en
 
 ENTRYPOINT ["/bin/sh"]
 CMD ["/entrypoint.sh"]

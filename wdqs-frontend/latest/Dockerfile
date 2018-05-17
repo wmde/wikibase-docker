@@ -33,9 +33,7 @@ COPY config.js /templates/config.js
 COPY default.conf /templates/default.conf
 
 ENV LANGUAGE=en\
-    BRAND_TITLE=DockerWikibaseQueryService\
-    WIKIBASE_HOST="wikibase.svc"\
-    WDQS_HOST="wdqs-proxy.svc"
+    BRAND_TITLE=DockerWikibaseQueryService
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

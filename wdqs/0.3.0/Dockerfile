@@ -22,14 +22,9 @@ COPY --from=fetcher /service-0.3.0 /wdqs
 ENV MEMORY=""\
     HEAP_SIZE="1g"\
     HOST="0.0.0.0"\
-    WIKIBASE_HOST="wikibase.svc"\
-    WDQS_HOST="wdqs.svc"\
-    WDQS_PORT="9999"\
     WDQS_ENTITY_NAMESPACES="120,122"\
     WIKIBASE_SCHEME="http"\
     WIKIBASE_MAX_DAYS_BACK="90"
-
-EXPOSE $WDQS_PORT
 
 WORKDIR "/wdqs/"
 
