@@ -39,8 +39,8 @@ ${DOLLAR}wgArticlePath = "/wiki/${DOLLAR}1";
 # https://www.mediawiki.org/wiki/Manual:$wgRCMaxAge
 # Items in the recentchanges table are periodically purged; entries older than this many seconds will go.
 # The query service (by default) loads data from recent changes
-# Set this to an arbitrary large number to avoid any changes being removed from the RC table.
-${DOLLAR}wgRCMaxAge = 1000;
+# Set this to 1 year to avoid any changes being removed from the RC table over a shorter period of time.
+${DOLLAR}wgRCMaxAge = 365 * 24 * 3600;
 
 wfLoadSkin( 'Vector' );
 
