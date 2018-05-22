@@ -1,7 +1,7 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip
+    apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1
 
 ADD https://archiva.wikimedia.org/repository/snapshots/org/wikidata/query/rdf/service/0.3.0-SNAPSHOT/service-0.3.0-SNAPSHOT-dist.zip ./service-dist.zip
 
@@ -12,8 +12,8 @@ FROM openjdk:8-jdk-alpine
 
 # Blazegraph scripts require bash
 # Install gettext for envsubst command, (it needs libintl package)
-RUN set -x; \
-    apk --update add bash gettext libintl
+RUN set -x ; \
+    apk --no-cache add bash=4.4.19-r1 gettext=0.19.8.1-r1 libintl=0.19.8.1-r1
 
 COPY --from=fetcher /service-0.3.0-SNAPSHOT /wdqs
 
@@ -25,7 +25,7 @@ ENV MEMORY=""\
     WIKIBASE_SCHEME="http"\
     WIKIBASE_MAX_DAYS_BACK="90"
 
-WORKDIR "/wdqs/"
+WORKDIR /wdqs
 
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
