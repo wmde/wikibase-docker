@@ -1,7 +1,7 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip
+    apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1
 
 ADD https://github.com/wikimedia/wikidata-query-gui/archive/master.zip ./master.zip
 
@@ -13,14 +13,14 @@ FROM nginx:stable-alpine
 
 COPY --from=fetcher /wikidata-query-gui-master /tmp/wikidata-query-gui-master
 
+WORKDIR /tmp/wikidata-query-gui-master
+
 # Put wdqs gui in the right place
-RUN set -x; \
-    apk --update add --virtual build-dependencies ca-certificates git nodejs jq \
-    && cd /tmp/wikidata-query-gui-master \
+RUN set -x ; \
+    apk --no-cache add --virtual build-dependencies ca-certificates=20161130-r1 git=2.11.3-r0 nodejs=6.9.5-r1 jq=1.5-r4 \
     && mv package.json package.json.orig \
-    && cat package.json.orig \
-        | jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
-        > package.json \
+    && jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
+        > package.json < package.json.orig \
     && npm install \
     && rm -rf /usr/share/nginx/html \
     && mv /tmp/wikidata-query-gui-master /usr/share/nginx/html \

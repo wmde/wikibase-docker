@@ -19,6 +19,8 @@ jobs:
   include:
     - stage: prebuild
       script: bash ./.travis/checkx.sh
+    - stage: prebuild
+      script: bash ./.travis/run-linters.sh
 
 stages:
   - prebuild

@@ -1,26 +1,27 @@
 FROM ubuntu as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip
+    apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1
 
 ADD https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_30.zip .
 
 # Creates /mediawiki-extensions-Wikibase-REL1_30
-RUN unzip REL1_30.zip && rm *.zip
+RUN unzip REL1_30.zip && rm ./*.zip
 
 
 FROM composer as composer
 
 COPY --from=fetcher /mediawiki-extensions-Wikibase-REL1_30 /Wikibase
 
-RUN cd /Wikibase && composer install --no-dev
+WORKDIR /Wikibase
+RUN composer install --no-dev
 
 
 FROM mediawiki:1.30
 
 # Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.3-2 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
