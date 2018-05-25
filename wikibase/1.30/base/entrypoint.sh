@@ -14,11 +14,11 @@ done
 set -eu
 
 # Wait for the db to come up
-/wait-for-it.sh $DB_SERVER -t 60
+/wait-for-it.sh $DB_SERVER -t 120
 # Sometimes it appears to come up and then go back down meaning MW install fails
 # So wait for a second and double check!
 sleep 1
-/wait-for-it.sh $DB_SERVER -t 60
+/wait-for-it.sh $DB_SERVER -t 120
 
 # Do the mediawiki install (only if LocalSettings doesn't already exist)
 if [ ! -e "/var/www/html/LocalSettings.php" ]; then
