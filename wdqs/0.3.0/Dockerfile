@@ -1,4 +1,4 @@
-FROM ubuntu as fetcher
+FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1
