@@ -29,3 +29,9 @@ fileExistenceTests:
 - name: 'extra-entrypoint-run-first.sh'
   path: '/extra-entrypoint-run-first.sh'
   shouldExist: yes
+metadataTest:
+  env:
+    - key: "MW_SITE_NAME"
+      value: "wikibase-docker"
+    - key: "MW_SITE_LANG"
+      value: "en"
