@@ -21,7 +21,7 @@ FROM mediawiki:1.29
 
 # Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.3-2 && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.8.1-2 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
