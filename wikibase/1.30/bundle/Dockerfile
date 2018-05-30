@@ -1,4 +1,4 @@
-FROM ubuntu as fetcher
+FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1 jq=1.5+dfsg-1 curl=7.47.0-1ubuntu2.8 ca-certificates=20170717~16.04.1
