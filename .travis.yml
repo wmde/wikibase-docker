@@ -10,6 +10,7 @@ env:
  - IMAGE_PATH=wdqs/0.3.0/
  - IMAGE_PATH=wdqs-frontend/latest/
  - IMAGE_PATH=wdqs-proxy/latest/
+ - IMAGE_PATH=quickstatements/latest/
 
 script:
  - source ./.travis/docker-push-setup.sh
