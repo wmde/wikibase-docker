@@ -1,0 +1,31 @@
+#Some yaml
+---
+schemaVersion: '2.0.0' # Make sure to test the latest schema version
+fileExistenceTests:
+- name: 'LocalSettings Template'
+  path: '/LocalSettings.php.template'
+  shouldExist: yes
+- name: 'OAuth extension.json'
+  path: '/var/www/html/extensions/OAuth/extension.json'
+  shouldExist: yes
+- name: 'WikibaseImport extension.json'
+  path: '/var/www/html/extensions/WikibaseImport/extension.json'
+  shouldExist: yes
+- name: 'Elastica extension.json'
+  path: '/var/www/html/extensions/Elastica/extension.json'
+  shouldExist: yes
+- name: 'Cirrus Entrypoint'
+  path: '/var/www/html/extensions/CirrusSearch/CirrusSearch.php'
+  shouldExist: yes
+- name: 'Root htaccess'
+  path: '/var/www/html/.htaccess'
+  shouldExist: yes
+- name: 'entrypoint.sh'
+  path: '/entrypoint.sh'
+  shouldExist: yes
+- name: 'extra-install.sh'
+  path: '/extra-install.sh'
+  shouldExist: yes
+- name: 'extra-entrypoint-run-first.sh'
+  path: '/extra-entrypoint-run-first.sh'
+  shouldExist: yes
