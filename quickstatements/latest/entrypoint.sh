@@ -9,7 +9,6 @@ for i in ${REQUIRED_VARIABLES[@]}; do
     fi
 done
 
-export DOLLAR='$'
 envsubst < /templates/config.json > /var/www/html/quickstatements/public_html/config.json
 envsubst < /templates/oauth.ini > /var/www/html/quickstatements/oauth.ini
 envsubst < /templates/php.ini > /usr/local/etc/php/conf.d/php.ini
