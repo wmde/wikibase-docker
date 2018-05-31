@@ -88,7 +88,7 @@ Use Quickstatements as normal with the Run button. Currently "Run in background"
 #### Approve the consumer for other users
 So other users can also use quickstatements you also need to approve it as a consumer.
 
-Navigate to http://\<your wikibase\>/wiki/Special:OAuthManageConsumers/proposed
+Navigate to http://\<your wikibase\>/Special:OAuthManageConsumers/proposed
 
 Click 'review/manage' on your new consumer
 
