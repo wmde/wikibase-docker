@@ -17,7 +17,7 @@ WORKDIR /tmp/wikidata-query-gui-master
 
 # Put wdqs gui in the right place
 RUN set -x ; \
-    apk --no-cache add --virtual build-dependencies ca-certificates=20171114-r0 git=2.15.0-r1 nodejs=8.9.3-r1 jq=1.5-r5 \
+    apk --no-cache add --virtual build-dependencies ca-certificates=20171114-r0 git=2.15.2-r0 nodejs=8.9.3-r1 jq=1.5-r5 \
     && mv package.json package.json.orig \
     && jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
         > package.json < package.json.orig \
