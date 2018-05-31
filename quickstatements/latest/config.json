@@ -17,8 +17,8 @@
 			"pageBase" : "${WB_PUBLIC_SCHEME_HOST_AND_PORT}/wiki/" ,
 			"toolBase" : "${QS_PUBLIC_SCHEME_HOST_AND_PORT}/" ,
 			"types" : {
-				"P" : { "type":"property" , "ns":122 , "ns_prefix":"Property:" } ,
-				"Q" : { "type":"item" , "ns":120 , "ns_prefix":"Item:" }
+				"P" : { "type":"property" , "ns":"${WB_PROPERTY_NAMESPACE}" , "ns_prefix":"${WB_PROPERTY_PREFIX}" } ,
+				"Q" : { "type":"item" , "ns":"${WB_ITEM_NAMESPACE}" , "ns_prefix":"${WB_ITEM_PREFIX}" }
 			}
 		}
 	}
