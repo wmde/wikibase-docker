@@ -148,7 +148,7 @@ services:
       - WB_PROPERTY_NAMESPACE=122
       - "WB_PROPERTY_PREFIX=Property:"
       - WB_ITEM_NAMESPACE=120
-      - "WB_ITEcM_PREFIX=Item:"
+      - "WB_ITEM_PREFIX=Item:"
 
 volumes:
   mediawiki-mysql-data:
