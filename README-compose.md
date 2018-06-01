@@ -41,6 +41,9 @@ docker-compose pull
 docker-compose up
 ```
 
+**Quickstatements**
+To set up quickstatements follow the instructions in the quickstatements [README](https://github.com/wmde/wikibase-docker/blob/master/quickstatements/README.md)
+
 **Stopping the containers**
 
 ```
@@ -92,6 +95,7 @@ Access the following hosts:
  - [Query Service UI @ http://localhost:8282](http://localhost:8282)
  - [Query Service Backend (Behind a proxy) @ http://localhost:8989/bigdata/](http://localhost:8989/bigdata/)
  - [Query Service Backend (Direct) @ http://localhost:8999/bigdata/](http://localhost:8999/bigdata/)
+ - [Quickstatements @ http://localhost:9191](http://localhost:9191)
 
 ## Creating content and querying it
 
