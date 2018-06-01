@@ -1,7 +1,7 @@
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.0-20ubuntu1
+    apt-get install --yes --no-install-recommends unzip=6.*
 
 ADD https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_29.zip .
 
@@ -21,7 +21,7 @@ FROM mediawiki:1.29
 
 # Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.8.1-2 && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* && \
     rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
