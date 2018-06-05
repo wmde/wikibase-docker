@@ -2,12 +2,12 @@
 # This file is provided by the wikibase/wikibase docker image.
 
 # Test if required environment variables have been set
-REQUIRED_VARIABLES=(MW_ADMIN_NAME MW_ADMIN_PASS MW_ADMIN_EMAIL MW_WG_SECRET_KEY DB_SERVER DB_USER DB_PASS DB_NAME)
-for i in ${REQUIRED_VARIABLES[@]}; do
-    eval THISSHOULDBESET=\$$i
-    if [ -z "$THISSHOULDBESET" ]; then
-    echo "$i is required but isn't set. You should pass it to docker. See: https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file";
-    exit 1;
+for requiredVariable in MW_ADMIN_NAME MW_ADMIN_PASS MW_ADMIN_EMAIL MW_WG_SECRET_KEY DB_SERVER DB_USER DB_PASS DB_NAME; do
+    if [[ ! -v $requiredVariable || -z ${!requiredVariable} ]]; then
+        printf >&2 '%s is required, but either unset or empty. You should pass it to docker. See: %s\n' \
+            "$requiredVariable" \
+            'https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file'
+        exit 1
     fi
 done
 
