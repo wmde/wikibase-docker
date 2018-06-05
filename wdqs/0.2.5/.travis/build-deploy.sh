@@ -4,6 +4,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 set -e
 docker build "$DIR/../" -t wikibase/wdqs:0.2.5
 
-if [ "$SHOULD_DOCKER_PUSH" = true ]; then
+if [[ $SHOULD_DOCKER_PUSH ]]; then
     docker push wikibase/wdqs:0.2.5
 fi

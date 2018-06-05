@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 set -e
 docker build "$DIR/../" -t wikibase/elasticsearch:5.6.14-extra -t wikibase/elasticsearch:latest
 
-if [ "$SHOULD_DOCKER_PUSH" = true ]; then
+if [[ $SHOULD_DOCKER_PUSH ]]; then
     docker push wikibase/elasticsearch:5.6.14-extra
     docker push wikibase/elasticsearch:latest
 fi
