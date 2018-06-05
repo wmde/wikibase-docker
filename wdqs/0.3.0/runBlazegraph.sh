@@ -3,4 +3,4 @@
 
 cd /wdqs
 
-./runBlazegraph.sh
+exec ./runBlazegraph.sh
