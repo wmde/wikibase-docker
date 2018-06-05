@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This file is provided by the wikibase/wdqs docker image.
 
 # Test if required environment variables have been set

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This file is provided by the wikibase/wikibase docker image.
 
 # Test if required environment variables have been set

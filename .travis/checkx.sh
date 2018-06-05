@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @author Addshore
 # Check all .sh files for the +x bit
 

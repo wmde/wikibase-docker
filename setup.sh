@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # This is an example setup script that can be run
 # This should work on a WMF labs debian jessie VM

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 docker pull hadolint/hadolint:v1.3.0
 
