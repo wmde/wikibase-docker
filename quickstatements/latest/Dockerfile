@@ -1,7 +1,7 @@
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends git=1:2.7.4-0ubuntu1.3 ca-certificates=20170717~16.04.1
+    apt-get install --yes --no-install-recommends git=1:2.* ca-certificates=201*
 
 RUN git clone --depth 1 https://phabricator.wikimedia.org/source/tool-quickstatements.git quickstatements
 RUN git clone --depth 1 https://bitbucket.org/magnusmanske/magnustools.git magnustools
@@ -20,7 +20,7 @@ FROM php:5.6-apache
 
 # Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.8.1-2 && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer /quickstatements /var/www/html/quickstatements
