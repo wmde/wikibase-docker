@@ -45,7 +45,7 @@ Variable          | Default              | Description
 `MW_SITE_LANG`    | "en"                 | $wgLanguageCode to use for MediaWiki
 `MW_ADMIN_NAME`   | "admin"              | Admin username to create on MediaWiki first install
 `MW_ADMIN_PASS`   | "adminpass"          | Admin password to use for admin account on first install
-`MW_WG_SECRET_KEY`| "secretkey"          | Used as source of entropy for persistent login/Oauth etc..
+`MW_WG_SECRET_KEY`| "secretkey"          | Used as source of entropy for persistent login/Oauth etc..(since 1.30)
 
 ### Filesystem layout
 
@@ -59,8 +59,8 @@ File                              | Description
 --------------------------------- | ------------------------------------------------------------------------------
 `/LocalSettings.php.template`     | Template for Mediawiki Localsettings.php (substituted to `/var/www/html/LocalSettings.php` at runtime)
 `/var/www/html/LocalSettings.php` | LocalSettings.php location, when passed in `/LocalSettings.php.template` will not be used. install.php & update.php will also not be run.
-`/extra-install.sh`               | Extra code that will be run if LocalSettings.php isn't present
-`/extra-preinstall-runtime.sh`    | Extra code that will be run from the entrypoint every time
+`/extra-install.sh`               | Extra code that will be run if LocalSettings.php isn't present (since 1.30)
+`/extra-preinstall-runtime.sh`    | Extra code that will be run from the entrypoint every time (since 1.30)
 
 ### Running Maintenance Scripts
 Maintenance scripts from extensions and mediawiki core can be run with `docker exec` using the wikibase/wikibase container as the targeted container
