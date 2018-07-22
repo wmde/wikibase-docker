@@ -2,6 +2,8 @@
 #
 # This docker-compose example can be used to pull the images from docker hub.
 #
+# Examples:
+#
 # Access Wikibase via "http://localhost:8181"
 #   (or "http://$(docker-machine ip):8181" if using docker-machine)
 #
@@ -15,6 +17,7 @@ services:
     links:
       - mysql
     ports:
+    # CONFIG - Change the 8181 here to expose Wikibase & MediaWiki on a different port
      - "8181:80"
     volumes:
       - mediawiki-images-data:/var/www/html/images
@@ -25,26 +28,30 @@ services:
       default:
         aliases:
          - wikibase.svc
+         # CONFIG - Add your real wikibase hostname here, for example wikibase-registry.wmflabs.org
     environment:
       - DB_SERVER=mysql.svc:3306
-      - DB_USER=wikiuser
-      - DB_PASS=sqlpass
-      - DB_NAME=my_wiki
+      - MW_ELASTIC_HOST=elasticsearch.svc
+      - MW_ELASTIC_PORT=9200
+      # CONFIG - Change the default values below
       - MW_ADMIN_NAME=admin
       - MW_ADMIN_PASS=adminpass
       - MW_WG_SECRET_KEY=secretkey
-      - MW_ELASTIC_HOST=elasticsearch.svc
-      - MW_ELASTIC_PORT=9200
+      # CONFIG - Change the default values below (should match mysql values in this file)
+      - DB_USER=wikiuser
+      - DB_PASS=sqlpass
+      - DB_NAME=my_wiki
   mysql:
     image: mariadb:latest
     restart: always
     volumes:
       - mediawiki-mysql-data:/var/lib/mysql
     environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      # CONFIG - Change the default values below (should match values passed to wikibase)
       MYSQL_DATABASE: 'my_wiki'
       MYSQL_USER: 'wikiuser'
       MYSQL_PASSWORD: 'sqlpass'
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     networks:
       default:
         aliases:
@@ -52,6 +59,7 @@ services:
   wdqs-frontend:
     image: wikibase/wdqs-frontend:latest
     ports:
+    # CONFIG - Change the 8282 here to expose the Query Service UI on a different port
      - "8282:80"
     depends_on:
     - wdqs-proxy
@@ -111,6 +119,7 @@ services:
          - elasticsearch.svc
     environment:
       discovery.type: single-node
+  # CONFING, in order to not load quickstatements then remove this entire section
   quickstatements:
     image: wikibase/quickstatements:latest
     ports:
@@ -122,6 +131,7 @@ services:
         aliases:
          - quickstatements.svc
     environment:
+      # CONFIG, you might have to config this if you want quickstatement
       - OAUTH_CONSUMER_KEY=559fcf1da153c5ec4b2fbefa7c3c395b
       - OAUTH_CONSUMER_SECRET=57cad33da0015dce1e94a597908e19848714a6af
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
