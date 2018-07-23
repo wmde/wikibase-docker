@@ -131,7 +131,7 @@ services:
         aliases:
          - quickstatements.svc
     environment:
-      # CONFIG, you might have to config this if you want quickstatement
+      # CONFIG, you have to config this if you want quickstatements
       - OAUTH_CONSUMER_KEY=559fcf1da153c5ec4b2fbefa7c3c395b
       - OAUTH_CONSUMER_SECRET=57cad33da0015dce1e94a597908e19848714a6af
       - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
