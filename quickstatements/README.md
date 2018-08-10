@@ -50,7 +50,7 @@ Register a consumer by filling in the form:
 1. Application name (e.g. 'Quickstatements)
 2. Version (you can leave this as 1.0)
 3. Description (e.g. 'Quickstatements')
-4. callback URL:  http://<your quickstatements host>/api.php
+4. callback URL:  http://{your quickstatements host}/api.php
 5. Check "Allow consumer to specify a callback in requests"
 6. Request permission for:
     * High-volume editing
