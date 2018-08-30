@@ -1,7 +1,8 @@
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.*
+    apt-get install --yes --no-install-recommends unzip=6.* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD https://github.com/wikimedia/wikidata-query-gui/archive/master.zip ./master.zip
 
