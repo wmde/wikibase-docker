@@ -1,8 +1,7 @@
 FROM ubuntu:xenial as fetcher
 
 # hadolint ignore=DL3009
-RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.*
+RUN apt-get update && apt-get install --yes --no-install-recommends unzip=6.*
 
 ADD https://archiva.wikimedia.org/repository/snapshots/org/wikidata/query/rdf/service/0.2.5-SNAPSHOT/service-0.2.5-SNAPSHOT-dist.zip ./service-dist.zip
 
