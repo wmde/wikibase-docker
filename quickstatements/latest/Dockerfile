@@ -1,5 +1,6 @@
 FROM ubuntu:xenial as fetcher
 
+# hadolint ignore=DL3009
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends git=1:2.* ca-certificates=201*
 
