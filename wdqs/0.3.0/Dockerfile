@@ -14,7 +14,7 @@ FROM openjdk:8-jdk-alpine
 # Blazegraph scripts require bash
 # Install gettext for envsubst command, (it needs libintl package)
 RUN set -x ; \
-    apk --no-cache add bash~=4.4.19-r1 gettext~=0.19.8.1-r1 libintl~=0.19.8.1-r1
+    apk --no-cache add bash=\<4.5.0 gettext=\<0.19.8.2 libintl=\<0.19.8.2
 
 COPY --from=fetcher /service-0.3.0-SNAPSHOT /wdqs
 
