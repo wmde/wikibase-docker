@@ -1,5 +1,6 @@
 FROM ubuntu:xenial as fetcher
 
+# hadolint ignore=DL3009
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201*
 COPY download-extension.sh .
