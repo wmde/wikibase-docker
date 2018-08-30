@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker pull hadolint/hadolint
+docker pull hadolint/hadolint:v1.3.0
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
