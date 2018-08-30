@@ -21,8 +21,14 @@ jobs:
   include:
     - stage: prebuild
       script: bash ./.travis/checkx.sh
+      env:
+       - SCRIPT=checkx
+       - IMAGE_PATH=all
     - stage: prebuild
       script: bash ./.travis/run-linters.sh
+      env:
+       - SCRIPT=hadolint
+       - IMAGE_PATH=all
 
 stages:
   - prebuild

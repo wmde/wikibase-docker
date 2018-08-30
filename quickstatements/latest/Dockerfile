@@ -1,7 +1,8 @@
 FROM ubuntu:xenial as fetcher
 
-# hadolint ignore=DL3009
-RUN apt-get update && apt-get install --yes --no-install-recommends git=1:2.* ca-certificates=201*
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends git=1:2.* ca-certificates=201* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN git clone --depth 1 https://phabricator.wikimedia.org/source/tool-quickstatements.git quickstatements
 RUN git clone --depth 1 https://bitbucket.org/magnusmanske/magnustools.git magnustools

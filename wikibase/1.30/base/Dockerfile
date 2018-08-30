@@ -1,7 +1,8 @@
 FROM ubuntu:xenial as fetcher
 
-# hadolint ignore=DL3009
-RUN apt-get update && apt-get install --yes --no-install-recommends unzip=6.*
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends unzip=6.* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ADD https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_30.zip .
 
