@@ -42,7 +42,7 @@ services:
       - DB_PASS=sqlpass
       - DB_NAME=my_wiki
   mysql:
-    image: mariadb:latest
+    image: mariadb:10.3
     restart: always
     volumes:
       - mediawiki-mysql-data:/var/lib/mysql
