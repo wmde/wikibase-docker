@@ -29,6 +29,8 @@ RUN a2enmod rewrite
 
 RUN install -d /var/log/mediawiki -o www-data
 
+RUN docker-php-ext-install calendar
+
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
