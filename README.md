@@ -2,6 +2,8 @@
 
 This repo contains images needed to setup Wikibase and a query service using Docker.
 
+Each image contained within this repo has its own README (linked below).
+
 ### Issue tracking
 
 We use [Phabricator to track
