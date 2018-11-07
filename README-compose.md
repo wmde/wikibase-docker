@@ -2,6 +2,8 @@
 
 This repository contains an EXAMPLE docker compose file that can be used with the images also contained in this repo. Following these instructions, you'll be able to install a stand-alone instance of Wikibase – the collaborative structured data engine behind [Wikidata](https://wikidata.org/) – as well as fully functional SPARQL endpoint and query service, complete with a data visualization frontend and query helper (similar to the [Wikidata Query Service](https://query.wikidata.org/)).
 
+Individual documentation for each image used in this example can be found [here](https://github.com/wmde/wikibase-docker/blob/master/README.md).
+
 **WARNING:** Currently this example requires 3GB+ of memory. If you are running Docker for Windows or Mac and have containers run within a VM (the default) make sure you set your VM memory allocation to 4GB. If you don't do this the query service may fail to run.
 
 ## Installing Docker and the Wikibase images
