@@ -10,7 +10,8 @@ ADD https://github.com/wikimedia/wikidata-query-gui/archive/master.zip ./master.
 RUN unzip master.zip && rm master.zip
 
 
-FROM nginx:stable-alpine
+# TODO this should probably just be a node image?
+FROM nginx:stable-alpine as builder
 
 COPY --from=fetcher /wikidata-query-gui-master /tmp/wikidata-query-gui-master
 
@@ -22,13 +23,12 @@ RUN set -x ; \
     && mv package.json package.json.orig \
     && jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
         > package.json < package.json.orig \
-    && npm install \
-    && rm -rf /usr/share/nginx/html \
-    && mv /tmp/wikidata-query-gui-master /usr/share/nginx/html \
-    && rm -rf /tmp/* \
-    && rm -rf ~/.npm \
-    && apk del build-dependencies
+    && npm install
 
+
+FROM nginx:stable-alpine as final
+
+COPY --from=builder /tmp/wikidata-query-gui-master /usr/share/nginx/html
 COPY entrypoint.sh /entrypoint.sh
 COPY config.js /templates/config.js
 COPY default.conf /templates/default.conf
