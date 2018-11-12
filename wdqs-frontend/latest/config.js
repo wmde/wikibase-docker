@@ -1,6 +1,7 @@
 /*
-# This file is provided by the wikibase/wdqs-frontend docker image.
-*/
+ * This file is provided by the wikibase/wdqs-frontend docker image.
+ */
+
 /* exported CONFIG */
 var CONFIG = ( function ( window, jQuery ) {
     'use strict';
@@ -17,10 +18,7 @@ var CONFIG = ( function ( window, jQuery ) {
         return null;
     }
 
-    /* This is evil and can probably die */
-    var root = 'https://query.wikidata.org/';
-
-    var configDeploy = {
+    return {
         language: getUserLanguage() || '$LANGUAGE',
         api: {
             sparql: {
@@ -30,57 +28,21 @@ var CONFIG = ( function ( window, jQuery ) {
                 uri: '/proxy/wikibase/w/api.php'
             }
         },
-        i18nLoad: function( lang ) {
-            var loadFallbackLang = null;
-            if ( lang !== this.language ) {
-                //load default language as fallback language
-                loadFallbackLang = jQuery.i18n().load( 'i18n/' + this.language + '.json', this.language );
-            }
-            return $.when(
-                loadFallbackLang,
-                jQuery.i18n().load( 'i18n/' + lang + '.json', lang )
+       i18nLoad: function( lang ) {
+            return jQuery.when(
+                jQuery.i18n().load( 'i18n/' + lang + '.json', lang ),
+                jQuery.i18n().load( 'node_modules/jquery.uls/i18n/' + lang + '.json', lang )
             );
         },
         brand: {
             logo: 'logo.svg',
-            title: 'Wikidata Query'
+            title: '$BRAND_TITLE'
         },
         location: {
-            root: root,
-            index: root
+            root: './',
+            index: './index.html'
         },
-        showBirthdayPresents: new Date().getTime() >= Date.UTC( 2017, 10 - 1, 29 )
+        showBirthdayPresents: true
     };
-
-    var hostname = window.location.hostname.toLowerCase();
-
-    if ( hostname === '' || hostname === 'localhost' || hostname === '127.0.0.1' ) {
-
-        // Override for local debugging
-        return jQuery.extend( true, {}, configDeploy, {
-            api: {
-                sparql: {
-                    uri: '/proxy/wdqs/bigdata/namespace/wdq/sparql'
-
-                }
-            },
-            i18nLoad: function( lang ) {
-                return jQuery.when(
-                    jQuery.i18n().load( 'i18n/' + lang + '.json', lang ),
-                    jQuery.i18n().load( 'node_modules/jquery.uls/i18n/' + lang + '.json', lang )
-                );
-            },
-            brand: {
-                title: '$BRAND_TITLE'
-            },
-            location: {
-                root: './',
-                index: './index.html'
-            },
-            showBirthdayPresents: true
-        } );
-    }
-
-    return configDeploy;
 
 } )( window, jQuery );
