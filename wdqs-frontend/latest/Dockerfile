@@ -34,6 +34,7 @@ FROM nginx:stable-alpine as final
 WORKDIR /usr/share/nginx/html
 
 COPY --from=builder /tmp/wikidata-query-gui-master /usr/share/nginx/html
+RUN echo "" > style.css
 COPY entrypoint.sh /entrypoint.sh
 COPY config.js /templates/config.js
 COPY default.conf /templates/default.conf
