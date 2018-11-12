@@ -18,15 +18,20 @@ COPY --from=fetcher /wikidata-query-gui-master /tmp/wikidata-query-gui-master
 WORKDIR /tmp/wikidata-query-gui-master
 
 # Put wdqs gui in the right place
-RUN set -x ; \
-    apk --no-cache add --virtual build-dependencies ca-certificates~=20171114 git~=2.18 nodejs~=8.11 npm~=8.11 jq~=1.6 \
-    && mv package.json package.json.orig \
+RUN apk --no-cache add --virtual build-dependencies ca-certificates~=20171114 git~=2.18 nodejs~=8.11 npm~=8.11 jq~=1.6
+
+# TODO do npm build instead of leaving any dev node modules hanging around
+RUN mv package.json package.json.orig \
     && jq 'delpaths([["devDependencies","karma-qunit"],["devDependencies","qunitjs"],["devDependencies","sinon"]])' \
+        > package.json < package.json.orig \
+    && jq 'setpath(["devDependencies","less"]; "~2.7.1")' \
         > package.json < package.json.orig \
     && npm install
 
 
 FROM nginx:stable-alpine as final
+
+WORKDIR /usr/share/nginx/html
 
 COPY --from=builder /tmp/wikidata-query-gui-master /usr/share/nginx/html
 COPY entrypoint.sh /entrypoint.sh
