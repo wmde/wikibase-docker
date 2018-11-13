@@ -10,8 +10,9 @@ Automated build.
 
 Image name                              | Parent image             | WDQS Version
 --------------------------------------- | ------------------------ | --------------
-`wikibase/wdqs` : `0.3.0`, `latest`     | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.3.0](https://search.maven.org/#artifactdetails%7Corg.wikidata.query.rdf%7Cservice%7C0.3.0%7Cpom)
-`wikibase/wdqs` : `0.2.5`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.2.5](https://search.maven.org/#artifactdetails%7Corg.wikidata.query.rdf%7Cservice%7C0.2.5%7Cpom)
+`wikibase/wdqs` : `0.3.1`, `latest`     | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.1
+`wikibase/wdqs` : `0.3.0`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.3.0](https://search.maven.org/artifact/org.wikidata.query.rdf/service/0.3.0/pom)
+`wikibase/wdqs` : `0.2.5`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.2.5](https://search.maven.org/artifact/org.wikidata.query.rdf/service/0.2.5/pom)
 
 ### Upgrading
 
