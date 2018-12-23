@@ -11,10 +11,12 @@ Automated build.
 
 Image name                                                            | Parent image
 -----------------------------------------------------------------     | ------------------------
-`wikibase/wikibase` : `latest`, `lts`, `lts-base` `1.31`, `latest-base`, `1.31-base`    | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `latest`, `1.32`, `latest-base`, `1.32-base`    | [mediawiki:1.32](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `1.31`, `lts`, `lts-base`, `1.31-base`          | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `1.30`, `1.30-base`                             | [mediawiki:1.30](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `legacy`, `1.29`                                | [mediawiki:1.29](https://hub.docker.com/_/mediawiki/)
-`wikibase/wikibase` : `latest-bundle`, `lts-bundle`, `1.31-bundle`    | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `latest-bundle`, `1.32-bundle`                  | [wikibase:1.32](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `lts-bundle`, `1.31-bundle`                     | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
 `wikibase/wikibase` : `1.30-bundle`                                   | [wikibase:1.30](https://hub.docker.com/r/wikibase/wikibase/)
 
 ### Version support
