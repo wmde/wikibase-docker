@@ -40,7 +40,8 @@ COPY config.js /templates/config.js
 COPY default.conf /templates/default.conf
 
 ENV LANGUAGE=en\
-    BRAND_TITLE=DockerWikibaseQueryService
+    BRAND_TITLE=DockerWikibaseQueryService\
+    COPYRIGHT_URL=undefined
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
