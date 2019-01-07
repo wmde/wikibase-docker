@@ -48,8 +48,7 @@ var CONFIG = ( function ( window, jQuery ) {
         location: {
             root: './',
             index: './index.html'
-        },
-        showBirthdayPresents: true
+        }
     };
 
 } )( window, jQuery );
