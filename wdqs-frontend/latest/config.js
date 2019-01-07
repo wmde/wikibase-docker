@@ -36,7 +36,8 @@ var CONFIG = ( function ( window, jQuery ) {
         },
         brand: {
             logo: 'logo.svg',
-            title: '$BRAND_TITLE'
+            title: '$BRAND_TITLE',
+            copyrightUrl: '$COPYRIGHT_URL'
         },
         location: {
             root: './',
