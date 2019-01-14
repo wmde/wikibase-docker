@@ -9,9 +9,11 @@ ADD https://github.com/filbertkm/WikibaseImport/archive/master.tar.gz /WikibaseI
 RUN bash download-extension.sh OAuth;\
 bash download-extension.sh Elastica;\
 bash download-extension.sh CirrusSearch;\
+bash download-extension.sh UniversalLanguageSelector;\
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
+tar xzf UniversalLanguageSelector.tar.gz;\
 tar xzf WikibaseImport.tar.gz
 
 FROM composer as composer
@@ -26,6 +28,7 @@ FROM wikibase/wikibase:1.30
 COPY --from=fetcher /OAuth /var/www/html/extensions/OAuth
 COPY --from=composer /Elastica /var/www/html/extensions/Elastica
 COPY --from=fetcher /CirrusSearch /var/www/html/extensions/CirrusSearch
+COPY --from=fetcher /UniversalLanguageSelector /var/www/html/extensions/UniversalLanguageSelector
 COPY --from=composer /WikibaseImport /var/www/html/extensions/WikibaseImport
 COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bundle.template
 COPY extra-install.sh /

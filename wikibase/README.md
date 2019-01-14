@@ -26,11 +26,12 @@ The LTS (long term stable) and EOL (end of life) versions and dates for Wikibase
 See https://www.mediawiki.org/wiki/Version_lifecycle for more details.
 
 ## Bundle image
-Wikibase-bundle images are built from the base wikibase images and also include the following addtional extensions:
+Wikibase-bundle images are built from the base wikibase images and also include the following additional extensions:
 - [OAuth](https://www.mediawiki.org/wiki/Extension:OAuth)
 - [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
 - [CirrusSearch](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
+- [UniversalLanguageSelector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
 
 ### Upgrading
 
