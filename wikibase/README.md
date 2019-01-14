@@ -18,11 +18,12 @@ Image name                                                            | Parent i
 `wikibase/wikibase` : `1.30-bundle`                                   | [wikibase:1.30](https://hub.docker.com/r/wikibase/wikibase/)
 
 ## Bundle image
-Wikibase-bundle images are built from the base wikibase images and also include the following addtional extensions:
+Wikibase-bundle images are built from the base wikibase images and also include the following additional extensions:
 - [OAuth](https://www.mediawiki.org/wiki/Extension:OAuth)
 - [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
 - [CirrusSearch](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
+- [UniversalLanguageSelector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
 
 ### Upgrading
 
