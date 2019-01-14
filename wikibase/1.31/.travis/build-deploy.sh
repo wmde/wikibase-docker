@@ -8,8 +8,11 @@ docker build "$DIR/../bundle" -t wikibase/wikibase:1.31-bundle -t wikibase/wikib
 if [ "$SHOULD_DOCKER_PUSH" = true ]; then
     docker push wikibase/wikibase:1.31
     docker push wikibase/wikibase:latest
+    docker push wikibase/wikibase:lts
     docker push wikibase/wikibase:1.31-base
     docker push wikibase/wikibase:latest-base
+    docker push wikibase/wikibase:lts-base
     docker push wikibase/wikibase:1.31-bundle
     docker push wikibase/wikibase:latest-bundle
+    docker push wikibase/wikibase:lts-bundle
 fi
