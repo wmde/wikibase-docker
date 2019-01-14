@@ -17,3 +17,6 @@ ${DOLLAR}wgCirrusSearchExtraIndexSettings['index.mapping.total_fields.limit'] = 
 
 # UniversalLanguageSelector
 wfLoadExtension( 'UniversalLanguageSelector' );
+
+# cldr
+wfLoadExtension( 'cldr' );

@@ -30,6 +30,7 @@ Wikibase-bundle images are built from the base wikibase images and also include 
 - [OAuth](https://www.mediawiki.org/wiki/Extension:OAuth)
 - [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
 - [CirrusSearch](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
+- [CLDR](https://www.mediawiki.org/wiki/Extension:CLDR)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
 - [UniversalLanguageSelector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
 
