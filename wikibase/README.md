@@ -11,11 +11,19 @@ Automated build.
 
 Image name                                                            | Parent image
 -----------------------------------------------------------------     | ------------------------
-`wikibase/wikibase` : `latest`, `1.31`, `latest-base`, `1.31-base`    | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `latest`, `lts`, `lts-base` `1.31`, `latest-base`, `1.31-base`    | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `1.30`, `1.30-base`                             | [mediawiki:1.30](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `legacy`, `1.29`                                | [mediawiki:1.29](https://hub.docker.com/_/mediawiki/)
-`wikibase/wikibase` : `latest-bundle`, `1.31-bundle`                  | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `latest-bundle`, `lts-bundle`, `1.31-bundle`    | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
 `wikibase/wikibase` : `1.30-bundle`                                   | [wikibase:1.30](https://hub.docker.com/r/wikibase/wikibase/)
+
+### Version support
+
+Wikibase operates a continuous development model (alongside Mediawiki), where software changes are pushed live to Wikimedia sites such as Wikidata on a regular basis.
+
+The LTS (long term stable) and EOL (end of life) versions and dates for Wikibase are the same as those for Mediawiki.
+
+See https://www.mediawiki.org/wiki/Version_lifecycle for more details.
 
 ## Bundle image
 Wikibase-bundle images are built from the base wikibase images and also include the following addtional extensions:
