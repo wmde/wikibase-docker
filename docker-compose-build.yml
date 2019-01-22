@@ -11,9 +11,9 @@ version: '3'
 
 services:
   wikibase:
-    image: wikibase/wikibase:1.30-bundle
+    image: wikibase/wikibase:1.32-bundle
     build:
-      context: ./wikibase/1.30/bundle
+      context: ./wikibase/1.32/bundle
       dockerfile: Dockerfile
     links:
       - mysql
