@@ -7,7 +7,6 @@ env:
  - IMAGE_PATH=wikibase/1.32/
  - IMAGE_PATH=wikibase/1.31/
  - IMAGE_PATH=wikibase/1.30/
- - IMAGE_PATH=wikibase/1.29/
  - IMAGE_PATH=wdqs/0.2.5/
  - IMAGE_PATH=wdqs/0.3.0/
  - IMAGE_PATH=wdqs/0.3.1/
