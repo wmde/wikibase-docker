@@ -1,3 +1,4 @@
+FROM wikibase/wikibase-common as common
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
@@ -32,10 +33,11 @@ RUN install -d /var/log/mediawiki -o www-data
 RUN docker-php-ext-install calendar
 
 COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
-COPY wait-for-it.sh /wait-for-it.sh
-COPY entrypoint.sh /entrypoint.sh
-COPY LocalSettings.php.template /LocalSettings.php.template
-COPY htaccess /var/www/html/.htaccess
+
+COPY --from=common /wait-for-it.sh /wait-for-it.sh
+COPY --from=common /entrypoint.sh /entrypoint.sh
+COPY --from=common /LocalSettings.php.template /LocalSettings.php.template
+COPY --from=common /htaccess /var/www/html/.htaccess
 
 RUN ln -s /var/www/html/ /var/www/html/w
 

@@ -15,6 +15,7 @@ env:
 
 script:
  - source ./.travis/docker-push-setup.sh
+ - source ./.travis/docker-build-common.sh
  - bash ./$IMAGE_PATH/.travis/build-deploy.sh
 
 jobs:
