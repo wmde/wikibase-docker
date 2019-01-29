@@ -75,19 +75,19 @@ All data for Wikibase and the Query Service is stored in Docker volumes. You can
 You can see all Docker volumes created by using the following command:
 
 ```
-docker volume ls | grep wikibasedocker
+docker volume ls | grep wikibase-docker
 ```
 
 You can grab a zip of each volumes by doing the following:
 
 ```
-docker run -v wikibasedocker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup backup mediawiki-mysql-data
+docker run -v wikibase-docker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup backup mediawiki-mysql-data
 ```
 
 You, or someone else, can then restore the volume by doing the following:
 
 ```
-docker run -v wikibasedocker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup restore mediawiki-mysql-data
+docker run -v wikibase-docker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup restore mediawiki-mysql-data
 ```
 
 ## Accessing your Wikibase instance and the Query Service UI
