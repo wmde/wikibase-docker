@@ -1,18 +1,17 @@
 FROM ubuntu:xenial as fetcher
 
+COPY download-extension.sh .
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.* && \
+    apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201* && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/wikimedia/mediawiki-extensions-Wikibase/archive/REL1_31.zip .
-
-# Creates /mediawiki-extensions-Wikibase-REL1_31
-RUN unzip REL1_31.zip && rm ./*.zip
+RUN bash download-extension.sh Wikibase;\
+tar xzf Wikibase.tar.gz;
 
 
 FROM composer as composer
 
-COPY --from=fetcher /mediawiki-extensions-Wikibase-REL1_31 /Wikibase
+COPY --from=fetcher /Wikibase /Wikibase
 
 WORKDIR /Wikibase
 RUN composer install --no-dev
