@@ -37,9 +37,7 @@ Wikibase-bundle images are built from the base wikibase images and also include 
 
 When upgrading between Wikibase versions you will have to run update.php to update your mysql tables.
 
-To do this you can run the following command on the newer container:
-
-```docker exec 275129f0ebfe php //var/www/html/maintenance/update.php```
+A blog post documenting the update progress for this image in a docker-compose setup can be found [here](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
 
 
 ### Environment variables
