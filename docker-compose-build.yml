@@ -21,6 +21,7 @@ services:
      - "8181:80"
     volumes:
       - mediawiki-images-data:/var/www/html/images
+      - quickstatements-data:/quickstatements/data
     depends_on:
     - mysql
     - elasticsearch
@@ -35,9 +36,11 @@ services:
       - DB_NAME=my_wiki
       - MW_ADMIN_NAME=admin
       - MW_ADMIN_PASS=adminpass
+      - MW_ADMIN_EMAIL=admin@example.com
       - MW_WG_SECRET_KEY=secretkey
       - MW_ELASTIC_HOST=elasticsearch.svc
       - MW_ELASTIC_PORT=9200
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
   mysql:
     image: mariadb:latest
     volumes:
@@ -134,7 +137,9 @@ services:
     ports:
      - "9191:80"
     depends_on:
-    - wikibase
+     - wikibase
+    volumes:
+     - quickstatements-data:/quickstatements/data
     networks:
       default:
         aliases:
@@ -154,3 +159,4 @@ volumes:
   mediawiki-mysql-data:
   mediawiki-images-data:
   query-service-data:
+  quickstatements-data:
