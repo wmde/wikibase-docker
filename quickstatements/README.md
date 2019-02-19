@@ -35,32 +35,6 @@ File                      | Description
 
 ### How to setup and use
 
-#### Make a consumer on wikibase
-To make a consumer you will need an account that has an email address
-If you're using the wikibase/wikibase docker image and haven't set up email then
-use the maintenance script resetUserEmail.php and don't forget --no-reset-password
-
-Now log in as the admin user
-
-Now navigate to http://\<your wikibase\>/Special:OAuthConsumerRegistration
-
-Select request a token for a new consumer
-
-Register a consumer by filling in the form:
-1. Application name (e.g. 'Quickstatements)
-2. Version (you can leave this as 1.0)
-3. Description (e.g. 'Quickstatements')
-4. callback URL:  http://{your quickstatements host}/api.php
-5. Check "Allow consumer to specify a callback in requests"
-6. Request permission for:
-    * High-volume editing
-    * Edit existing pages
-    * Create, edit, and move pages
-7. Check agree and click "propose consumer"
-
-
-Make a note of the details on the following page
-
 #### Set up quickstatements
 In order for quickstatements to communicate with wikibase it needs to know where your instance is and how it can find it.
 This must be done by setting the ENV variable WIKIBASE_HOST. n.b. This should reflect how this container when running
@@ -75,7 +49,8 @@ One must also know how this container will be visible to the user as well so it 
 user back here. This should be passed as QS_PUBLIC_HOST_AND_PORT
 
 You need to pass the consumer and secret token you got from the wikibase to this container as the environment variables
- OAUTH_CONSUMER_KEY and OAUTH_CONSUMER_SECRET
+ OAUTH_CONSUMER_KEY and OAUTH_CONSUMER_SECRET. These data can be found in the qs-oauth.json file in /quickstatements/data
+in your quickstatements container.
 
 You can now test it works by navigating to http://\<your quickstatements host\> and logging in using the button top right.
 
@@ -84,17 +59,6 @@ You should be redirected to the wiki where you can authorize this Quickstatement
 Finally you should be redirected back to Quickstatements and you should appear logged in.
 
 Use Quickstatements as normal with the Run button. Currently "Run in background" is not supported by this image.
-
-#### Approve the consumer for other users
-So other users can also use quickstatements you also need to approve it as a consumer.
-
-Navigate to http://\<your wikibase\>/Special:OAuthManageConsumers/proposed
-
-Click 'review/manage' on your new consumer
-
-Then fill in any reason to approve the consumer (e.g. made by admin)
-
-and click 'Update consumer status'
 
 #### Troubleshooting
 If you see an error such as mw-oauth exception when trying to log in check that you have passed the right consumer token
