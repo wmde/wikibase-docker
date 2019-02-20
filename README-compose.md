@@ -72,6 +72,9 @@ docker-compose down --volumes
 
 All data for Wikibase and the Query Service is stored in Docker volumes. You can create compressed copies of these volumes to use as backups or to hand off to other users.
 
+Volume backups will only work if you use the same image when restoring / using the backup data.
+If you are backing up your mysql data you may also want to just take an SQL dump.
+
 You can see all Docker volumes created by using the following command:
 
 ```
@@ -88,6 +91,25 @@ You, or someone else, can then restore the volume by doing the following:
 
 ```
 docker run -v wikibase-docker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup restore mediawiki-mysql-data
+```
+
+## Backing up data using mysqldump
+
+If using volume-backup for the database does not work because of InnoDB tables
+([check here](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)),
+you can achieve data backup using mysqldump.
+
+### Backing up with mysqldump
+
+```
+docker exec wikibase-docker_mysql_1 mysqldump -u wikiuser -psqlpass my_wiki > backup.sql
+```
+
+### Restoring from mysqldump backup file
+
+```
+docker exec wikibase-docker_mysql_1 mysql -u wikiuser -psqlpass my_wiki < backup.sql
+
 ```
 
 ## Accessing your Wikibase instance and the Query Service UI
