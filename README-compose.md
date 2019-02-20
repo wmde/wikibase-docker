@@ -90,6 +90,25 @@ You, or someone else, can then restore the volume by doing the following:
 docker run -v wikibase-docker_mediawiki-mysql-data:/volume -v /tmp/wikibase-data:/backup --rm loomchild/volume-backup restore mediawiki-mysql-data
 ```
 
+## Backing up data using mysqldump
+
+If using volume-backup for the database does not work because of InnoDB tables
+([check here](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)),
+you can achieve data backup using mysqldump.
+
+### Backing up with mysqldump
+
+```
+docker exec wikibase-docker_mysql_1 mysqldump -u wikiuser -psqlpass my_wiki > backup.sql
+```
+
+### Restoring from mysqldump backup file
+
+```
+docker exec wikibase-docker_mysql_1 mysql -u wikiuser -psqlpass my_wiki < backup.sql
+
+```
+
 ## Accessing your Wikibase instance and the Query Service UI
 
 Access the following hosts:
