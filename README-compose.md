@@ -72,6 +72,9 @@ docker-compose down --volumes
 
 All data for Wikibase and the Query Service is stored in Docker volumes. You can create compressed copies of these volumes to use as backups or to hand off to other users.
 
+Volume backups will only work if you use the same image when restoring / using the backup data.
+If you are backing up your mysql data you may also want to just take an SQL dump.
+
 You can see all Docker volumes created by using the following command:
 
 ```
