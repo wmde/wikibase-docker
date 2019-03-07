@@ -48,9 +48,8 @@ WB_PUBLIC_HOST_AND_PORT
 One must also know how this container will be visible to the user as well so it can ask the wikibase to redirect the
 user back here. This should be passed as QS_PUBLIC_HOST_AND_PORT
 
-You need to pass the consumer and secret token you got from the wikibase to this container as the environment variables
- OAUTH_CONSUMER_KEY and OAUTH_CONSUMER_SECRET. These data can be found in the qs-oauth.json file in /quickstatements/data
-in your quickstatements container.
+You can pass the consumer and secret token you got from the wikibase to this container as the environment variables
+ OAUTH_CONSUMER_KEY and OAUTH_CONSUMER_SECRET. If you don't, docker-compose automatically handles this.
 
 You can now test it works by navigating to http://\<your quickstatements host\> and logging in using the button top right.
 
