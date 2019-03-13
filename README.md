@@ -4,6 +4,13 @@ This repo contains images needed to setup Wikibase and a query service using Doc
 
 Each image contained within this repo has its own README (linked below).
 
+If you want some more light reading on the subject of using these images / this repo for beginners check out [this tag](https://addshore.com/tag/wikibase-docker/) specifically:
+ - [Initial inception of these images](https://addshore.com/2017/12/wikibase-docker-images/)
+ - [First basic example usage (the wikibase registry)](https://addshore.com/2018/04/wikibase-of-wikibases/)
+ - [Customizing the exampe docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
+ - [Creating your own Dockerfile for wikibase](https://addshore.com/2019/02/creating-a-dockerfile-for-the-wikibase-registry/)
+ - [Example update process for wikibase](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
+
 ### Issue tracking
 
 We use [Phabricator to track
