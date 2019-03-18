@@ -10,11 +10,12 @@ for i in ${REQUIRED_VARIABLES[@]}; do
     exit 1;
     fi
 done
-
+export WIKIBASE_SCHEME="${WIKIBASE_SCHEME:-http}"
+export WIKIBASE_CONCEPT_URI="${WIKIBASE_CONCEPT_URI:-${WIKIBASE_SCHEME}://${WIKIBASE_HOST}}"
 set -eu
 
-export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
-export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK}"
+export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseScheme=${WIKIBASE_SCHEME} -DwikibaseConceptUri=${WIKIBASE_CONCEPT_URI}"
+export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseScheme=${WIKIBASE_SCHEME} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK}"
 
 envsubst < /templates/mwservices.json > /wdqs/mwservices.json
 

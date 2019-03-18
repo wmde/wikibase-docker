@@ -2,7 +2,7 @@
 # This file is provided by the wikibase/wikibase docker image.
 
 # Test if required environment variables have been set
-REQUIRED_VARIABLES=(MW_ADMIN_NAME MW_ADMIN_PASS MW_ADMIN_EMAIL MW_WG_SECRET_KEY DB_SERVER DB_USER DB_PASS DB_NAME)
+REQUIRED_VARIABLES=(MW_ADMIN_NAME MW_ADMIN_PASS MW_ADMIN_EMAIL MW_WG_SECRET_KEY DB_SERVER DB_USER DB_PASS DB_NAME MW_SERVER)
 for i in ${REQUIRED_VARIABLES[@]}; do
     eval THISSHOULDBESET=\$$i
     if [ -z "$THISSHOULDBESET" ]; then

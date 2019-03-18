@@ -44,17 +44,18 @@ A blog post documenting the update progress for this image in a docker-compose s
 
 Note: MW_ADMIN_NAME and MW_ADMIN_PASS probably shouldn't be here...
 
-Variable          | Default              | Description
-------------------|  --------------------| ----------
-`DB_SERVER`       | "mysql.svc:3306"     | Hostname and port for the MySQL server to use for Mediawiki & Wikibase
-`DB_USER`         | "wikiuser"           | Username to use for the MySQL server
-`DB_PASS`         | "sqlpass"            | Password to use for the MySQL server
-`DB_NAME`         | "my_wiki"            | Database name to use for the MySQL server
-`MW_SITE_NAME`    | "wikibase-docker"    | $wgSitename to use for MediaWiki
-`MW_SITE_LANG`    | "en"                 | $wgLanguageCode to use for MediaWiki
-`MW_ADMIN_NAME`   | "admin"              | Admin username to create on MediaWiki first install
-`MW_ADMIN_PASS`   | "adminpass"          | Admin password to use for admin account on first install
-`MW_WG_SECRET_KEY`| "secretkey"          | Used as source of entropy for persistent login/Oauth etc..(since 1.30)
+Variable          | Default                 | Description
+------------------|  -----------------------| ----------
+`DB_SERVER`       | "mysql.svc:3306"        | Hostname and port for the MySQL server to use for Mediawiki & Wikibase
+`DB_USER`         | "wikiuser"              | Username to use for the MySQL server
+`DB_PASS`         | "sqlpass"               | Password to use for the MySQL server
+`DB_NAME`         | "my_wiki"               | Database name to use for the MySQL server
+`MW_SERVER`       | "http://localhost:8181" | $wgServer to use for MediaWiki
+`MW_SITE_NAME`    | "wikibase-docker"       | $wgSitename to use for MediaWiki
+`MW_SITE_LANG`    | "en"                    | $wgLanguageCode to use for MediaWiki
+`MW_ADMIN_NAME`   | "admin"                 | Admin username to create on MediaWiki first install
+`MW_ADMIN_PASS`   | "adminpass"             | Admin password to use for admin account on first install
+`MW_WG_SECRET_KEY`| "secretkey"             | Used as source of entropy for persistent login/Oauth etc..(since 1.30)
 
 ### Filesystem layout
 

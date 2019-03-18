@@ -28,6 +28,7 @@ ${DOLLAR}wgDebugLogGroups = array(
 ${DOLLAR}wgShellLocale = "en_US.utf8";
 ${DOLLAR}wgLanguageCode = "${MW_SITE_LANG}";
 ${DOLLAR}wgSitename = "${MW_SITE_NAME}";
+${DOLLAR}wgServer = "${MW_SERVER}";
 ${DOLLAR}wgMetaNamespace = "Project";
 # Configured web paths & short URLs
 # This allows use of the /wiki/* path

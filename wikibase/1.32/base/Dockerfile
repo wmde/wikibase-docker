@@ -39,7 +39,8 @@ COPY htaccess /var/www/html/.htaccess
 RUN ln -s /var/www/html/ /var/www/html/w
 
 ENV MW_SITE_NAME=wikibase-docker\
-    MW_SITE_LANG=en
+    MW_SITE_LANG=en\
+    MW_SERVER=http://localhost:8181
 
 ENTRYPOINT ["/bin/bash"]
 CMD ["/entrypoint.sh"]
