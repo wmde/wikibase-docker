@@ -25,6 +25,7 @@ services:
     depends_on:
     - mysql
     - elasticsearch
+    restart: on-failure
     networks:
       default:
         aliases:
