@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wikibase
+  namespace: wikibase
+spec:
+  rules:
+  - host: wikibase.ingress.local
+    http:
+      paths:
+      - backend:
+          serviceName: wikibase
+          servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wdqs
+  namespace: wikibase
+spec:
+  rules:
+  - host: wdqs.ingress.local
+    http:
+      paths:
+      - backend:
+          serviceName: wdqs-frontend
+          servicePort: "http"

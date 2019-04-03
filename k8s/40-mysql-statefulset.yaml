@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mediawiki-mysql
+  namespace: wikibase
+spec:
+  selector:
+    matchLabels:
+      app: mediawiki-mysql
+      storage: persistent
+  serviceName: "mediawiki-mysql"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: mediawiki-mysql
+        storage: persistent
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mediawiki-mysql
+        image: mariadb:10.3
+        env:
+        - name: MYSQL_DATABASE
+          value: my_wiki
+        - name: MYSQL_PASSWORD
+          value: sqlpass
+        - name: MYSQL_RANDOM_ROOT_PASSWORD
+          value: "yes"
+        - name: MYSQL_USER
+          value: wikiuser
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mediawiki-mysql-data
+  volumeClaimTemplates:
+  - metadata:
+      name: mediawiki-mysql-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: wikibase-mysql
+      resources:
+        requests:
+          storage: 5Gi

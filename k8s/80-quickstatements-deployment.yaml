@@ -1,0 +1,54 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: quickstatements
+  name: quickstatements
+  namespace: wikibase
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: quickstatements
+    spec:
+      containers:
+      - env:
+        - name: OAUTH_CONSUMER_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: oauth.consumer.key
+        - name: OAUTH_CONSUMER_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: oauth.consumer.secret
+        - name: QS_PUBLIC_SCHEME_HOST_AND_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: qs.public.scheme.host.and.port
+        - name: WB_ITEM_NAMESPACE
+          value: "120"
+        - name: WB_ITEM_PREFIX
+          value: 'Item:'
+        - name: WB_PROPERTY_NAMESPACE
+          value: "122"
+        - name: WB_PROPERTY_PREFIX
+          value: 'Property:'
+        - name: WB_PUBLIC_SCHEME_HOST_AND_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: wb.public.scheme.host.and.port
+        - name: WIKIBASE_SCHEME_AND_HOST
+          value: http://wikibase.wikibase
+        image: wikibase/quickstatements:latest
+        name: quickstatements
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}

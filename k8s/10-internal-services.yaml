@@ -1,0 +1,93 @@
+# a headless service for cluster DNS class A record to point directly to pod IPs
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: wikibase
+spec:
+  ports:
+  - port: 9200
+    name: elasticsearch
+  clusterIP: None
+  selector:
+    app: elasticsearch
+---
+# a headless service for cluster DNS class A record to point directly to pod IPs
+apiVersion: v1
+kind: Service
+metadata:
+  name: mediawiki-mysql
+  namespace: wikibase
+spec:
+  ports:
+  - port: 3306
+    name: mysql
+  clusterIP: None
+  selector:
+    app: mediawiki-mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wikibase
+  namespace: wikibase
+spec:
+  ports:
+  - name: "8100"
+    port: 8100
+    name: wikibase
+  - name: "80"
+    port: 80
+    targetPort: 80
+  selector:
+    app: wikibase
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: wdqs-proxy
+  name: wdqs-proxy
+  namespace: wikibase
+spec:
+  ports:
+  - name: "8989"
+    port: 8989
+    targetPort: 80
+  - name: "http"
+    port: 80
+    targetPort: "http"
+  - name: "9999"
+    port: 9999
+    targetPort: 9999
+  selector:
+    app: wdqs
+  selector:
+    app: wdqs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wdqs-frontend
+  namespace: wikibase
+spec:
+  ports:
+  - port: 80
+    name: http
+    # Use named container port.
+    targetPort: backend-http
+  selector:
+    app: wdqs-frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quickstatements
+  namespace: wikibase
+spec:
+  ports:
+  - name: "9191"
+    port: 9191
+    targetPort: 80
+  selector:
+    app: quickstatements

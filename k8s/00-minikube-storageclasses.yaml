@@ -1,0 +1,28 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: wikibase-mediawiki-images-data
+provisioner: k8s.io/minikube-hostpath
+reclaimPolicy: Delete
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: wikibase-mysql
+provisioner: k8s.io/minikube-hostpath
+reclaimPolicy: Delete
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: wikibase-wdqs
+provisioner: k8s.io/minikube-hostpath
+reclaimPolicy: Delete
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: wikibase-quickstatements-data
+provisioner: k8s.io/minikube-hostpath
+reclaimPolicy: Delete

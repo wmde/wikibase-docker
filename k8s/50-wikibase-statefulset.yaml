@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: wikibase
+  name: wikibase
+  namespace: wikibase
+spec:
+  selector:
+    matchLabels:
+      app: wikibase
+  serviceName: "wikibase"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: wikibase
+      annotations:
+    spec:
+      containers:
+      - name: wikibase
+        image: wikibase/wikibase:1.32-bundle
+        # imagePullPolicy: Never
+        env:
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: db.name
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: db.pass
+        - name: DB_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: db.server
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: db.user
+        - name: MW_ADMIN_NAME
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: mw.admin.name
+        - name: MW_ADMIN_PASS
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: mw.admin.pass
+        - name: MW_ADMIN_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: mw.admin.email
+        - name: MW_ELASTIC_HOST
+          value: elasticsearch.wikibase
+        - name: MW_ELASTIC_PORT
+          value: "9200"
+        - name: MW_WG_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: wikibase
+              key: mw.wg.secret.key
+        - name: QS_PUBLIC_SCHEME_HOST_AND_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: qs.public.scheme.host.and.port
+        resources:
+          requests:
+            cpu: "300m"
+            memory: "300Mi"
+        volumeMounts:
+        - mountPath: /var/www/html/images
+          name: mediawiki-images-data
+        volumeMounts:
+        - mountPath: /quickstatements/data
+          name: quickstatements-data
+  volumeClaimTemplates:
+  - metadata:
+      name: mediawiki-images-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: wikibase-mediawiki-images-data
+      resources:
+        requests:
+          storage: 5Gi
+  volumeClaimTemplates:
+  - metadata:
+      name: quickstatements-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: wikibase-quickstatements-data
+      resources:
+        requests:
+          storage: 5Gi

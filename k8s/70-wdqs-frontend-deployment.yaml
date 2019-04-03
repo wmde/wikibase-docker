@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: wdqs-frontend
+  name: wdqs-frontend
+  namespace: wikibase
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: wdqs-frontend
+    spec:
+      containers:
+      - env:
+        - name: BRAND_TITLE
+          value: "Wikibase Query Service"
+        - name: WDQS_HOST
+          value: wdqs-proxy.wikibase
+        - name: WIKIBASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: wikibase.host
+        - name: WIKIBASE_SCHEME
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: wikibase.scheme
+        image: wikibase/wdqs-frontend:latest
+        name: wdqs-frontend
+        ports:
+        - containerPort: 80
+          # This name will be used in the Service.
+          name: backend-http
+        livenessProbe:
+          httpGet:
+            path: /proxy/wdqs/bigdata/namespace/wdq/sparql?query=select%20(count(*)%20as%20%3Fcount)%20where%20%7B%3Fs%20%3Fp%20%3Fo%7D
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        resources: {}
+      restartPolicy: Always
+status: {}

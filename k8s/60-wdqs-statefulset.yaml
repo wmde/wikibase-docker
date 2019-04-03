@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wdqs
+  namespace: wikibase
+spec:
+  selector:
+    matchLabels:
+      app: wdqs
+      storage: persistent
+  serviceName: "wdqs"
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: wdqs
+        storage: persistent
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: wdqs
+        image: wikibase/wdqs:0.3.0
+        args:
+        - /runBlazegraph.sh
+        env:
+        - name: WDQS_HOST
+          value: wdqs.wikibase
+        - name: WDQS_PORT
+          value: "9999"
+        - name: WIKIBASE_HOST
+          value: wikibase.wikibase
+        - name: WIKIBASE_SCHEME
+          value: http
+        ports:
+        - containerPort: 9999
+          name: sparql
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "4Gi"
+        volumeMounts:
+        - mountPath: /wdqs/data
+          name: wdqs-data
+      - name: wdqs-proxy
+        image: wikibase/wdqs-proxy
+        env:
+        - name: PROXY_PASS_HOST
+          value: 127.0.0.1:9999
+        ports:
+        - containerPort: 80
+          name: "http"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+      - image: wikibase/wdqs:0.3.0
+        name: wdqs-updater
+        args:
+        - /runUpdate.sh
+        env:
+        - name: WIKIBASE_MAX_DAYS_BACK
+          value: "365"
+        - name: WDQS_HOST
+          value: "127.0.0.1"
+        - name: WDQS_PORT
+          value: "9999"
+        - name: WIKIBASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: wikibase
+              key: wikibase.host
+        - name: WIKIBASE_SCHEME
+          value: http
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+  volumeClaimTemplates:
+  - metadata:
+      name: wdqs-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: wikibase-wdqs
+      resources:
+        requests:
+          storage: 5Gi
