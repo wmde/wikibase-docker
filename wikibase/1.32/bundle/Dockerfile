@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY download-extension.sh .
-ADD https://github.com/filbertkm/WikibaseImport/archive/master.tar.gz /WikibaseImport.tar.gz
+ADD https://github.com/wikidata/WikibaseImport/archive/master.tar.gz /WikibaseImport.tar.gz
 RUN bash download-extension.sh OAuth;\
 bash download-extension.sh Elastica;\
 bash download-extension.sh CirrusSearch;\
