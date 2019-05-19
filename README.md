@@ -1,22 +1,8 @@
 ## wikibase-docker
 
-This repo contains images needed to setup Wikibase and a query service using Docker.
+This repo contains [Docker](https://www.docker.com/) images needed to setup a local Wikibase instance and a query service.
 
-Each image contained within this repo has its own README (linked below).
-
-If you want some more light reading on the subject of using these images / this repo for beginners check out [this tag](https://addshore.com/tag/wikibase-docker/) specifically:
- - [Initial inception of these images](https://addshore.com/2017/12/wikibase-docker-images/)
- - [First basic example usage (the wikibase registry)](https://addshore.com/2018/04/wikibase-of-wikibases/)
- - [Customizing the exampe docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
- - [Creating your own Dockerfile for wikibase](https://addshore.com/2019/02/creating-a-dockerfile-for-the-wikibase-registry/)
- - [Example update process for wikibase](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
-
-### Issue tracking
-
-We use [Phabricator to track
-issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=wikibase-containers). See the [list of current issues](https://phabricator.wikimedia.org/maniphest/?project=wikibase-containers&statuses=open&group=none&order=newest#R).
-
-### Images
+Each image contained within this repo has its own README with more detailed information:
 
 Image name               | Description   | README
 ------------------------ | ------------- | ----------
@@ -28,6 +14,22 @@ Image name               | Description   | README
 
 ### Docker compose example
 
-This repo contains an EXAMPLE docker compose setup for Wikibase.
+This repo contains an EXAMPLE docker compose setup for Wikibase (specified in the [docker-compose.yml](docker-compose.yml) file) that combines the images described above to set up a fully-featured local Wikibase environment. You can use that file as a base to build a custom environment tailored to your needs.
 
-[README](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md)
+To try it out, make sure you have Docker installed, then just clone this repository, enter its directory and run `docker-compose up`.
+
+For more information about this, please see the [README-compose.md](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md) file.
+
+### Issue tracking
+
+We use [Phabricator to track
+issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=wikibase-containers). See the [list of current issues](https://phabricator.wikimedia.org/maniphest/?project=wikibase-containers&statuses=open&group=none&order=newest#R).
+
+### Further reading
+
+For beginner-friendly light reading on the subject of using these images / this repo, check out the posts under [this tag](https://addshore.com/tag/wikibase-docker/), specifically:
+ - [Announcement of the creation of these images](https://addshore.com/2017/12/wikibase-docker-images/)
+ - [First basic example usage (the wikibase registry)](https://addshore.com/2018/04/wikibase-of-wikibases/)
+ - [Customizing the exampe docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
+ - [Creating your own Dockerfile for wikibase](https://addshore.com/2019/02/creating-a-dockerfile-for-the-wikibase-registry/)
+ - [Example update process for wikibase](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
