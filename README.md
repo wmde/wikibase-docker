@@ -16,9 +16,14 @@ Image name               | Description   | README
 
 This repo contains an EXAMPLE docker compose setup for Wikibase (specified in the [docker-compose.yml](docker-compose.yml) file) that combines the images described above to set up a fully-featured local Wikibase environment. You can use that file as a base to build a custom environment tailored to your needs.
 
-To try it out, make sure you have Docker installed, then just clone this repository, enter its directory and run `docker-compose up`.
+To try it out, make sure you have Docker installed, then just clone this repository, enter its directory and run `docker-compose up -d`. Once that step completes, you should have:
+- a MediaWiki wiki fully configured with [Wikibase](https://www.mediawiki.org/wiki/Wikibase), available at http://localhost:8181
+- a [Wikidata Query Service](https://www.mediawiki.org/wiki/Wikidata_Query_Service) instance available at http://localhost:8282
+- a [QuickStatements](https://www.wikidata.org/wiki/Help:QuickStatements) instance, available at http://localhost:9191
 
-For more information about this, please see the [README-compose.md](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md) file.
+Note that the Wikibase instance has no data; no items or properties. To add some data, use the `Special:NewItem` and `Special:NewProperty` pages in the local wiki; then you can add statements to the added items using the properties you defined.
+
+For more information about this example enviroment, please see the [README-compose.md](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md) file.
 
 ### Issue tracking
 
