@@ -4,6 +4,7 @@ services:
   - docker
 
 env:
+ - IMAGE_PATH=wikibase/1.33/
  - IMAGE_PATH=wikibase/1.32/
  - IMAGE_PATH=wikibase/1.31/
  - IMAGE_PATH=wdqs/0.2.5/
