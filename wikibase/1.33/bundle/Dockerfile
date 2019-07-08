@@ -11,14 +11,16 @@ bash download-extension.sh Elastica;\
 bash download-extension.sh CirrusSearch;\
 bash download-extension.sh UniversalLanguageSelector;\
 bash download-extension.sh cldr;\
-bash download-extension.sh EntitySchema;\
+# Temporary, will remove once 1.34 is there
+curl -s "https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/EntitySchema/+archive/wmf/1.34.0-wmf.8.tar.gz" -o EntitySchema.tar.gz;\
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
 tar xzf UniversalLanguageSelector.tar.gz;\
 tar xzf cldr.tar.gz;\
 tar xzf WikibaseImport.tar.gz;\
-tar xzf EntitySchema.tar.gz
+mkdir EntitySchema;\
+tar xzf EntitySchema.tar.gz -C EntitySchema
 
 FROM composer as composer
 COPY --from=fetcher /WikibaseImport-master /WikibaseImport
