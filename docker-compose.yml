@@ -75,7 +75,7 @@ services:
       - WIKIBASE_HOST=wikibase.svc
       - WDQS_HOST=wdqs-proxy.svc
   wdqs:
-    image: wikibase/wdqs:0.3.0
+    image: wikibase/wdqs:0.3.2
     volumes:
       - query-service-data:/wdqs/data
     command: /runBlazegraph.sh
@@ -102,7 +102,7 @@ services:
         aliases:
          - wdqs-proxy.svc
   wdqs-updater:
-    image: wikibase/wdqs:0.3.0
+    image: wikibase/wdqs:0.3.2
     command: /runUpdate.sh
     depends_on:
     - wdqs
