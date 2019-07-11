@@ -17,11 +17,11 @@ ${DOLLAR}wgDBpassword = "${DB_PASS}";
 
 ## Logs
 ## Save these logs inside the container
-${DOLLAR}wgDebugLogGroups = array(
+${DOLLAR}wgDebugLogGroups = [
 	'resourceloader' => '/var/log/mediawiki/resourceloader.log',
 	'exception' => '/var/log/mediawiki/exception.log',
 	'error' => '/var/log/mediawiki/error.log',
-);
+];
 
 ## Site Settings
 # TODO pass in the rest of this with env vars?

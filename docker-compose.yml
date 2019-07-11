@@ -37,7 +37,7 @@ services:
       - MW_ELASTIC_PORT=9200
       # CONFIG - Change the default values below
       - MW_ADMIN_NAME=admin
-      - MW_ADMIN_PASS=adminpass
+      - MW_ADMIN_PASS=WikibaseDockerAdminPass
       - MW_ADMIN_EMAIL=admin@example.com
       - MW_WG_SECRET_KEY=secretkey
       # CONFIG - Change the default values below (should match mysql values in this file)
