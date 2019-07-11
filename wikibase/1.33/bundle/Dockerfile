@@ -11,14 +11,16 @@ bash download-extension.sh Elastica;\
 bash download-extension.sh CirrusSearch;\
 bash download-extension.sh UniversalLanguageSelector;\
 bash download-extension.sh cldr;\
-# Temporary, will remove once 1.34 is there
-curl -s "https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/EntitySchema/+archive/99ec5bcaef2fdcc6ffa4ea9ca49b47c95ea76a0f.tar.gz" -o EntitySchema.tar.gz;\
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
 tar xzf UniversalLanguageSelector.tar.gz;\
 tar xzf cldr.tar.gz;\
 tar xzf WikibaseImport.tar.gz;\
+rm ./*.tar.gz
+
+# Temporary, will remove once 1.34 is there
+RUN curl -s "https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/extensions/EntitySchema/+archive/99ec5bcaef2fdcc6ffa4ea9ca49b47c95ea76a0f.tar.gz" -o EntitySchema.tar.gz;\
 mkdir EntitySchema;\
 tar xzf EntitySchema.tar.gz -C EntitySchema;\
 rm ./*.tar.gz
