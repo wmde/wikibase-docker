@@ -11,9 +11,9 @@ version: '3'
 
 services:
   wikibase:
-    image: wikibase/wikibase:1.32-bundle
+    image: wikibase/wikibase:1.33-bundle
     build:
-      context: ./wikibase/1.32/bundle
+      context: ./wikibase/1.33/bundle
       dockerfile: Dockerfile
     links:
       - mysql
@@ -34,8 +34,8 @@ services:
       - DB_USER=wikiuser
       - DB_PASS=sqlpass
       - DB_NAME=my_wiki
-      - MW_ADMIN_NAME=admin
-      - MW_ADMIN_PASS=adminpass
+      - MW_ADMIN_NAME=WikibaseAdmin
+      - MW_ADMIN_PASS=WikibaseDockerAdminPass
       - MW_ADMIN_EMAIL=admin@example.com
       - MW_WG_SECRET_KEY=secretkey
       - MW_ELASTIC_HOST=elasticsearch.svc

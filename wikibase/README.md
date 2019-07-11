@@ -11,9 +11,11 @@ Automated build.
 
 Image name                                                            | Parent image
 -----------------------------------------------------------------     | ------------------------
-`wikibase/wikibase` : `latest`, `1.32`, `latest-base`, `1.32-base`    | [mediawiki:1.32](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `latest`, `1.33`, `latest-base`, `1.33-base`    | [mediawiki:1.33](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `1.32`, `1.32-base`                             | [mediawiki:1.32](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `1.31`, `lts`, `lts-base`, `1.31-base`          | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
-`wikibase/wikibase` : `latest-bundle`, `1.32-bundle`                  | [wikibase:1.32](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `latest-bundle`, `1.33-bundle`                  | [wikibase:1.33](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `1.32-bundle`                                   | [wikibase:1.32](https://hub.docker.com/r/wikibase/wikibase/)
 `wikibase/wikibase` : `lts-bundle`, `1.31-bundle`                     | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
 
 ### Version support
@@ -32,6 +34,7 @@ Wikibase-bundle images are built from the base wikibase images and also include 
 - [CLDR](https://www.mediawiki.org/wiki/Extension:CLDR)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
 - [UniversalLanguageSelector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
+- [EntitySchema](https://www.mediawiki.org/wiki/Extension:EntitySchema)
 
 ### Upgrading
 
