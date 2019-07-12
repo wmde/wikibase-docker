@@ -16,7 +16,8 @@ tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
 tar xzf UniversalLanguageSelector.tar.gz;\
 tar xzf cldr.tar.gz;\
-tar xzf WikibaseImport.tar.gz
+tar xzf WikibaseImport.tar.gz;\
+rm ./*.tar.gz
 
 FROM composer as composer
 COPY --from=fetcher /WikibaseImport-master /WikibaseImport
