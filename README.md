@@ -35,6 +35,6 @@ issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=w
 For beginner-friendly light reading on the subject of using these images / this repo, check out the posts under [this tag](https://addshore.com/tag/wikibase-docker/), specifically:
  - [Announcement of the creation of these images](https://addshore.com/2017/12/wikibase-docker-images/)
  - [First basic example usage (the wikibase registry)](https://addshore.com/2018/04/wikibase-of-wikibases/)
- - [Customizing the exampe docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
+ - [Customizing the example docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
  - [Creating your own Dockerfile for wikibase](https://addshore.com/2019/02/creating-a-dockerfile-for-the-wikibase-registry/)
  - [Example update process for wikibase](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
