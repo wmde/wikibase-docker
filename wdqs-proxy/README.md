@@ -20,7 +20,7 @@ we should probably instead use WDQS_HOST and WDQS_PORT and set PROXY_PASS_HOST o
 
 Variable          | Default                      | Description
 ------------------|  ----------------------------| ----------
-`PROXY_PASS_HOST` | "wdqs.svc:9999"              | Language to use in the UI (default)
+`PROXY_PASS_HOST` | "wdqs.svc:9999"              | Where to forward the requests to
 
 
 ### Filesystem layout
