@@ -18,7 +18,7 @@ services:
     links:
       - mysql
     ports:
-     - "8181:80"
+     - "${MW_PORT}:80"
     volumes:
       - mediawiki-images-data:/var/www/html/images
       - quickstatements-data:/quickstatements/data
@@ -28,27 +28,27 @@ services:
     networks:
       default:
         aliases:
-         - wikibase.svc
+         - ${WB_HOST}
     environment:
       - DB_SERVER=mysql.svc:3306
-      - DB_USER=wikiuser
-      - DB_PASS=sqlpass
-      - DB_NAME=my_wiki
-      - MW_ADMIN_NAME=WikibaseAdmin
-      - MW_ADMIN_PASS=WikibaseDockerAdminPass
-      - MW_ADMIN_EMAIL=admin@example.com
-      - MW_WG_SECRET_KEY=secretkey
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - MW_ADMIN_NAME=${MW_ADMIN_NAME}
+      - MW_ADMIN_PASS=${MW_ADMIN_PASS}
+      - MW_ADMIN_EMAIL=${MW_ADMIN_EMAIL}
+      - MW_WG_SECRET_KEY=${MW_WG_SECRET_KEY}
       - MW_ELASTIC_HOST=elasticsearch.svc
       - MW_ELASTIC_PORT=9200
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${QS_PORT}
   mysql:
     image: mariadb:latest
     volumes:
       - mediawiki-mysql-data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: 'my_wiki'
-      MYSQL_USER: 'wikiuser'
-      MYSQL_PASSWORD: 'sqlpass'
+      MYSQL_DATABASE: '${DB_NAME}'
+      MYSQL_USER: '${DB_USER}'
+      MYSQL_PASSWORD: '${DB_PASS}'
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     networks:
       default:
@@ -60,7 +60,7 @@ services:
       context: ./wdqs-frontend/latest
       dockerfile: Dockerfile
     ports:
-     - "8282:80"
+     - "${WDQS_FRONTEND_PORT}:80"
     depends_on:
     - wdqs-proxy
     networks:
@@ -68,7 +68,7 @@ services:
         aliases:
          - wdqs-frontend.svc
     environment:
-      - WIKIBASE_HOST=wikibase.svc
+      - WIKIBASE_HOST=${WB_HOST}
       - WDQS_HOST=wdqs-proxy.svc
   wdqs:
     image: wikibase/wdqs:0.3.2
@@ -84,9 +84,9 @@ services:
         aliases:
          - wdqs.svc
     environment:
-      - WIKIBASE_HOST=wikibase.svc
+      - WIKIBASE_HOST=${WB_HOST}
       - WDQS_HOST=wdqs.svc
-      - WDQS_PORT=9999
+      - WDQS_PORT=${WDQS_PORT}
     expose:
       - 9999
   wdqs-proxy:
@@ -95,9 +95,9 @@ services:
       context: ./wdqs-proxy/latest
       dockerfile: Dockerfile
     environment:
-      - PROXY_PASS_HOST=wdqs.svc:9999
+      - PROXY_PASS_HOST=wdqs.svc:${WDQS_PORT}
     ports:
-     - "8989:80"
+     - "${WDQS_BACKEND_PROXY_PORT}:80"
     depends_on:
     - wdqs
     networks:
@@ -118,9 +118,9 @@ services:
         aliases:
          - wdqs-updater.svc
     environment:
-     - WIKIBASE_HOST=wikibase.svc
+     - WIKIBASE_HOST=${WB_HOST}
      - WDQS_HOST=wdqs.svc
-     - WDQS_PORT=9999
+     - WDQS_PORT=${WDQS_PORT}
   elasticsearch:
     image: wikibase/elasticsearch:5.6.14-extra
     build:
@@ -138,7 +138,7 @@ services:
       context: ./quickstatements/latest
       dockerfile: Dockerfile
     ports:
-     - "9191:80"
+     - "${QS_PORT}:80"
     depends_on:
      - wikibase
     volumes:
@@ -148,9 +148,9 @@ services:
         aliases:
          - quickstatements.svc
     environment:
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181
-      - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${QS_PORT}
+      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${MW_PORT}
+      - WIKIBASE_SCHEME_AND_HOST=${WB_HOST}
       - WB_PROPERTY_NAMESPACE=122
       - "WB_PROPERTY_PREFIX=Property:"
       - WB_ITEM_NAMESPACE=120
