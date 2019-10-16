@@ -26,14 +26,15 @@ RUN mv package.json package.json.orig \
         > package.json < package.json.orig \
     && jq 'setpath(["devDependencies","less"]; "~2.7.1")' \
         > package.json < package.json.orig \
-    && npm install
+    && npm install \
+    && npm run build
 
 
 FROM nginx:stable-alpine as final
 
 WORKDIR /usr/share/nginx/html
 
-COPY --from=builder /tmp/wikidata-query-gui-master /usr/share/nginx/html
+COPY --from=builder /tmp/wikidata-query-gui-master/build /usr/share/nginx/html
 RUN echo "" > style.css
 COPY entrypoint.sh /entrypoint.sh
 COPY custom-config.json /templates/custom-config.json
