@@ -34,6 +34,10 @@ WORKDIR /Elastica
 RUN composer install --no-dev
 
 FROM wikibase/wikibase:1.33
+
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends jq=1.* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY --from=fetcher /OAuth /var/www/html/extensions/OAuth
 COPY --from=composer /Elastica /var/www/html/extensions/Elastica
 COPY --from=fetcher /CirrusSearch /var/www/html/extensions/CirrusSearch
@@ -45,3 +49,4 @@ COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bund
 COPY extra-install.sh /
 COPY extra-entrypoint-run-first.sh /
 RUN cat /LocalSettings.php.wikibase-bundle.template >> /LocalSettings.php.template && rm /LocalSettings.php.wikibase-bundle.template
+COPY oauth.ini /templates/oauth.ini

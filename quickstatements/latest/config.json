@@ -7,7 +7,7 @@
 			"oauth" : {
 				"language":"${MW_SITE_LANG}" ,
 				"project":"${MW_SITE_NAME}" ,
-				"ini_file":"/var/www/html/quickstatements/oauth.ini" ,
+				"ini_file":"/quickstatements/data/oauth.ini" ,
 				"publicMwOAuthUrl":"${WB_PUBLIC_SCHEME_HOST_AND_PORT}/w/index.php?title=Special:OAuth" ,
 				"mwOAuthUrl":"${WIKIBASE_SCHEME_AND_HOST}/w/index.php?title=Special:OAuth" ,
 				"mwOAuthIW":"mw"
