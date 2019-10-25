@@ -1,0 +1,25 @@
+{
+    "api": {
+      "sparql": {
+        "uri": "/proxy/wdqs/bigdata/namespace/wdq/sparql"
+      },
+      "wikibase": {
+        "uri": "/proxy/wikibase/w/api.php"
+      },
+      "examples": {
+        "server": "https://www.wikidata.org/",
+        "endpoint": "api/rest_v1/page/html/",
+        "pageTitle": "Wikidata:SPARQL_query_service/queries/examples",
+        "pagePathElement": "wiki/"
+      },
+      "urlShortener": "tinyurl"
+    },
+    "brand": {
+      "title": "$BRAND_TITLE",
+      "logo": "logo.svg",
+      "favicon": "favicon.ico",
+      "copyrightUrl": "$COPYRIGHT_URL",
+      "index": "./index.html"
+    }
+  }
+  

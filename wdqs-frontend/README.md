@@ -8,7 +8,8 @@ Automated build.
 
 Image name                          | Parent image             | WDQS UI Version
 -------------------------------     | ------------------------ | --------------
-`wikibase/wdqs-frontend` : `latest` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master
+`wikibase/wdqs-frontend` : `latest` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master (built)
+`wikibase/wdqs-frontend` : `legacy` | [nginx:stable-alpine](https://hub.docker.com/_/nginx/) | master (not built)
 
 
 ### Environment variables
