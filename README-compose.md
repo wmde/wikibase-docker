@@ -118,8 +118,12 @@ Access the following hosts:
  - [Wikibase @ http://localhost:8181](http://localhost:8181)
  - [Query Service UI @ http://localhost:8282](http://localhost:8282)
  - [Query Service Backend (Behind a proxy) @ http://localhost:8989/bigdata/](http://localhost:8989/bigdata/)
- - [Query Service Backend (Direct) @ http://localhost:8999/bigdata/](http://localhost:8999/bigdata/)
  - [Quickstatements @ http://localhost:9191](http://localhost:9191)
+
+If you want to access the balzegraph SPARQL endpoint directly for writing you need to bypass the read only proxy.
+You will need to make a change similar to this: https://github.com/wmde/wikibase-docker/pull/16/files
+You will then be able to access the query service on localhost for writing.
+ - [Query Service Backend (Direct) @ http://localhost:8999/bigdata/](http://localhost:8999/bigdata/)
 
 ## Creating content and querying it
 
