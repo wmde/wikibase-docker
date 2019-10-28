@@ -25,8 +25,6 @@ This file is only meant as an example, your modification might be needed.
 wget https://raw.githubusercontent.com/wmde/wikibase-docker/master/docker-compose.yml
 ```
 
-If you want to develop the Dockerfiles then you should clone this repo and instead use the docker-compose-build.yml file.
-
 #### 3) Setting up and starting the containers
 
 Note: In linux you must either be in the docker group or use SUDO!
