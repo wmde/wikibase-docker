@@ -38,3 +38,4 @@ For beginner-friendly light reading on the subject of using these images / this 
  - [Customizing the example docker-compose file](https://addshore.com/2018/06/customizing-wikibase-config-in-the-docker-compose-example/)
  - [Creating your own Dockerfile for wikibase](https://addshore.com/2019/02/creating-a-dockerfile-for-the-wikibase-registry/)
  - [Example update process for wikibase](https://addshore.com/2019/01/wikibase-docker-mediawiki-wikibase-update/)
+ - [Changing the concept URI of an existing Wikibase with data](https://addshore.com/2019/11/changing-the-concept-uri-of-an-existing-wikibase-with-data/)
