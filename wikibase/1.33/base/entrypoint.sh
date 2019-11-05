@@ -14,11 +14,11 @@ done
 set -eu
 
 # Wait for the db to come up
-/wait-for-it.sh $DB_SERVER -t 120
+/wait-for-it.sh $DB_SERVER -t 300
 # Sometimes it appears to come up and then go back down meaning MW install fails
 # So wait for a second and double check!
 sleep 1
-/wait-for-it.sh $DB_SERVER -t 120
+/wait-for-it.sh $DB_SERVER -t 300
 
 # Run extra scripts everytime
 if [ -f /extra-entrypoint-run-first.sh ]; then
