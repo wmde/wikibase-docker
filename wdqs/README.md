@@ -2,8 +2,6 @@
 
 Wikibase specific blazegraph image.
 
-WARNING: This image seems to require a lot of memory for the JVM of blazegraph to start. If you are running Docker for Windows or Mac and have containers run within a VM (the default) make sure you set your VM memory allocation to somethig greater than 2GB (4GB recommended). If you don't do this the query service may fail to run. It might be possible to fix this memory hogging at some point.
-
 Automated build.
 
 ### Tags
@@ -11,9 +9,6 @@ Automated build.
 Image name                              | Parent image             | WDQS Version
 --------------------------------------- | ------------------------ | --------------
 `wikibase/wdqs` : `0.3.5`, `latest`     | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.5
-`wikibase/wdqs` : `0.3.2`,              | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.2
-`wikibase/wdqs` : `0.3.1`,              | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.1
-`wikibase/wdqs` : `0.3.0`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | [0.3.0](https://search.maven.org/artifact/org.wikidata.query.rdf/service/0.3.0/pom)
 
 ### Upgrading
 
