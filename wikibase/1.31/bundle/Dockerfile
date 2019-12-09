@@ -22,10 +22,8 @@ rm ./*.tar.gz
 FROM composer as composer
 COPY --from=fetcher /WikibaseImport-master /WikibaseImport
 WORKDIR /WikibaseImport
-RUN composer install --no-dev
 COPY --from=fetcher /Elastica /Elastica
 WORKDIR /Elastica
-RUN composer install --no-dev
 
 FROM wikibase/wikibase:1.31
 

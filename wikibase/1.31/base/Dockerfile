@@ -8,15 +8,6 @@ RUN apt-get update && \
 RUN bash download-extension.sh Wikibase;\
 tar xzf Wikibase.tar.gz;
 
-
-FROM composer as composer
-
-COPY --from=fetcher /Wikibase /Wikibase
-
-WORKDIR /Wikibase
-RUN composer install --no-dev
-
-
 FROM mediawiki:1.31
 
 # Install envsubst
@@ -30,10 +21,11 @@ RUN install -d /var/log/mediawiki -o www-data
 
 RUN docker-php-ext-install calendar
 
-COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
+COPY --from=fetcher /Wikibase /var/www/html/extensions/Wikibase
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY LocalSettings.php.template /LocalSettings.php.template
+COPY composer.local.json /var/www/html/composer.local.json
 COPY htaccess /var/www/html/.htaccess
 
 RUN ln -s /var/www/html/ /var/www/html/w
