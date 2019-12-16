@@ -15,10 +15,12 @@ FROM openjdk:8-jdk-alpine
 # Install gettext for envsubst command, (it needs libintl package)
 # Install curl for the loadData.sh wdqs script (if someone needs it)
 RUN set -x ; \
-    apk --no-cache add bash=\<4.5.0 gettext=\<0.19.8.2 libintl=\<0.19.8.2 curl=\<7.64.999
+    apk --no-cache add bash=\<4.5.0 gettext=\<0.19.8.2 libintl=\<0.19.8.2 curl=\<7.64.999 sudo=\<1.9
 
 COPY --from=fetcher /service-0.3.10-SNAPSHOT /wdqs
 
+RUN addgroup -g 66 -S blazegraph
+RUN adduser -S -G blazegraph -u 666 -s /bin/bash blazegraph
 # Don't set a memory limit otherwise bad things happen (OOMs)
 ENV MEMORY=""\
     HEAP_SIZE="1g"\
@@ -29,13 +31,13 @@ ENV MEMORY=""\
 
 WORKDIR /wdqs
 
-COPY wait-for-it.sh /wait-for-it.sh
-COPY entrypoint.sh /entrypoint.sh
-COPY runBlazegraph.sh /runBlazegraph.sh
-COPY runUpdate.sh /runUpdate.sh
-COPY mwservices.json /templates/mwservices.json
-COPY RWStore.properties /wdqs/RWStore.properties
-COPY whitelist.txt /wdqs/whitelist.txt
+COPY --chown=blazegraph:blazegraph wait-for-it.sh /wait-for-it.sh
+COPY --chown=blazegraph:blazegraph entrypoint.sh /entrypoint.sh
+COPY --chown=blazegraph:blazegraph runBlazegraph.sh /runBlazegraph.sh
+COPY --chown=blazegraph:blazegraph runUpdate.sh /runUpdate.sh
+COPY --chown=blazegraph:blazegraph mwservices.json /templates/mwservices.json
+COPY --chown=blazegraph:blazegraph RWStore.properties /wdqs/RWStore.properties
+COPY --chown=blazegraph:blazegraph whitelist.txt /wdqs/whitelist.txt
 
 # TODO is this actually needed?
 RUN chmod +x /wdqs/runUpdate.sh
