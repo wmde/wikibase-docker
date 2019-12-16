@@ -18,4 +18,6 @@ export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIK
 
 envsubst < /templates/mwservices.json > /wdqs/mwservices.json
 
+chown blazegraph:blazegraph -R /wdqs/
+sudo -s -u blazegraph
 exec "$@"
