@@ -11,12 +11,14 @@ bash download-extension.sh Elastica;\
 bash download-extension.sh CirrusSearch;\
 bash download-extension.sh UniversalLanguageSelector;\
 bash download-extension.sh cldr;\
+bash download-extension.sh EntitySchema;\
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
 tar xzf UniversalLanguageSelector.tar.gz;\
 tar xzf cldr.tar.gz;\
 tar xzf WikibaseImport.tar.gz;\
+tar xzf EntitySchema.tar.gz;\
 rm ./*.tar.gz
 
 FROM composer as composer
@@ -27,7 +29,7 @@ COPY --from=fetcher /Elastica /Elastica
 WORKDIR /Elastica
 RUN composer install --no-dev
 
-FROM wikibase/wikibase:1.32
+FROM wikibase/wikibase:1.34
 
 RUN apt-get update && \
     apt-get install --yes --no-install-recommends jq=1.* && \
@@ -37,6 +39,7 @@ COPY --from=composer /Elastica /var/www/html/extensions/Elastica
 COPY --from=fetcher /CirrusSearch /var/www/html/extensions/CirrusSearch
 COPY --from=fetcher /UniversalLanguageSelector /var/www/html/extensions/UniversalLanguageSelector
 COPY --from=fetcher /cldr /var/www/html/extensions/cldr
+COPY --from=fetcher /cldr /var/www/html/extensions/EntitySchema
 COPY --from=composer /WikibaseImport /var/www/html/extensions/WikibaseImport
 COPY LocalSettings.php.wikibase-bundle.template /LocalSettings.php.wikibase-bundle.template
 COPY extra-install.sh /

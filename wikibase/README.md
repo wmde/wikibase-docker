@@ -11,11 +11,11 @@ Automated build.
 
 Image name                                                            | Parent image
 -----------------------------------------------------------------     | ------------------------
-`wikibase/wikibase` : `latest`, `1.33`, `latest-base`, `1.33-base`    | [mediawiki:1.33](https://hub.docker.com/_/mediawiki/)
-`wikibase/wikibase` : `1.32`, `1.32-base`                             | [mediawiki:1.32](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `latest`, `1.34`, `latest-base`, `1.34-base`    | [mediawiki:1.34](https://hub.docker.com/_/mediawiki/)
+`wikibase/wikibase` : `legacy`, `1.33`, `legacy-base`, `1.33-base`    | [mediawiki:1.33](https://hub.docker.com/_/mediawiki/)
 `wikibase/wikibase` : `1.31`, `lts`, `lts-base`, `1.31-base`          | [mediawiki:1.31](https://hub.docker.com/_/mediawiki/)
-`wikibase/wikibase` : `latest-bundle`, `1.33-bundle`                  | [wikibase:1.33](https://hub.docker.com/r/wikibase/wikibase/)
-`wikibase/wikibase` : `1.32-bundle`                                   | [wikibase:1.32](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `latest-bundle`, `1.34-bundle`                  | [wikibase:1.34](https://hub.docker.com/r/wikibase/wikibase/)
+`wikibase/wikibase` : `legacy-bundle`, `1.33-bundle`                  | [wikibase:1.33](https://hub.docker.com/r/wikibase/wikibase/)
 `wikibase/wikibase` : `lts-bundle`, `1.31-bundle`                     | [wikibase:1.31](https://hub.docker.com/r/wikibase/wikibase/)
 
 ### Version support
