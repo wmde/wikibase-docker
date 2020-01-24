@@ -9,11 +9,14 @@ RUN bash download-extension.sh Wikibase;\
 tar xzf Wikibase.tar.gz;
 
 
+FROM mediawiki:1.34 as collector
+COPY --from=fetcher /Wikibase /var/www/html/extensions/Wikibase
+
+
 FROM composer as composer
-
-COPY --from=fetcher /Wikibase /Wikibase
-
-WORKDIR /Wikibase
+COPY --from=collector /var/www/html /var/www/html
+WORKDIR /var/www/html/
+COPY composer.local.json /var/www/html/composer.local.json
 RUN composer install --no-dev
 
 
@@ -30,7 +33,7 @@ RUN install -d /var/log/mediawiki -o www-data
 
 RUN docker-php-ext-install calendar
 
-COPY --from=composer /Wikibase /var/www/html/extensions/Wikibase
+COPY --from=composer /var/www/html /var/www/html
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
 COPY LocalSettings.php.template /LocalSettings.php.template
