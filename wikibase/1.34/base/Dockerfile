@@ -17,7 +17,7 @@ WORKDIR /Wikibase
 RUN composer install --no-dev
 
 
-FROM mediawiki:1.32
+FROM mediawiki:1.34
 
 # Install envsubst
 RUN apt-get update && \

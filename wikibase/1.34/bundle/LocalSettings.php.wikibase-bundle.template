@@ -20,3 +20,6 @@ wfLoadExtension( 'UniversalLanguageSelector' );
 
 # cldr
 wfLoadExtension( 'cldr' );
+
+#EntitySchema
+wfLoadExtension( 'EntitySchema' );
