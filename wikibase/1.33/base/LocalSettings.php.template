@@ -49,7 +49,6 @@ wfLoadSkin( 'Vector' );
 
 ## Wikibase
 # Load Wikibase repo, client & lib with the example / default settings.
-require_once "${DOLLAR}IP/extensions/Wikibase/vendor/autoload.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/lib/WikibaseLib.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/repo/Wikibase.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/repo/ExampleSettings.php";
