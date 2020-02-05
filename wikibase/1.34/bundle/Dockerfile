@@ -33,7 +33,7 @@ COPY --from=fetcher /EntitySchema /var/www/html/extensions/EntitySchema
 FROM composer as composer
 COPY --from=collector /var/www/html /var/www/html
 WORKDIR /var/www/html/
-COPY composer.local.json /var/www/html/composer.local.json
+RUN rm /var/www/html/composer.lock
 RUN composer install --no-dev
 
 FROM wikibase/wikibase:1.34
