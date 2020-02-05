@@ -9,7 +9,7 @@ RUN bash download-extension.sh Wikibase;\
 tar xzf Wikibase.tar.gz;
 
 
-FROM mediawiki:1.34 as collector
+FROM mediawiki:1.33 as collector
 COPY --from=fetcher /Wikibase /var/www/html/extensions/Wikibase
 
 
