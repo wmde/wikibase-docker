@@ -19,7 +19,7 @@ tar xzf cldr.tar.gz;\
 tar xzf WikibaseImport.tar.gz;\
 rm ./*.tar.gz
 
-FROM mediawiki:1.31 as collector
+FROM wikibase/wikibase:1.31 as collector
 COPY --from=fetcher /WikibaseImport-master /var/www/html/extensions/WikibaseImport
 COPY --from=fetcher /Elastica /var/www/html/extensions/Elastica
 COPY --from=fetcher /OAuth /var/www/html/extensions/OAuth
