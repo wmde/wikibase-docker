@@ -17,7 +17,7 @@ COPY --from=fetcher /quickstatements /quickstatements
 WORKDIR /quickstatements
 RUN composer install --no-dev
 
-FROM php:5.6-apache
+FROM php:7.2-apache
 
 # Install envsubst
 RUN apt-get update && \
