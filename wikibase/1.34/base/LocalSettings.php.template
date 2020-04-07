@@ -25,6 +25,7 @@ ${DOLLAR}wgDebugLogGroups = array(
 
 ## Site Settings
 # TODO pass in the rest of this with env vars?
+${DOLLAR}wgServer = WebRequest::detectServer();
 ${DOLLAR}wgShellLocale = "en_US.utf8";
 ${DOLLAR}wgLanguageCode = "${MW_SITE_LANG}";
 ${DOLLAR}wgSitename = "${MW_SITE_NAME}";
