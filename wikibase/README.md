@@ -34,8 +34,8 @@ Wikibase-bundle images are built from the base wikibase images and also include 
 - [CLDR](https://www.mediawiki.org/wiki/Extension:CLDR)
 - [WikibaseImport](https://github.com/filbertkm/WikibaseImport)
 - [UniversalLanguageSelector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
-- [EntitySchema](https://www.mediawiki.org/wiki/Extension:EntitySchema)
-- [WikibaseCirrusSearch](https://www.mediawiki.org/wiki/Extension:WikibaseCirrusSearch) (1.34)
+- [EntitySchema](https://www.mediawiki.org/wiki/Extension:EntitySchema) (from 1.33)
+- [WikibaseCirrusSearch](https://www.mediawiki.org/wiki/Extension:WikibaseCirrusSearch) (from 1.34)
 
 ### Upgrading
 
