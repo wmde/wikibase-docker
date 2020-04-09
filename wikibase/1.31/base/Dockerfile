@@ -22,16 +22,15 @@ RUN composer install --no-dev
 
 FROM mediawiki:1.31
 
-# Install envsubst
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* && \
+    DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends libbz2-dev=1.* gettext-base=0.19.* && \
     rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
 
 RUN install -d /var/log/mediawiki -o www-data
 
-RUN docker-php-ext-install calendar
+RUN docker-php-ext-install calendar bz2
 
 COPY --from=composer /var/www/html /var/www/html
 COPY wait-for-it.sh /wait-for-it.sh
