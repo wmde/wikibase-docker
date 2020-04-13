@@ -35,3 +35,12 @@ jobs:
 stages:
   - prebuild
   - test
+
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#wikidata-feed"
+    template:
+      - "%{repository_slug} (%{branch} - %{commit} %{commit_message} : %{author}): %{message}"
+      - "Change view : %{compare_url}"
+      - "Build details : %{build_url}"
