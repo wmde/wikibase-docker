@@ -2,12 +2,12 @@
 #
 # This docker-compose example can be used to pull the images from docker hub.
 #
-# Examples:
+# Examples (actual ports depend on .env configuration):
 #
-# Access Wikibase via "http://localhost:8181"
+# Access Wikibase via e. g. "http://localhost:8181"
 #   (or "http://$(docker-machine ip):8181" if using docker-machine)
 #
-# Access Query Service via "http://localhost:8282"
+# Access Query Service via e. g. "http://localhost:8282"
 #   (or "http://$(docker-machine ip):8282" if using docker-machine)
 version: '3'
 
@@ -17,8 +17,7 @@ services:
     links:
       - mysql
     ports:
-    # CONFIG - Change the 8181 here to expose Wikibase & MediaWiki on a different port
-     - "8181:80"
+     - "${MEDIAWIKI_PORT}:80"
     volumes:
       - mediawiki-images-data:/var/www/html/images
       - quickstatements-data:/quickstatements/data
@@ -44,7 +43,7 @@ services:
       - DB_USER=wikiuser
       - DB_PASS=sqlpass
       - DB_NAME=my_wiki
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${QUICKSTATEMENTS_PORT}
   mysql:
     image: mariadb:10.3
     restart: unless-stopped
@@ -64,8 +63,7 @@ services:
     image: wikibase/wdqs-frontend:latest
     restart: unless-stopped
     ports:
-    # CONFIG - Change the 8282 here to expose the Query Service UI on a different port
-     - "8282:80"
+     - "${QUERYSERVICE_FRONTEND_PORT}:80"
     depends_on:
     - wdqs-proxy
     networks:
@@ -97,7 +95,7 @@ services:
     environment:
       - PROXY_PASS_HOST=wdqs.svc:9999
     ports:
-     - "8989:80"
+     - "${QUERYSERVICE_PROXY_PORT}:80"
     depends_on:
     - wdqs
     networks:
@@ -133,7 +131,7 @@ services:
   quickstatements:
     image: wikibase/quickstatements:latest
     ports:
-     - "9191:80"
+     - "${QUICKSTATEMENTS_PORT}:80"
     depends_on:
      - wikibase
     volumes:
@@ -143,8 +141,8 @@ services:
         aliases:
          - quickstatements.svc
     environment:
-      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:9191
-      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:8181
+      - QS_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${QUICKSTATEMENTS_PORT}
+      - WB_PUBLIC_SCHEME_HOST_AND_PORT=http://localhost:${MEDIAWIKI_PORT}
       - WIKIBASE_SCHEME_AND_HOST=http://wikibase.svc
       - WB_PROPERTY_NAMESPACE=122
       - "WB_PROPERTY_PREFIX=Property:"

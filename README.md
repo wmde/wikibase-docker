@@ -21,6 +21,8 @@ To try it out, make sure you have Docker installed, then just clone this reposit
 - a [Wikidata Query Service](https://www.mediawiki.org/wiki/Wikidata_Query_Service) instance available at http://localhost:8282
 - a [QuickStatements](https://www.wikidata.org/wiki/Help:QuickStatements) instance, available at http://localhost:9191
 
+The actual ports depend on the `.env` configuration; the ones mentioned here are the default values.
+
 Note that the Wikibase instance has no data; no items or properties. To add some data, use the `Special:NewItem` and `Special:NewProperty` pages in the local wiki; then you can add statements to the added items using the properties you defined.
 
 For more information about this example enviroment, please see the [README-compose.md](https://github.com/wmde/wikibase-docker/blob/master/README-compose.md) file.
