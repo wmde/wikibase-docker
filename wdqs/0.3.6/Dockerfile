@@ -42,4 +42,10 @@ COPY --chown=blazegraph:blazegraph whitelist.txt /wdqs/whitelist.txt
 # TODO is this actually needed?
 RUN chmod +x /wdqs/runUpdate.sh
 
+RUN mkdir -p /wdqs/data & chown blazegraph:blazegraph -R /wdqs
+
+USER blazegraph
+
+VOLUME /wdqs/data
+
 ENTRYPOINT ["/entrypoint.sh"]
