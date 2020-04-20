@@ -5,7 +5,7 @@ Quickstatements2 as seen at  [https://tools.wmflabs.org/quickstatements/](https:
 ### Tags
 Image name                            | Parent image                                    | Quickstatements version
 -------------------------------       | ------------------------                        | --------------        
-`wikibase/quickstatements` : `latest` | [php:5.6-apache](https://hub.docker.com/_/php/) | master                
+`wikibase/quickstatements` : `latest` | [php:7.2-apache](https://hub.docker.com/_/php/) | master                
 
 ### Environment variables
 
