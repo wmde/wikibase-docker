@@ -6,5 +6,4 @@ docker build "$DIR/../" -t wikibase/elasticsearch:5.6.14-extra -t wikibase/elast
 
 if [ "$SHOULD_DOCKER_PUSH" = true ]; then
     docker push wikibase/elasticsearch:5.6.14-extra
-    docker push wikibase/elasticsearch:latest
 fi
