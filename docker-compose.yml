@@ -150,6 +150,16 @@ services:
       - "WB_PROPERTY_PREFIX=Property:"
       - WB_ITEM_NAMESPACE=120
       - "WB_ITEM_PREFIX=Item:"
+  wikibase-cli:
+    build:
+      context: ./wikibase-cli
+      dockerfile: Dockerfile
+    environment:
+      - WB_HOST=http://wikibase.svc
+      - WB_USERNAME=WikibaseAdmin
+      - WB_PASSWORD=WikibaseDockerAdminPass
+      # Optional
+      - WDQS_HOST=http://wdqs.svc
 
 volumes:
   mediawiki-mysql-data:

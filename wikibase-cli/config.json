@@ -1,0 +1,10 @@
+{
+  "instance": "${WB_HOST}",
+  "sparql-endpoint": "${WDQS_HOST}",
+  "credentials": {
+    "${WB_HOST}": {
+      "username": "${WB_USERNAME}",
+      "password": "${WB_PASSWORD}"
+    }
+  }
+}
