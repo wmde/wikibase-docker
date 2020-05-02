@@ -151,9 +151,9 @@ services:
       - WB_ITEM_NAMESPACE=120
       - "WB_ITEM_PREFIX=Item:"
   wikibase-cli:
-    build:
-      context: ./wikibase-cli
-      dockerfile: Dockerfile
+    image: 'maxlath/wikibase-cli:latest-wikibase-docker'
+    depends_on:
+      - wikibase
     environment:
       - WB_HOST=http://wikibase.svc
       - WB_USERNAME=WikibaseAdmin
