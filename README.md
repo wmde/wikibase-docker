@@ -11,6 +11,7 @@ Image name               | Description   | README
 [`wikibase/wdqs-proxy`](https://hub.docker.com/r/wikibase/wdqs-proxy) | Proxy to make the query service READONLY and enforce query timeouts | [README](https://github.com/wmde/wikibase-docker/blob/master/wdqs-proxy/README.md)
 [`wikibase/wdqs-frontend`](https://hub.docker.com/r/wikibase/wdqs-frontend) | UI for the SPARQL query service | [README](https://github.com/wmde/wikibase-docker/blob/master/wdqs-frontend/README.md)
 [`wikibase/quickstatements`](https://hub.docker.com/r/wikibase/quickstatements) | UI to add data to Wikibase | [README](https://github.com/wmde/wikibase-docker/blob/master/quickstatements/README.md)
+[`maxlath/wikibase-cli`](https://hub.docker.com/r/maxlath/wikibase-cli/tags?name=wikibase-docker) | CLI to read and write data to Wikibase | [README](https://github.com/wmde/wikibase-docker/blob/master/wikibase-cli/README.md)
 
 ### Docker compose example
 
@@ -20,6 +21,7 @@ To try it out, make sure you have Docker installed, then just clone this reposit
 - a MediaWiki wiki fully configured with [Wikibase](https://www.mediawiki.org/wiki/Wikibase), available at http://localhost:8181
 - a [Wikidata Query Service](https://www.mediawiki.org/wiki/Wikidata_Query_Service) instance available at http://localhost:8282
 - a [QuickStatements](https://www.wikidata.org/wiki/Help:QuickStatements) instance, available at http://localhost:9191
+- a [wikibase-cli](https://www.wikidata.org/wiki/Wikidata:Tools/WikibaseJS-cli) executable ready to be used: `docker-compose run wikibase-cli`
 
 Note that the Wikibase instance has no data; no items or properties. To add some data, use the `Special:NewItem` and `Special:NewProperty` pages in the local wiki; then you can add statements to the added items using the properties you defined.
 

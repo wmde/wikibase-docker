@@ -1,0 +1,6 @@
+# SELECT only one variable, so that the output of `wb sparql` would be
+# in the form expected as input by `wb data`
+SELECT ?item WHERE {
+  ?item wdt:P1 ?a .
+  ?item wdt:P2 ?b .
+}
