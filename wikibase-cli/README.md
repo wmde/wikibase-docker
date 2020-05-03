@@ -15,7 +15,6 @@ Variable                                                                        
 `WDQS_HOST`                                                                        | Query Service host. **Optional**: only required for read commands such as `wb sparql`, `wb query`, and `wb convert`
 
 ## How-to
-
 Everywhere the [documentation](https://github.com/maxlath/wikibase-cli#summary) refers to `wb`, you can substitute `docker-compose exec wikibase-cli wb`
 ```sh
 # Creating an alias in the current terminal
@@ -36,13 +35,14 @@ wb search 'some property label' --type property
 
 # Get those entities data
 wb data Q1 P1
-
 ```
 
 Unfortunately, for commands that can take arguments on stdin, you can't use `docker-compose exec` as it will return an error: `the input device is not a TTY`. This can be worked around, by using the `docker exec` command which has an interactive (`-i`) mode:
 ```sh
 CONTAINER_ID=$(docker ps | grep wikibase-cli | awk '{print $1}')
 alias wb="docker exec $CONTAINER_ID wikibase-cli wb"
+# OR as a one-liner
+alias wb="docker exec $(docker ps | grep wikibase-cli | awk '{print $1}') wikibase-cli wb"
 
 # Create many entities
 cat ./demo/data.ndjson | wb create-entity --batch
