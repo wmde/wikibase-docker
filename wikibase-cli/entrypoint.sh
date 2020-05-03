@@ -40,4 +40,8 @@ wb config credentials "$WB_HOST" test > /dev/null && {
   exit 1
 }
 
-wb "$@" < /dev/stdin
+log_success "wikibase-cli ready to be used"
+
+# Hold container alive so that commands can be executed in this container
+# without having to re-create one everytime: `docker-compose exec wikibase-cli wb`
+tail -f /dev/null
