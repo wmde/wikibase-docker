@@ -8,7 +8,7 @@ RUN apk add gettext bash && \
   mkdir -p /wikibase-cli/local
 
 COPY entrypoint.sh /entrypoint.sh
-COPY config.username-password.json /config.username-password.json
-COPY config.oauth.json /config.oauth.json
+COPY config.username-password.json.template /config.username-password.json.template
+COPY config.oauth.json.template /config.oauth.json.template
 
 ENTRYPOINT [ "/entrypoint.sh" ]

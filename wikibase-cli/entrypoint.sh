@@ -17,9 +17,9 @@ if [[ "$WB_HOST" == "" ]] ; then
 fi
 
 if [[ "$OAUTH_CONSUMER_KEY" != "" && "$OAUTH_CONSUMER_SECRET" != "" && "$OAUTH_TOKEN" != "" && "$OAUTH_TOKEN_SECRET" != "" ]] ; then
-  envsubst < /config.oauth.json > /wikibase-cli/local/config.json
+  envsubst < /config.oauth.json.template > /wikibase-cli/local/config.json
 elif [[ "$WB_USERNAME" != "" && "$WB_PASSWORD" != "" ]]; then
-  envsubst < /config.username-password.json > /wikibase-cli/local/config.json
+  envsubst < /config.username-password.json.template > /wikibase-cli/local/config.json
 else
   if [[ "$OAUTH_CONSUMER_KEY" != "" || "$OAUTH_CONSUMER_SECRET" != "" || "$OAUTH_TOKEN" != "" || "$OAUTH_TOKEN_SECRET" != "" ]] ; then
     [[ "$OAUTH_CONSUMER_KEY" == "" ]] && log_missing "OAUTH_CONSUMER_KEY"
