@@ -40,7 +40,7 @@ wb config credentials "$WB_HOST" test > /dev/null && {
   exit 1
 }
 
-log_success "wikibase-cli ready to be used"
+log_success "wikibase-cli ready to be used. Documentation: https://github.com/wmde/wikibase-docker/blob/master/wikibase-cli/README.md#how-to"
 
 # Hold container alive so that commands can be executed in this container
 # without having to re-create one everytime: `docker-compose exec wikibase-cli wb`
