@@ -156,8 +156,15 @@ services:
       - wikibase
     environment:
       - WB_HOST=http://wikibase.svc
+      # Either set username and password variables
       - WB_USERNAME=WikibaseAdmin
       - WB_PASSWORD=WikibaseDockerAdminPass
+      # OR OAuth tokens
+      # (can be created on your local instance at http://localhost:8181/wiki/Special:OAuthConsumerRegistration/propose?wpname=wikibase-cli&wpdescription=tokens%20for%20wikibase-cli&wpownerOnly=1 )
+      - OAUTH_CONSUMER_KEY=2b9ebee3bff2fd2b0c5aee56acd34d77
+      - OAUTH_CONSUMER_SECRET=f6d610bcff4bcbe58bcdc9fac4d32a5a04d50905
+      - OAUTH_TOKEN=bde79f0938fc1b315fecc1a73cf2ea8b
+      - OAUTH_TOKEN_SECRET=a08f481b23082c2184b98fb7cd16508ced6edca1
       # Optional
       - WDQS_HOST=http://wdqs.svc
 

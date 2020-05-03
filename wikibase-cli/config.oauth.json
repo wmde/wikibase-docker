@@ -1,0 +1,14 @@
+{
+  "instance": "${WB_HOST}",
+  "sparql-endpoint": "${WDQS_HOST}",
+  "credentials": {
+    "${WB_HOST}": {
+      "oauth": {
+        "consumer_key": "${OAUTH_CONSUMER_KEY}",
+        "consumer_secret": "${OAUTH_CONSUMER_SECRET}",
+        "token": "${OAUTH_TOKEN}",
+        "token_secret": "${OAUTH_TOKEN_SECRET}"
+      }
+    }
+  }
+}
