@@ -81,3 +81,16 @@ Maintenance scripts from extensions and mediawiki core can be run with `docker e
 For example to run a maintenance script from WikibaseImport:
 
 ```docker exec <container name / hash> php //var/www/html/extensions/WikibaseImport/maintenance/importEntities.php --entity Q147```
+
+### Development
+
+A new image should be created for every major release of MediaWiki and Wikibase.
+These images currently use the [MediaWiki docker hub base image](https://hub.docker.com/_/mediawiki), so that needs to have a new version prior to updates here.
+
+ - Create a new release folder, copying the content from a previous release
+ - Update the base Dockerfile to fetch the latest mediawiki image
+ - Update the bundle Dockerfile to use the new version of the base image
+ - Update download-extension.sh to fetch new versions of the extensions
+ - Update the CI build by checking the steps in the main README Development section in this repo.
+
+Releases that are no longer supported per the [Version lifecycle](https://www.mediawiki.org/wiki/Version_lifecycle) can be deleted.

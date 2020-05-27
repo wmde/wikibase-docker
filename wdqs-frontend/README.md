@@ -21,3 +21,9 @@ Variable          | Default                      | Description
 `WIKIBASE_HOST`   | "wikibase.svc"               | Hostname of the Wikibase host
 `WDQS_HOST`       | "wdqs-proxy.svc"             | Hostname of the WDQS host (probably READONLY, hence use of the wdqs-proxy service)
 `COPYRIGHT_URL`   | "undefined"                  | URL for the copyright notice
+
+### Development
+
+Both images are built directly from master, so new images for releases are not needed (as there are no releases).
+
+This does mean that sometimes things will break and the images will need fixing.

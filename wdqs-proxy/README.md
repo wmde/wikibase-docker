@@ -29,3 +29,9 @@ File                               | Description
 ---------------------------------  | ------------------------------------------------------------------------------
 `/etc/nginx/conf.d/wdqs.template`  | Template for the nginx config (substituted to `/etc/nginx/conf.d/default.conf` at runtime)
 `/etc/nginx/conf.d/default.conf`   | nginx config. To override this you must also use a custom entrypoint to avoid the file being overwritten.
+
+### Development
+
+This image is based directoy on the nginx latest image, thus new images are not needed for new releases.
+
+However if the latest image goes through a major version bump that renders our configuration broken we may need to create a new image.
