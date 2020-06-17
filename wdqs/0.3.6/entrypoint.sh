@@ -17,5 +17,12 @@ export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
 export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK}"
 
 envsubst < /templates/mwservices.json > /wdqs/mwservices.json
+chown 666:66 /wdqs/mwservices.json
 
-exec "$@"
+# The data directory should always be owned by the blazegraph user
+# This used to be owned by root (https://phabricator.wikimedia.org/T237248)
+if [ -d /wdqs/data/ ]; then
+  chown 666:66 -R /wdqs/data/
+fi
+
+su-exec 666:66 "$@"
