@@ -65,3 +65,11 @@ and secret token to quickstatements.
 
 If you have changed the value of $wgSecretKey $wgOAuthSecretKey since you made the consumer you'll need to make another new consumer or
 reissue the secret token for the old one.
+
+### Development
+
+These images are build from the master branch of the quickstatements and magnustools repos.
+
+For this reason the images may sometimes break due to upstream changes and need fixing.
+
+Additional images for new releases do not need to be created.

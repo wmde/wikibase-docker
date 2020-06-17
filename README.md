@@ -30,6 +30,18 @@ For more information about this example enviroment, please see the [README-compo
 We use [Phabricator to track
 issues](https://phabricator.wikimedia.org/maniphest/task/edit/form/1/?projects=wikibase-containers). See the [list of current issues](https://phabricator.wikimedia.org/maniphest/?project=wikibase-containers&statuses=open&group=none&order=newest#R).
 
+### Development
+
+New images will be build and automatically pushed to docker hub when merged on master.
+Builds on branches and in PRs will not be pushed.
+
+Each image directory contains a README with a separate Development section for how updates of that image generally work.
+
+The following steps relate to all images:
+
+ - Update the various .travis/build-deploy.sh scripts to correctly tag the images that are being built, including updating the latest tag.
+ - Update .travis.yml to reflect new or removed images
+
 ### Further reading
 
 For beginner-friendly light reading on the subject of using these images / this repo, check out the posts under [this tag](https://addshore.com/tag/wikibase-docker/), specifically:

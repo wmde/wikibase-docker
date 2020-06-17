@@ -48,3 +48,20 @@ File                              | Description
 
 * The query service is not running or seems to get killed by the OS?
   * The image requires more than 2GB of available RAM to start. While being developed the dev machine had 4GB of RAM.
+
+### Development
+
+New versions of this image should be created alongside new versions of wdqs that are used in production for Wikidata.
+
+New snapshots that are available for images to be created can be found on archiva: https://archiva.wikimedia.org/repository/snapshots/org/wikidata/query/rdf/service/
+
+When creating a new image RWStore.properties will need to be updated to match the properties used in production at the time the snapshot was being used.
+
+For this reason it is easier to only create new releases for wdqs versions currently being used in Wikidata production.
+
+When creating a new release the WMF Search platform team should be contacted for help syncing the wdqs version and RWStore.properties file.
+
+The process is generally:
+ - Create a new directory using a previous one as an example
+ - Update the service snapshot that is being fetched
+ - Update the CI build by checking the steps in the main README Development section in this repo.
