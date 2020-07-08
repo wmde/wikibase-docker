@@ -1,0 +1,106 @@
+{
+  "services": {
+    "Generator": {
+      "@note": "Use generator Query API",
+      "@docs": "https://www.mediawiki.org/wiki/API:Query#Generators",
+      "params": {
+        "action": "query",
+        "generator": {
+          "type": "string"
+        },
+        "prop": {
+          "type": "string",
+          "default": "info|pageprops"
+        },
+        "ppprop": {
+          "type": "string",
+          "default": "wikibase_item"
+        }
+      },
+      "output": {
+        "items": "/api/query/pages/page",
+        "vars": {
+          "title": "@title",
+          "item": "pageprops/@wikibase_item",
+          "pageid": "@pageid",
+          "lastrevid": "@lastrevid",
+          "timestamp": "@touched"
+        }
+      }
+    },
+    "Categories": {
+      "params": {
+        "action": "query",
+        "prop": "categories",
+        "titles": {
+          "type": "list"
+        },
+        "cllimit": {
+          "type": "int",
+          "default": "max"
+        }
+      },
+      "output": {
+        "items": "//api/query/pages/page/categories/cl",
+        "vars": {
+          "category": "@title",
+          "title": "//api/query/pages/page/@title"
+        }
+      }
+    },
+    "Search": {
+      "@note": "Full-text search in the wiki",
+      "@docs": "https://www.mediawiki.org/wiki/API:Search",
+      "params": {
+        "action": "query",
+        "list": "search",
+        "srsearch": {
+          "type": "string"
+        },
+        "srwhat": {
+          "type": "string",
+          "default": "text"
+        },
+        "srlimit": {
+          "type": "int",
+          "default": "max"
+        }
+      },
+      "output": {
+        "items": "//api/query/search/p",
+        "vars": {
+          "title": "@title"
+        }
+      }
+    },
+    "EntitySearch": {
+      "@note": "Entity search for Wikibase",
+      "@docs": "https://www.mediawiki.org/wiki/Wikibase/API#wbsearchentities",
+      "params": {
+        "action": "wbsearchentities",
+        "search": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "default": "item"
+        },
+        "limit": {
+          "type": "string",
+          "default": "max"
+        }
+      },
+      "output": {
+        "items": "//api/search/entity",
+        "vars": {
+          "item": "@id",
+          "label": "@label"
+        }
+      }
+    }
+  },
+  "endpoints": ["${WIKIBASE_HOST}"]
+}
