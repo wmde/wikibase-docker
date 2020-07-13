@@ -8,7 +8,8 @@ Automated build.
 
 Image name                              | Parent image             | WDQS Version
 --------------------------------------- | ------------------------ | --------------
-`wikibase/wdqs` : `0.3.10`, `latest`    | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.10
+`wikibase/wdqs` : `0.3.40`, `latest`    | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.40
+`wikibase/wdqs` : `0.3.10`              | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.10
 `wikibase/wdqs` : `0.3.6`               | [openjdk:8-jdk-alpine](https://hub.docker.com/_/openjdk/) | 0.3.6
 
 ### Upgrading
