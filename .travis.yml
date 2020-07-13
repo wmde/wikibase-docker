@@ -8,6 +8,7 @@ env:
  - IMAGE_PATH=wikibase/1.31/
  - IMAGE_PATH=wdqs/0.3.6/
  - IMAGE_PATH=wdqs/0.3.10/
+ - IMAGE_PATH=wdqs/0.3.40/
  - IMAGE_PATH=wdqs-frontend/latest/
  - IMAGE_PATH=wdqs-frontend/legacy/
  - IMAGE_PATH=wdqs-proxy/latest/
