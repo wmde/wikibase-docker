@@ -13,7 +13,7 @@ if [[ -v "$OAUTH_CONSUMER_KEY" && "$OAUTH_CONSUMER_SECRET" ]]; then
     envsubst < /templates/oauth.ini > /quickstatements/data/oauth.ini;
 fi
 
-envsubst < /templates/config.json > /var/www/html/quickstatements/public_html/config.json
+envsubst < /templates/config.json > /data/project/quickstatements/public_html/config.json
 envsubst < /templates/php.ini > /usr/local/etc/php/conf.d/php.ini
 
 docker-php-entrypoint apache2-foreground

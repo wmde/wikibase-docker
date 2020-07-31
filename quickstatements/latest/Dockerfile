@@ -27,10 +27,11 @@ FROM php:7.2-apache
 # Install envsubst
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends gettext-base=0.19.* jq=1.5* && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /data/project/
 
-COPY --from=composer /quickstatements /var/www/html/quickstatements
-COPY --from=fetcher /magnustools /var/www/html/magnustools
+COPY --from=composer /quickstatements /data/project/quickstatements
+COPY --from=fetcher /magnustools /data/project/magnustools
 
 COPY entrypoint.sh /entrypoint.sh
 
@@ -38,7 +39,7 @@ COPY config.json /templates/config.json
 COPY oauth.ini /templates/oauth.ini
 COPY php.ini /templates/php.ini
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/quickstatements/public_html
+ENV APACHE_DOCUMENT_ROOT /data/project/quickstatements/public_html
 RUN sed -ri -e "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/*.conf
 RUN sed -ri -e "s!/var/www/!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 

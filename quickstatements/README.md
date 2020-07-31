@@ -22,14 +22,14 @@ Variable                   | Default  | Description
 
 Directory                                   | Description                                                                   
 ---------------------------------           | ------------------------------------------------------------------------------
-`/var/www/html/quickstatements`             | Base quickstatements directory                                                
-`/var/www/html/quickstatements/public_html` | The Apache Root folder                                                        
-`/var/www/html/magnustools`                 | Base magnustools directory                                                    
+`/data/project/quickstatements`             | Base quickstatements directory                                                
+`/data/project/quickstatements/public_html` | The Apache Root folder                                                        
+`/data/project/magnustools`                 | Base magnustools directory                                                    
 
 File                      | Description                                                                                                                              
 ------------------------- | ------------------------------------------------------------------------------                                                           
-`/templates/config.json`  | Template for Quickstatements' config.json (substituted to `/var/www/html/quickstatements/public_html/config.json` at runtime)            
-`/templates/oauth.ini`    | Template for Quickstatements' oauth.ini (substituted to `/var/www/html/quickstatements/oauth.ini` at runtime)                            
+`/templates/config.json`  | Template for Quickstatements' config.json (substituted to `/data/project/quickstatements/public_html/config.json` at runtime)            
+`/templates/oauth.ini`    | Template for Quickstatements' oauth.ini (substituted to `/data/project/quickstatements/oauth.ini` at runtime)                            
 `/templates/php.ini`      | php config (default provided sets date.timezone to prevent php complaining substituted to `/usr/local/etc/php/conf.d/php.ini` at runtime)
 
 

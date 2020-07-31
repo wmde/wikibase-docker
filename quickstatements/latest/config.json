@@ -1,6 +1,6 @@
 {
 	"site" : "${MW_SITE_NAME}" ,
-	"bot_config_file" : "/var/www/html/bot.ini" ,
+	"bot_config_file" : "/data/project/bot.ini" ,
 	"logfile" : "/var/log/quickstatements/tool.log" ,
 	"sites" : {
 		"${MW_SITE_NAME}" : {
