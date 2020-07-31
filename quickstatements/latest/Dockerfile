@@ -5,7 +5,12 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://phabricator.wikimedia.org/source/tool-quickstatements.git quickstatements
-RUN git clone --depth 1 https://bitbucket.org/magnusmanske/magnustools.git magnustools
+
+RUN git clone https://bitbucket.org/magnusmanske/magnustools.git magnustools && \
+    git --git-dir=./magnustools/.git checkout d791f84cba556a29fa5c84543b3c4717a0c63876
+    # https://phabricator.wikimedia.org/T259389:
+    # Per 2020-07-31, this seems to be the latest working commit. Starting from the next commit,
+    # `public_html/php/wikidata.php` requires a non-existing file `public_html/php/WikidataItem.php`.
 
 RUN rm -rf quickstatements/.git
 RUN rm -rf magnustools/.git
