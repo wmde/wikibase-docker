@@ -2,6 +2,7 @@
 	"site" : "${MW_SITE_NAME}" ,
 	"bot_config_file" : "/var/www/html/bot.ini" ,
 	"logfile" : "/var/log/quickstatements/tool.log" ,
+	"valid_origin" : "${QS_PUBLIC_SCHEME_HOST_AND_PORT}" ,
 	"sites" : {
 		"${MW_SITE_NAME}" : {
 			"oauth" : {
