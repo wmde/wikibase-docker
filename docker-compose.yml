@@ -30,7 +30,7 @@ services:
       default:
         aliases:
          - wikibase.svc
-         # CONFIG - Add your real wikibase hostname here, for example wikibase-registry.wmflabs.org
+         # CONFIG - Add your real wikibase hostname here, only for internal names and when NOT terminating SSL outside the container.
     environment:
       - DB_SERVER=mysql.svc:3306
       - MW_ELASTIC_HOST=elasticsearch.svc
