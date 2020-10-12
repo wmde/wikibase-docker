@@ -1,8 +1,8 @@
 #!/bin/bash
 
-php /var/www/html/extensions/CirrusSearch/maintenance/updateSearchIndexConfig.php
-php /var/www/html/extensions/CirrusSearch/maintenance/forceSearchIndex.php --skipParse
-php /var/www/html/extensions/CirrusSearch/maintenance/forceSearchIndex.php --skipLinks --indexOnSkip
+php /var/www/html/extensions/CirrusSearch/maintenance/UpdateSearchIndexConfig.php
+php /var/www/html/extensions/CirrusSearch/maintenance/ForceSearchIndex.php --skipParse
+php /var/www/html/extensions/CirrusSearch/maintenance/ForceSearchIndex.php --skipLinks --indexOnSkip
 
 n=0
 until [ $n -ge 5 ]
