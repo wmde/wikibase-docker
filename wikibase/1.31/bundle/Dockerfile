@@ -27,7 +27,7 @@ COPY --from=fetcher /CirrusSearch /var/www/html/extensions/CirrusSearch
 COPY --from=fetcher /UniversalLanguageSelector /var/www/html/extensions/UniversalLanguageSelector
 COPY --from=fetcher /cldr /var/www/html/extensions/cldr
 
-FROM composer as composer
+FROM composer:1 as composer
 COPY --from=collector /var/www/html /var/www/html
 WORKDIR /var/www/html/
 RUN rm /var/www/html/composer.lock

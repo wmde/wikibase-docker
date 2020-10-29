@@ -10,7 +10,7 @@ RUN git clone --depth 1 https://bitbucket.org/magnusmanske/magnustools.git magnu
 RUN rm -rf quickstatements/.git
 RUN rm -rf magnustools/.git
 
-FROM composer as composer
+FROM composer:1 as composer
 
 COPY --from=fetcher /quickstatements /quickstatements
 
