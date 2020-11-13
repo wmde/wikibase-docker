@@ -1,7 +1,7 @@
 FROM ubuntu:xenial as fetcher
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201* && \
+    apt-get install --yes --no-install-recommends unzip=6.* jq=1.* curl=7.* ca-certificates=201* git && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY download-extension.sh .
@@ -13,6 +13,8 @@ bash download-extension.sh WikibaseCirrusSearch;\
 bash download-extension.sh UniversalLanguageSelector;\
 bash download-extension.sh cldr;\
 bash download-extension.sh EntitySchema;\
+RUN git clone https://github.com/ProfessionalWiki/WikibaseLocalMedia --depth=1
+
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
 tar xzf CirrusSearch.tar.gz;\
@@ -32,6 +34,7 @@ COPY --from=fetcher /WikibaseCirrusSearch /var/www/html/extensions/WikibaseCirru
 COPY --from=fetcher /UniversalLanguageSelector /var/www/html/extensions/UniversalLanguageSelector
 COPY --from=fetcher /cldr /var/www/html/extensions/cldr
 COPY --from=fetcher /EntitySchema /var/www/html/extensions/EntitySchema
+COPY --from=fetcher /WikibaseLocalMedia /var/www/html/extensions/WikibaseLocalMedia
 
 FROM composer:1 as composer
 COPY --from=collector /var/www/html /var/www/html

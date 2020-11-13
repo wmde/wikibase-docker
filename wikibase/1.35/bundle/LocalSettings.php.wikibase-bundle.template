@@ -23,5 +23,8 @@ wfLoadExtension( 'UniversalLanguageSelector' );
 # cldr
 wfLoadExtension( 'cldr' );
 
-#EntitySchema
+# EntitySchema
 wfLoadExtension( 'EntitySchema' );
+
+# Wikibase Local Media
+wfLoadExtension( 'WikibaseLocalMedia' );
