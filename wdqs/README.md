@@ -25,17 +25,17 @@ If you can not use RecentChanges then you will need to reload from an RDF dump:
 
 ### Environment variables
 
-Variable                 | Default            | Since   | Description
--------------------------|  ------------------| --------| ----------
-`MEMORY`                 | ""                 | 0.2.5   | Memory limit for blazegraph
-`HEAP_SIZE`              | "1g"               | 0.2.5   | Heap size for blazegraph
-`WIKIBASE_HOST`          | "wikibase.svc"     | 0.2.5   | Hostname of the Wikibase host
-`WIKIBASE_SCHEME`        | "http"             | 0.2.5   | Scheme of the Wikibase host
-`WDQS_HOST`              | "wdqs.svc"         | 0.2.5   | Hostname of the WDQS host (this service)
-`WDQS_PORT`              | "9999"             | 0.2.5   | Port of the WDQS host (this service)
-`WDQS_ENTITY_NAMESPACES` | "120,122"          | 0.2.5   | Wikibase Namespaces to load data from
-`WIKIBASE_MAX_DAYS_BACK` | "90"               | 0.3.0   | Max days updater is allowed back from now
-
+Variable                 | Default               | Since   | Description
+-------------------------| ----------------------| --------| ----------
+`MEMORY`                 | ""                    | 0.2.5   | Memory limit for blazegraph
+`HEAP_SIZE`              | "1g"                  | 0.2.5   | Heap size for blazegraph
+`WIKIBASE_HOST`          | "wikibase.svc"        | 0.2.5   | Hostname of the Wikibase host
+`WIKIBASE_SCHEME`        | "http"                | 0.2.5   | Scheme of the Wikibase host
+`WDQS_HOST`              | "wdqs.svc"            | 0.2.5   | Hostname of the WDQS host (this service)
+`WDQS_PORT`              | "9999"                | 0.2.5   | Port of the WDQS host (this service)
+`WDQS_ENTITY_NAMESPACES` | "120,122"             | 0.2.5   | Wikibase Namespaces to load data from
+`WIKIBASE_MAX_DAYS_BACK` | "90"                  | 0.3.0   | Max days updater is allowed back from now
+`WIKIBASE_CONCEPT_URI`   | "http://wikibase.svc" | 0.3.40  | URL base of the URLs used to represent Wikibase entities in RDF. E.g. http://www.wikidata.org. Must be set if the Wikibase instance does not use Wikidata-based prefixe
 
 ### Filesystem layout
 

@@ -13,8 +13,10 @@ done
 
 set -eu
 
-export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST}"
-export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK}"
+WIKIBASE_CONCEPT_URI="${WIKIBASE_CONCEPT_URI:-${WIKIBASE_SCHEME}://${WIKIBASE_HOST}}"
+
+export BLAZEGRAPH_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseConceptUri=${WIKIBASE_CONCEPT_URI}"
+export UPDATER_OPTS="-DwikibaseHost=${WIKIBASE_HOST} -DwikibaseMaxDaysBack=${WIKIBASE_MAX_DAYS_BACK} -DwikibaseConceptUri=${WIKIBASE_CONCEPT_URI}"
 
 envsubst < /templates/mwservices.json > /wdqs/mwservices.json
 chown 666:66 /wdqs/mwservices.json
