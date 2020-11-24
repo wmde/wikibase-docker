@@ -13,7 +13,7 @@ bash download-extension.sh WikibaseCirrusSearch;\
 bash download-extension.sh UniversalLanguageSelector;\
 bash download-extension.sh cldr;\
 bash download-extension.sh EntitySchema;\
-RUN git clone https://github.com/ProfessionalWiki/WikibaseLocalMedia --depth=1 --branch=REL1_35
+git clone https://github.com/ProfessionalWiki/WikibaseLocalMedia --depth=1 --branch=REL1_35 && rm -rf WikibaseLocalMedia/.git/
 
 tar xzf OAuth.tar.gz;\
 tar xzf Elastica.tar.gz;\
