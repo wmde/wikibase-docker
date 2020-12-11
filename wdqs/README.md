@@ -54,7 +54,7 @@ File                              | Description
 
 New versions of this image should be created alongside new versions of wdqs that are used in production for Wikidata.
 
-New snapshots that are available for images to be created can be found on archiva: https://archiva.wikimedia.org/repository/snapshots/org/wikidata/query/rdf/service/
+New releases that are available for images to be created can be found on archiva: https://archiva.wikimedia.org/repository/releases/org/wikidata/query/rdf/service/
 
 When creating a new image RWStore.properties will need to be updated to match the properties used in production at the time the snapshot was being used.
 
