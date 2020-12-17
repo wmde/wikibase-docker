@@ -32,6 +32,6 @@ File                               | Description
 
 ### Development
 
-This image is based directoy on the nginx latest image, thus new images are not needed for new releases.
+This image is based directly on the nginx latest image, thus new images are not needed for new releases.
 
 However if the latest image goes through a major version bump that renders our configuration broken we may need to create a new image.
