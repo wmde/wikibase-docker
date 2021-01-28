@@ -27,8 +27,8 @@ fi
 
 # Do the mediawiki install (only if LocalSettings doesn't already exist)
 if [ ! -e "/var/www/html/LocalSettings.php" ]; then
-    php /var/www/html/maintenance/install.php --dbuser $DB_USER --dbpass $DB_PASS --dbname $DB_NAME --dbserver $DB_SERVER --lang $MW_SITE_LANG --pass $MW_ADMIN_PASS $MW_SITE_NAME $MW_ADMIN_NAME
-    php /var/www/html/maintenance/resetUserEmail.php --no-reset-password $MW_ADMIN_NAME $MW_ADMIN_EMAIL
+    php /var/www/html/maintenance/install.php --dbuser "$DB_USER" --dbpass "$DB_PASS" --dbname "$DB_NAME" --dbserver "$DB_SERVER" --lang "$MW_SITE_LANG" --pass "$MW_ADMIN_PASS" "$MW_SITE_NAME" "$MW_ADMIN_NAME"
+    php /var/www/html/maintenance/resetUserEmail.php --no-reset-password "$MW_ADMIN_NAME" "$MW_ADMIN_EMAIL"
 
     # Copy our LocalSettings into place after install from the template
     # https://stackoverflow.com/a/24964089/4746236
