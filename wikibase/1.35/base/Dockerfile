@@ -13,7 +13,7 @@ FROM mediawiki:1.35 as collector
 COPY --from=fetcher /Wikibase /var/www/html/extensions/Wikibase
 
 
-FROM composer:1 as composer
+FROM composer@sha256:d374b2e1f715621e9d9929575d6b35b11cf4a6dc237d4a08f2e6d1611f534675 as composer
 COPY --from=collector /var/www/html /var/www/html
 WORKDIR /var/www/html/
 COPY composer.local.json /var/www/html/composer.local.json
