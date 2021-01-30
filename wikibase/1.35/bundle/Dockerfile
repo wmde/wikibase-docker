@@ -33,7 +33,7 @@ COPY --from=fetcher /UniversalLanguageSelector /var/www/html/extensions/Universa
 COPY --from=fetcher /cldr /var/www/html/extensions/cldr
 COPY --from=fetcher /EntitySchema /var/www/html/extensions/EntitySchema
 
-FROM composer:1 as composer
+FROM composer@sha256:d374b2e1f715621e9d9929575d6b35b11cf4a6dc237d4a08f2e6d1611f534675 as composer
 COPY --from=collector /var/www/html /var/www/html
 WORKDIR /var/www/html/
 RUN rm /var/www/html/composer.lock
