@@ -54,3 +54,6 @@ require_once "${DOLLAR}IP/extensions/Wikibase/repo/Wikibase.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/repo/ExampleSettings.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/client/WikibaseClient.php";
 require_once "${DOLLAR}IP/extensions/Wikibase/client/ExampleSettings.php";
+
+## Enable rendering of images for properties of type commons media file
+${DOLLAR}wgUseInstantCommons = true;
