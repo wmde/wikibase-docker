@@ -40,7 +40,7 @@ stages:
 notifications:
   irc:
     channels:
-      - "chat.freenode.net#wikidata-feed"
+      - "libera.chat#wikidata-feed"
     template:
       - "%{repository_slug} (%{branch} - %{commit} %{commit_message} : %{author}): %{message}"
       - "Change view : %{compare_url}"
